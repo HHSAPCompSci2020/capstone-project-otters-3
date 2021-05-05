@@ -20,7 +20,7 @@ public class CardDeck {
 		
 	}
 	
-	public Card getCard() {
+	public Card getTopCard() {
 		return cards.remove(0);
 	}
 	

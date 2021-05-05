@@ -21,7 +21,7 @@ public class Card {
 	/**
 	 * 
 	 */
-	public void act() {
+	public void act(Player player) {
 		
 	}
 }

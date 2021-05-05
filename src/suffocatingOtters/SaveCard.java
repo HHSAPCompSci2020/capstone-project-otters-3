@@ -12,7 +12,7 @@ public class SaveCard extends Card {
 		
 	}
 	
-	public void act() {
+	public void act(Player player) {
 		
 	}
 }

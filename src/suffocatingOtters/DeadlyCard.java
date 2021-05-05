@@ -6,7 +6,7 @@ public class DeadlyCard extends Card {
 		
 	}
 	
-	public void act() {
+	public void act(Player player) {
 		
 	}
 
