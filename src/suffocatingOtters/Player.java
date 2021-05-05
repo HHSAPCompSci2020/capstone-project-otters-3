@@ -23,7 +23,7 @@ public class Player {
 	/**
 	 * 
 	 */
-	public void endTurn() {
+	public void addCard() {
 		
 	}
 	
