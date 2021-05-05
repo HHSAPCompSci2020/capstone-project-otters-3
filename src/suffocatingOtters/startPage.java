@@ -1,5 +1,6 @@
 package suffocatingOtters;
 
-public class startPage {
 
+public class startPage{
+	
 }

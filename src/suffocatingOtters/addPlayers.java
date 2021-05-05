@@ -1,5 +1,6 @@
 package suffocatingOtters;
 
-public class addPlayers {
 
+public class addPlayers{
+	
 }

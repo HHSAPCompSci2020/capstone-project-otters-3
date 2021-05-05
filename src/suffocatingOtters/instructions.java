@@ -1,5 +1,6 @@
 package suffocatingOtters;
 
-public class instructions {
 
+public class instructions{
+	
 }

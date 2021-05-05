@@ -1,5 +1,6 @@
 package suffocatingOtters;
 
-public class mainGame {
 
+public class mainGame{
+	
 }
