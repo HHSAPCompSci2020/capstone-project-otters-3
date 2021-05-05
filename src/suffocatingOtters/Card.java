@@ -3,7 +3,7 @@ package suffocatingOtters;
 /**
  * 
  * @author skyla and andria
- * @verison 1
+ * @version 1
  *
  */
 public class Card {
@@ -12,7 +12,7 @@ public class Card {
 	protected int suit; //the suit (spades (1), hearts (2), diamonds (3), or clubs (4))
 	
 	/**
-	 * 
+	 * Creates a card with the value num and the suit suit.
 	 * @param num a number from 1-13 that represents the number of the card and the points the card is worth
 	 * @param suit a number from 1-4; spades (1), hearts (2), diamonds (3), or clubs (4)
 	 */
@@ -21,10 +21,17 @@ public class Card {
 		this.suit = suit;
 	}
 	
+
+//	public void act(Player player) {
+//		if (num == 1) {
+//			return;
+//		} 
+//	
+	
 	/**
-	 * 
+	 * @return the field num
 	 */
-	public void act(Player player) {
-		player.addPoints(num);
+	public int getNum() {
+		return num;
 	}
 }

@@ -12,12 +12,17 @@ public class Player {
 	
 	private int points;
 	private ArrayList<Card> currentHand;
+	private boolean alive;
+	String name;
 	
 	/**
 	 * 
 	 */
-	public Player() {
-		
+	public Player(String name) {
+		this.name = name;
+		alive = true;
+		points = 20;
+		currentHand = new ArrayList<Card>();
 	}
 
 	/**
@@ -43,8 +48,24 @@ public class Player {
 	 * @post removes the top (index 0) card in the CardDeck passed in
 	 */ 
 	public void drawCard(CardDeck cards) {
-		currentHand.add(cards.drawTopCard());
+		Card card = cards.drawTopCard();
+		currentHand.add(card);
+		if (card.getNum() == 1) {
+			boolean hasSaveCard = false;
+			int i = -1; 
+			for (int n = 0; n < currentHand.size(); i++) {
+				if (currentHand.get(n) instanceof SaveCard) {
+					hasSaveCard = true;
+					i = n;
+				}
+			}
+			if (hasSaveCard) {
+				currentHand.remove(i);
+			} else {
+				alive = false;
+			}
+			return;
+		}
 	}
 	
-
 }

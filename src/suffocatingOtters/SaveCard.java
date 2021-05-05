@@ -8,12 +8,9 @@ package suffocatingOtters;
  */
 public class SaveCard extends Card {
 	
+	// Creates a SaveCard.
 	public SaveCard() {
-		
+		super(0, 0);
 	}
 	
-	@Override
-	public void act(Player player) {
-		
-	}
 }
