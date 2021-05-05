@@ -17,7 +17,7 @@ public class Game {
 	 * A game of Suffocating Otters.
 	 */
 	public Game() {
-		
+		cardDeck = new CardDeck();
 	}
 	
 	/**
