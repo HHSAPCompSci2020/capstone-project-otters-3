@@ -1,6 +1,7 @@
 package suffocatingOtters;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * 
@@ -17,6 +18,14 @@ public class CardDeck {
 	 */
 	public CardDeck() {
 		
+	}
+	
+	public Card getCard() {
+		return cards.remove(0);
+	}
+	
+	public void shuffleDeck() {
+		Collections.shuffle(cards);
 	}
 
 }
