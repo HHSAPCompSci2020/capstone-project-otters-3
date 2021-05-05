@@ -5,7 +5,7 @@ import java.util.Collections;
 
 /**
  * 
- * @author skyla and andria
+ * @author Skyla and Andria
  * @version 1
  *
  */
@@ -25,6 +25,10 @@ public class CardDeck {
 		}
 	}
 	
+	/**
+	 * Removes the card at index 0 of cards.
+	 * @return the card removed
+	 */
 	public Card drawTopCard() {
 		return cards.remove(0);
 	}
