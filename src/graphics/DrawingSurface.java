@@ -1,4 +1,4 @@
-package suffocatingOtters;
+package graphics;
 
 /**
  * 
