@@ -1,4 +1,4 @@
-package graphics;
+package suffocatingOtters.graphics;
 
 import javax.swing.*;
 
