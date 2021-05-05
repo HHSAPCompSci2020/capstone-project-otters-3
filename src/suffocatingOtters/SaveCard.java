@@ -7,5 +7,8 @@ package suffocatingOtters;
  *
  */
 public class SaveCard extends Card {
-
+	
+	public void act() {
+		
+	}
 }

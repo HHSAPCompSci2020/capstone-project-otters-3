@@ -23,7 +23,7 @@ public class Player {
 	/**
 	 * 
 	 */
-	public void addCard() {
+	public void buyCard() {
 		
 	}
 	
