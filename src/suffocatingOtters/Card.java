@@ -22,6 +22,6 @@ public class Card {
 	 * 
 	 */
 	public void act(Player player) {
-		
+		player.addPoints(num);
 	}
 }
