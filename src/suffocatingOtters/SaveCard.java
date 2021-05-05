@@ -12,6 +12,7 @@ public class SaveCard extends Card {
 		
 	}
 	
+	@Override
 	public void act(Player player) {
 		
 	}

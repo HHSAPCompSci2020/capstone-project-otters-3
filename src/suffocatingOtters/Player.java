@@ -36,11 +36,14 @@ public class Player {
 		currentHand.add(cardBought);
 	}
 	
+
 	/**
-	 * 
-	 */
-	public void draw() {
-		
+	 * Draws the top card from the deck of cards by adding it to the hand of the player and removing it from the card deck.
+	 * @param cards the deck of cards in the game to draw from
+	 * @post removes the top (index 0) card in the CardDeck passed in
+	 */ 
+	public void drawCard(CardDeck cards) {
+		currentHand.add(cards.drawTopCard());
 	}
 	
 
