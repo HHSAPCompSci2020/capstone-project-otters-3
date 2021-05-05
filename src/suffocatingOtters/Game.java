@@ -11,11 +11,20 @@ import java.util.ArrayList;
 public class Game {
 	
 	private ArrayList<Player> players;
+	private CardDeck cardDeck;
 	
 	/**
 	 * 
 	 */
 	public Game() {
+		
+	}
+	
+	public void haveTurn() {
+		
+	}
+	
+	public void endTurn() {
 		
 	}
 }
