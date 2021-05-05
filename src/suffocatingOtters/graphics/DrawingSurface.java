@@ -1,5 +1,8 @@
 package suffocatingOtters.graphics;
 
+
+import suffocatingOtters.Game;
+
 /**
  * 
  * @author skyla and andria
@@ -7,5 +10,14 @@ package suffocatingOtters.graphics;
  *
  */
 public class DrawingSurface {
-
+	private Game game;
+	
+	/**
+	 * 
+	 */
+	public void draw() {
+		
+	}
+	
+	
 }
