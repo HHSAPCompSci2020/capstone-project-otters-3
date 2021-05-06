@@ -1,10 +1,10 @@
-package suffocatingOtters.graphics;
+package theDeathNotice.graphics;
 
 import java.util.ArrayList;
 
 import javax.swing.*;
 
-import suffocatingOtters.Card;
+import theDeathNotice.Card;
 
 /**
  * 

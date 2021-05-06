@@ -1,4 +1,4 @@
-package suffocatingOtters;
+package theDeathNotice;
 
 import java.util.ArrayList;
 import java.util.Collections;

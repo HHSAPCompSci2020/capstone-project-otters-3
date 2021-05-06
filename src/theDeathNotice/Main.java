@@ -1,13 +1,12 @@
-package suffocatingOtters;
+package theDeathNotice;
 
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-
-import suffocatingOtters.graphics.AddPlayers;
-import suffocatingOtters.graphics.DrawingSurface;
-import suffocatingOtters.graphics.StartPage;
+import theDeathNotice.graphics.AddPlayers;
+import theDeathNotice.graphics.DrawingSurface;
+import theDeathNotice.graphics.StartPage;
 
 /**
  * 

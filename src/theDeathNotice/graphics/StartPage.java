@@ -1,4 +1,4 @@
-package suffocatingOtters.graphics;
+package theDeathNotice.graphics;
 
 import javax.swing.*;
 

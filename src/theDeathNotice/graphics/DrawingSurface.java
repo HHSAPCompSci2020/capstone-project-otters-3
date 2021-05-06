@@ -1,7 +1,7 @@
-package suffocatingOtters.graphics;
+package theDeathNotice.graphics;
 
 
-import suffocatingOtters.Game;
+import theDeathNotice.Game;
 
 /**
  * 
