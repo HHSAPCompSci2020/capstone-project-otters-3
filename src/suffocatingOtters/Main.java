@@ -9,7 +9,7 @@ import suffocatingOtters.graphics.AddPlayers;
 import suffocatingOtters.graphics.DrawingSurface;
 import suffocatingOtters.graphics.StartPage;
 
-public class Main {
+public class Main extends JFrame{
 	public static void main(String args[]) {
 		DrawingSurface drawing = new DrawingSurface();
 		JFrame window = new StartPage();
