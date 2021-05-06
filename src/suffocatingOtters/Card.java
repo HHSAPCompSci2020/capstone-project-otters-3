@@ -12,7 +12,7 @@ public abstract class Card {
 
 	/** 
 	 * 
-	 * @param cardID 
+	 * @param cardID the ID of the doc
 	 * @param imageFile The directory of the image of the card.
 	 */
 	public Card(int cardID, String imageFile) {

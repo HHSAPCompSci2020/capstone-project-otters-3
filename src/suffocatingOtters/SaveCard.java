@@ -9,6 +9,9 @@ package suffocatingOtters;
 public class SaveCard extends Card {
 	
 	// Creates a SaveCard.
+	/** 
+	 * Creates a SaveCard.
+	 */
 	public SaveCard() {
 		super(12345, "SaveCardImageFile");
 	}
