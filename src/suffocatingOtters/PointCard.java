@@ -4,7 +4,7 @@ package suffocatingOtters;
  * 
  * @author Skyla
  * @version 1
- *
+ * 
  */
 public class PointCard extends Card {
 
@@ -12,7 +12,7 @@ public class PointCard extends Card {
 	
 	/**
 	 * Creates a PointCard.
-	 * @param cardID 
+	 * @param cardID The ID of the card.
 	 * @param imageFile The directory of the image of the card.
 	 */
 	public PointCard(int cardID, String imageFile) {
