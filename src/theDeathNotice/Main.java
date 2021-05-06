@@ -10,6 +10,7 @@ import theDeathNotice.graphics.StartPage;
 
 /**
  * 
+ * This class is the main class.
  * @author Andria
  * @version 1
  *

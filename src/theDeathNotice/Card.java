@@ -1,7 +1,7 @@
 package theDeathNotice;
 
 /**
- * 
+ * This class represents a card.
  * @author Skyla
  * @version 1
  *

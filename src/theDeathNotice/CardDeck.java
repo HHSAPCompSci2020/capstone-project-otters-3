@@ -5,7 +5,7 @@ import java.util.Collections;
 
 /**
  * 
- * 
+ * This class represents a card deck.
  * @author Andria
  * @version 1
  *

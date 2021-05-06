@@ -3,6 +3,7 @@ package theDeathNotice;
 import java.util.ArrayList;
 
 /**
+ * This class represents a game of TheDeathNotice.
  * 
  * @author Andria
  * @version 1

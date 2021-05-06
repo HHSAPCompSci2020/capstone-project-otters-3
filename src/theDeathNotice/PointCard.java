@@ -1,6 +1,7 @@
 package theDeathNotice;
 
 /**
+ * This class represents a standard card that gives you points.
  * 
  * @author Skyla
  * @version 1
