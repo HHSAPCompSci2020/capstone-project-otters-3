@@ -1,5 +1,10 @@
 package suffocatingOtters;
-
+/**
+ * 
+ * @author Skyla
+ * @version 1
+ *
+ */
 
 public class DeadlyCard extends Card {
 	

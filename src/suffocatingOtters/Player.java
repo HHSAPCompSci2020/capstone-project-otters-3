@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author skyla and andria
+ * @author Andria
  * @version 1
  *
  */

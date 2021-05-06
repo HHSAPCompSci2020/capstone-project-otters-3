@@ -2,7 +2,7 @@ package suffocatingOtters;
 
 /**
  * 
- * @author skyla and andria
+ * @author Skyla
  * @version 1
  *
  */

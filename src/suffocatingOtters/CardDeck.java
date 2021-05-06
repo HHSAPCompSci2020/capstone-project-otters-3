@@ -5,7 +5,7 @@ import java.util.Collections;
 
 /**
  * 
- * @author Skyla and Andria
+ * @author Andria
  * @version 1
  *
  */
