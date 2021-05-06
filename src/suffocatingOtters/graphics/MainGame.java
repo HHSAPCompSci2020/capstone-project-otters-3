@@ -20,10 +20,9 @@ public class MainGame extends JFrame{
 	 private JButton endTurnButton;
 	 private JButton instructionsButton;
 	 private JButton buySaveCardButton;
-	 private JButton seeCardsButton;
-	 private JPanel jPanel1;
+	 private JPanel cardDeck;
 	 private JScrollPane jScrollPane1;
-	 private JLabel jLabel1;
+	 private JLabel scoreboard;
 	 private Game game;
 	 
 	 /**
