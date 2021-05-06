@@ -1,6 +1,6 @@
 ﻿The Death Notice
 Authors: Skyla Ma and Andria Xu 
-Revision: 4/22/2021
+Revision: 5/6/2021
 
 
 Introduction: 
@@ -14,8 +14,8 @@ What are the primary features of your program?
 * listed below]
 
 
-The Death Notice is a multiplayer card game which informs people about sea pollution in a fun, interactive manner. If you draw a deadly card, you lose unless you have a save yourself card, in which case it would be automatically played. Every turn, the player draws a card from the standard card deck and has the option to buy cards before they end their turn (some can only be drawn or can only be bought and for more details, refer to the features list). Some cards include one that will allow you to “see the future” and the next cards, one that will save you in hard times, and a “deadly” card that will cause you to die. During each turn, a player can play a number of cards, allowing them to utilize the benefits of each card. The goal of the game is to become the last surviving player or the player with the most points.
-This game is for anyone who wants to enjoy a fun game with a group of people, such as friends or family. Anyone who seeks entertainment or wants to relieve themselves of boredom would find pleasure in playing this game as well.
+The Death Notice is a multiplayer card game. If you draw a deadly card, you lose unless you have a “save” card, in which case it would be automatically played. Every turn, the player draws a card from the standard card deck and has the option to buy cards before they end their turn (some can only be drawn or can only be bought and for more details, refer to the features list). Some cards include one that will allow you to “see the future” and the next cards, one that will save you in hard times, and a “deadly” card that will cause you to die. During each turn, a player can play a number of cards, allowing them to utilize the benefits of each card. The goal of the game is to become the last surviving player or the player with the most points.
+This game is for anyone who wants to enjoy a fun game with a group of people, such as friends or family, even if they do not have a deck of cards with them. Anyone who seeks entertainment or wants to relieve themselves of boredom would find pleasure in playing this game as well.
 
 
   
@@ -51,7 +51,7 @@ Must-have Features:
 
 Want-to-have Features:
 [These are features that you would like to have by the project due date, but you’re unsure whether you’ll hit all of them. A good final project would have perhaps half of these completed. At least 5 are required. Again, fully describe each.]
-* The cards in the deck will be customized such that it fits the “Suffocating Otter” prompt, instead of just using a standard deck of cards.
+* The cards in the deck will be customized such that it fits the “Suffocating Otter” prompt, instead of just using a standard deck of cards. In other words, the cards will be designed such that the “deadly” card will be a “plastic” card, the “save” card will be a “doctor” card, etc. 
 *  A “Would you like to play again?” button after the player dies. This could be implemented in the case of using different computers, as this would not work for a shared computer.
 * Instead of doing a multiplayer feature where players play on a shared computer, we could implement it so that players are able to play against each other on different computers.
 * Implement the cards from advanced version, which you can buy in the store (each counts as a feature):
@@ -66,7 +66,7 @@ Want-to-have Features:
 Stretch Features:
 [These are features that we agree a fully complete version of this program would have, but that you probably will not have time to implement. A good final project does not necessarily need to have any of these completed at all. At least 3 are required. Again, fully describe each.]
 * A stretch feature would be a player vs. computer version of the game, where the computer plays by different algorithms depending on whether the player selects “easy”, “medium”, or “hard”. 
-* There will be fun facts at the bottom of each card about pollution and how it affects sea life. You can expand the card such that the card becomes bigger and you can see the fun fact.
+* There will be fun facts at the bottom of each card about how pollution and how it affects sea life. You can expand the card such that the card becomes bigger and you can see the fun fact.
 * We could implement an easy, medium, and hard version of the game against the computer.
 
 
@@ -74,7 +74,7 @@ Stretch Features:
 
 Class List:
 [This section lists the Java classes that make up the program and very briefly describes what each represents. It’s totally fine to put this section in list format and not to use full sentences.]
-Game (represents the “Suffocating Otters” game)
+Game (represents the “The Death Notice” game)
 CardDeck (represents the card deck which we use to play, includes Card array)
 Card (represents each card, abstract class to be extended from)
 * subclasses for each card type
