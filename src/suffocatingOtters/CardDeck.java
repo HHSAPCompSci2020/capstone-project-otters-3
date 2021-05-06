@@ -12,6 +12,7 @@ import java.util.Collections;
 public class CardDeck {
 	
 	private ArrayList<Card> cards;
+	private ArrayList<Card> location;
 	
 	/**
 	 * Creates a CardDeck with a standard deck of cards.

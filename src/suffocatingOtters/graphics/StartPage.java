@@ -4,7 +4,7 @@ import javax.swing.*;
 
 /**
  * 
- * @author skyla
+ * @author skyla and andria
  * @version 1
  * 
  * This class represents the window or page of the starting screen.
@@ -17,6 +17,7 @@ public class StartPage extends JFrame{
     private JLabel GameName;
 	
     /**
+     * Initializes the page;
      * 
      */
 	public StartPage() {

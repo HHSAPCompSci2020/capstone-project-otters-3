@@ -26,7 +26,7 @@ public class Card {
 //		if (num == 1) {
 //			return;
 //		} 
-//	
+	
 	
 	/**
 	 * @return the field num

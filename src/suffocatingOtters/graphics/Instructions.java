@@ -4,7 +4,7 @@ import javax.swing.*;
 
 /**
  * 
- * @author skyla
+ * @author skyla and andria
  * @version 1
  * 
  * The class representing the window or page of instructions.
@@ -17,7 +17,7 @@ public class Instructions extends JFrame{
 	private JLabel jLabel1;
 	
 	/**
-	 * 
+	 * Initializes the page.
 	 */
 	public Instructions() {
 		initComponents();

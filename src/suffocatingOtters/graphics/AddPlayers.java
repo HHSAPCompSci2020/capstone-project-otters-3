@@ -21,7 +21,7 @@ public class AddPlayers extends JFrame{
     private JScrollPane jScrollPane1;
 	
     /**
-     * 
+     * Initializes the page.
      */
 	public AddPlayers() {
 		initComponents();
