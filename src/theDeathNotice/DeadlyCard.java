@@ -20,5 +20,4 @@ public class DeadlyCard extends Card {
 	public void act(Player player) {
 		
 	}
-
 }
