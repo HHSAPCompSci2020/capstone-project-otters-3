@@ -17,14 +17,14 @@ public class Game {
 	 * A game of Suffocating Otters.
 	 */
 	public Game() {
-		init();
+		inIt();
 		cardDeck = new CardDeck();
 		players = new ArrayList<Player>();
 	}
 	
 	public Game(ArrayList<String> names) {
 		for(String s: names) {
-		players.add(new Player(s));
+			players.add(new Player(s));
 		}
 	}
 	
@@ -42,7 +42,7 @@ public class Game {
 		
 	}
 	
-	private void init() {
+	private void inIt() {
 		
 	}
 }

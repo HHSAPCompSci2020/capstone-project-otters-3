@@ -10,7 +10,12 @@ public class SaveCard extends Card {
 	
 	// Creates a SaveCard.
 	public SaveCard() {
-		super(0, 0);
+		super(12345, "SaveCardImageFile");
+	}
+
+	@Override
+	public void act(Player player) {
+		
 	}
 	
 }
