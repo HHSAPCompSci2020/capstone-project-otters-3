@@ -7,8 +7,8 @@ package theDeathNotice;
  *
  */
 public abstract class Card {
-	int cardID;
-	String imageFile;
+	private int cardID;
+	private String imageFile;
 
 	/** 
 	 * 
@@ -20,6 +20,26 @@ public abstract class Card {
 	}
 	
 	
+	public int getCardID() {
+		return cardID;
+	}
+
+
+	public void setCardID(int cardID) {
+		this.cardID = cardID;
+	}
+
+
+	public String getImageFile() {
+		return imageFile;
+	}
+
+
+	public void setImageFile(String imageFile) {
+		this.imageFile = imageFile;
+	}
+
+
 	/** 
 	 * Draws the card using the imageFile.
 	 */

@@ -1,5 +1,7 @@
 package theDeathNotice;
 
+import java.util.ArrayList;
+
 /**
  * This class represents a deadly card.
  * @author Skyla
@@ -18,6 +20,7 @@ public class DeadlyCard extends Card {
 	
 	@Override
 	public void act(Player player) {
-		
+        player.setAlive(player.removeSaveCard()); 
+      
 	}
 }

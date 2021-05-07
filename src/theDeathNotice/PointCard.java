@@ -26,7 +26,7 @@ public class PointCard extends Card {
 	 * @param player Player that draws the card.
 	 */
 	public void act(Player player) {
-		
+		player.addPoints(pointValue);
 	}
 
 }

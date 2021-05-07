@@ -13,7 +13,7 @@ public class Player {
 	private int points;
 	private ArrayList<Card> currentHand;
 	private boolean alive;
-	String name;
+	private String name;
 	
 	/**
 	 * 
@@ -24,6 +24,8 @@ public class Player {
 		points = 20;
 		currentHand = new ArrayList<Card>();
 	}
+
+
 
 	/**
 	 * adds pointsAdded to the points
@@ -36,11 +38,60 @@ public class Player {
 	/**
 	 * Adds cardBought to the currentHand.
 	 * @param cardBought the card to be added to the hand
+	 * @return 
 	 */
-	public void buyCard(Card cardBought) {
-		currentHand.add(cardBought);
+	public boolean buySaveCard(SaveCard cardBought) {
+		if(points < 30) {
+			return false;
+		}
+		cardBought.act(this);
+		points -= 30;
+		return true;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean removeSaveCard() {
+		int i = 0;
+	    while(i < currentHand.size()) {
+		   if(currentHand.get(i) instanceof SaveCard) {
+			   currentHand.remove(i);
+			   return true;
+		   }
+		   else {
+			   i++;
+		   }
+	   }
+	    return false;
+	}
+
+	/**
+	 * 
+	 * @param card
+	 */
+	public void addSaveCard(SaveCard card) {
+		currentHand.add(card);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isAlive() {
+		return alive;
+	}
+
+	/**
+	 * 
+	 * @param alive
+	 */
+	public void setAlive(boolean alive) {
+		this.alive = alive;
+	}
+
+
 
 	/**
 	 * Draws the top card from the deck of cards by adding it to the hand of the player and removing it from the card deck.

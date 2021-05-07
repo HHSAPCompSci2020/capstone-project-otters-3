@@ -9,7 +9,6 @@ package theDeathNotice;
  */
 public class SaveCard extends Card {
 	
-	// Creates a SaveCard.
 	/** 
 	 * Creates a SaveCard.
 	 */
@@ -19,7 +18,7 @@ public class SaveCard extends Card {
 
 	@Override
 	public void act(Player player) {
-		
+		player.addSaveCard(this);
 	}
 	
 }
