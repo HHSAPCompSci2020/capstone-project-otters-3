@@ -1,6 +1,5 @@
 package theDeathNotice;
 
-import java.util.ArrayList;
 
 /**
  * This class represents a deadly card.
@@ -18,7 +17,11 @@ public class DeadlyCard extends Card {
 		super(cardID);
 	}
 	
-	@Override
+	/**
+	 * If the current player hand has saver card, remove one saver card
+	 * and Mark the player as alive or not
+	 * @param player Player that draws the card.
+	 */
 	public void act(Player player) {
         player.setAlive(player.removeSaveCard());
 	}

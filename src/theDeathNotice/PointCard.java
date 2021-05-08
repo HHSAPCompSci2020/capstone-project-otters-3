@@ -33,9 +33,9 @@ public class PointCard extends Card {
 		return super.toString()+ "=>point:" + pointValue;
 	}
 
-	
 	/**
-	 * Acts how it would when the player draws the card.
+	 * Adds the card value to the current player
+	 * Card that is j q and k have 10 points
 	 * @param player Player that draws the card.
 	 */
 	public void act(Player player) {

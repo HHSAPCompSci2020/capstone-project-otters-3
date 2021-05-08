@@ -8,7 +8,7 @@ package theDeathNotice;
  *
  */
 public class SaveCard extends Card {
-	
+    static int SAVE_CARD_COST = 30;
 	/** 
 	 * Creates a SaveCard.
 	 */
@@ -16,8 +16,16 @@ public class SaveCard extends Card {
 		super(cardID);
 	}
 
-	@Override
+
+	/**
+	 * Double the current player points
+	 * @param player Player that draws the card.
+	 */
 	public void act(Player player) {
-		player.addSaveCard(this);
+		if (player.isAlive()) {
+			int currentPoints = player.getPoints();
+            int bonusPoints = currentPoints - player.getInitialPlayerNumber()-30;
+			player.addPoints(bonusPoints);
+		}
 	}
 }

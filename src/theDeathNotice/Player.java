@@ -1,31 +1,57 @@
 package theDeathNotice;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
  * 
- * @author Andria
+ * @author Andria and Skyla
  * @version 1
  *
  */
 public class Player {
 	
+	private String name;
 	private int points;
+	private int initialPlayerNumber;
+	private LocalTime timer;
 	private ArrayList<Card> currentHand;
 	private boolean alive;
-	private String name;
+	private int drawCount;
 	
 	/**
 	 * 
 	 */
-	public Player(String name) {
+	public Player(String name, int initialPlayerNumber) {
 		this.name = name;
+		this.initialPlayerNumber = initialPlayerNumber;
 		alive = true;
-		points = 20;
+		points = 30;
+		points += initialPlayerNumber;
 		currentHand = new ArrayList<Card>();
 	}
 
 
+
+	public String getName() {
+		return name;
+	}
+
+	
+
+	public int getInitialPlayerNumber() {
+		return initialPlayerNumber;
+	}
+
+
+	public int getPoints() {
+		return points;
+	}
+
+
+	public LocalTime getTimer() {
+		return timer;
+	}
 
 	/**
 	 * adds pointsAdded to the points
@@ -33,20 +59,21 @@ public class Player {
 	 */
 	public void addPoints(int pointsAdded) {
 		points += pointsAdded;
+		timer = LocalTime.now();
 	}
 	
 	/**
 	 * Adds cardBought to the currentHand.
-	 * @param cardBought the card to be added to the hand
-	 * @return 
+	 * @return cardBought the card to be added to the hand or null if no money left to buy card
 	 */
-	public boolean buySaveCard(SaveCard cardBought) {
-		if(points < 30) {
-			return false;
+	public Card buySaveCard() {
+		if(points < SaveCard.SAVE_CARD_COST) {
+			return null;
 		}
-		cardBought.act(this);
-		points -= 30;
-		return true;
+		points -= SaveCard.SAVE_CARD_COST;
+		SaveCard card = new SaveCard("saver");
+		currentHand.add(card);
+		return card;
 	}
 	
 	/**
@@ -69,14 +96,6 @@ public class Player {
 
 	/**
 	 * 
-	 * @param card
-	 */
-	public void addSaveCard(SaveCard card) {
-		currentHand.add(card);
-	}
-	
-	/**
-	 * 
 	 * @return
 	 */
 	public boolean isAlive() {
@@ -92,7 +111,21 @@ public class Player {
 	}
 
 
+	public void resetDrawCount() {
+		drawCount = 0;
+	}
+	
+	public int getDrawCount() {
+		return drawCount;
+	}
 
+	public boolean increaseDrawCount() {
+		if (drawCount<3) {
+		   drawCount++;
+		   return true;
+		}
+		return false;
+	}
 	/**
 	 * Draws the top card from the deck of cards by adding it to the hand of the player and removing it from the card deck.
 	 * @param cards the deck of cards in the game to draw from

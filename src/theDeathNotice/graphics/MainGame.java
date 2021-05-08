@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -28,7 +31,6 @@ import theDeathNotice.SaveCard;
 public class MainGame extends JFrame{
 	 private static final String DEFAULT_DECK_IMAGE = "cards/back.png";
 	 private static boolean deckButtonHasDrawCard = false;
-	 private static int currentPlayerDrawCount = 0;
 	 private JButton takeCardButton;
 	 private JButton endTurnButton;
 	 private JButton instructionsButton;
@@ -44,8 +46,36 @@ public class MainGame extends JFrame{
 	 /**
 	  * Initializes the page.
 	  */
-	 public MainGame() {
+	 public MainGame(List<String> playerNames) {
+		 initGame(playerNames);		 
 		 initComponents();
+		 if (playerNames.size() == 2) {
+			 player1Points.setText("Player " + playerNames.get(0));
+			 player2Points.setText("Player " + playerNames.get(1));
+		 }
+		 if (playerNames.size() == 3) {
+			 player1Points.setText("Player " + playerNames.get(0));
+			 player2Points.setText("Player " + playerNames.get(1));
+			 player3Points.setText("Player " + playerNames.get(2));
+		 }
+		 if (playerNames.size() == 4) {
+			 player1Points.setText("Player " + playerNames.get(0));
+			 player2Points.setText("Player " + playerNames.get(1));
+			 player3Points.setText("Player " + playerNames.get(2));
+			 player4Points.setText("Player " + playerNames.get(3));
+		 }
+	 }
+	 
+	 private void msgbox(String s) {
+		 JOptionPane.showMessageDialog(this, s);
+	 }
+	 
+	 private void initGame(List<String> playerNames) {
+		 game = new Game(playerNames);
+		 CardDeck deck = game.getCardDeck();
+		 deck.shuffleDeck();
+		 deck.shuffleDeck();
+		 deck.shuffleDeck();	 
 	 }
 	 
 	 private void initComponents() {
@@ -204,7 +234,7 @@ public class MainGame extends JFrame{
 		    CardDeck deck = game.getCardDeck();
 		    Card card = deck.drawTopCard();
 		    if (card == null) {
-		    	//pop up message with error
+		    	msgbox("There is no card left");
 		    }
 		    else {
 		    	//step 1: Change the deckButton back to default image
@@ -213,10 +243,24 @@ public class MainGame extends JFrame{
 			    Player player = game.getCurrentPlayer();
 			    card.act(player);
 			    if (player.isAlive()) {
-			    	//update the scoreboard
+			    	int point = player.getPoints();
+			    	int turn = game.getPlayerTurn();
+			    	if (turn == 0) {
+			    	   player1Points.setText("Player " + player.getName() + ": " + point);
+			     	}
+			    	if (turn == 1) {
+			    		player2Points.setText("Player " + player.getName() + ": " + point);
+			    	}
+			    	if (turn == 2) {
+			    		player3Points.setText("Player " + player.getName() + ": " + point);
+			    	}
+			    	if (turn == 3) {
+			    		player4Points.setText("Player " + player.getName() + ": " + point);
+			    	}
 			    }
 			    else {
 			    	//declare the player is dead;
+			    	msgbox("Player " + player.getName() + " lost");
 			    }
 			    //set deckButtonHasDrawCard false
 			    deckButtonHasDrawCard = false;
@@ -225,7 +269,8 @@ public class MainGame extends JFrame{
 	 }
 	 
 	 private void endTurnButtonActionPerformed(ActionEvent evt) {
-		 currentPlayerDrawCount = 0;	 
+		 Player player = game.getCurrentPlayer();
+		 player.resetDrawCount(); 
 	 }
 	 
 	 private void instructionsButtonActionPerformed(ActionEvent evt) {
@@ -234,31 +279,40 @@ public class MainGame extends JFrame{
 	 
 	 private void buySaveCardButtonActionPerformed(ActionEvent evt) {
 		 Player player = game.getCurrentPlayer();
-		 SaveCard card = new SaveCard("save");
-		 player.buySaveCard(card);
+		 Card card = player.buySaveCard();
+		 if (card == null) {
+			 msgbox("Player" + player.getName() + "has no enough money to buy ");
+		 }
 	 }
 	 
 	 private void deckButtonActionPerformed(ActionEvent evt) {
+		 Player player = game.getCurrentPlayer();
 		 if (!deckButtonHasDrawCard) {
 			deckButtonHasDrawCard = true;
-			if (currentPlayerDrawCount <3) {
-				currentPlayerDrawCount++;
+			boolean result = player.increaseDrawCount();
+			if (result) {
 			    CardDeck deck = game.getCardDeck();
 			    Card card = deck.peekTopCard();
 			    if (card == null) {
-			    	//pop up message with error that there is no card
+			    	msgbox("Empty Card Deck! and Player wins" + game.getWinner());
 			    }
 			    else {
 	               resetDeckButtonIcon(card.getImageFile());
 			    }
 			}
 			else {
-				//pop up message to indicate already draw three cards
+				msgbox("Player " + player.getName() + " already played 3 times, please yield turn to next player");
 			}
+		 }
+		 else {
+			 msgbox("Player " + player.getName() + " please take the card away!");
 		 }
 	 }
 	 
 	 public static void main(String args[]) {
+		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
+		    List<String> playerNames = Arrays.asList(names);	    
+		    
 	        /* Set the Nimbus look and feel */
 	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -286,7 +340,7 @@ public class MainGame extends JFrame{
 	        /* Create and display the form */
 	        java.awt.EventQueue.invokeLater(new Runnable() {
 	            public void run() {
-	                new MainGame().setVisible(true);
+	                new MainGame(playerNames).setVisible(true);
 	            }
 	        });
 	    }

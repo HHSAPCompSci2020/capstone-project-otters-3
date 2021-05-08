@@ -60,6 +60,8 @@ public class CardDeck {
 				cards.add(new PointCard(getType(n)+"-"+getSuit(q)));
 			}
 		}
+		cards.add(new SaveCard("saver"));
+		//Math.r
 		for (int i=1; i<=4; i++) {
 			cards.add(new DeadlyCard("dead"+"-" + String.valueOf(i)));
 		}

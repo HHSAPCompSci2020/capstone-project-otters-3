@@ -1,11 +1,13 @@
 package theDeathNotice;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class represents a game of TheDeathNotice.
  * 
- * @author Andria
+ * @author Andria and Skyla
  * @version 1
  *
  */
@@ -20,30 +22,24 @@ public class Game {
 	 */
 	public Game() {
 		init();
-		cardDeck = new CardDeck();
-		players = new ArrayList<Player>();
 	}
 	
-	public Game(ArrayList<String> names) {
-		for(String s: names) {
-			players.add(new Player(s));
+	public Game(List<String> names) {
+		init();
+		for (int i=0; i<names.size(); i++) {
+			players.add(new Player(names.get(i), i));
 		}
 	}
 	
-	/**
-	 * Draws a card.
-	 */
-	public void draw() {
-		
-	}
 	
-	/**
-	 * Buys a save card.
-	 */
-	public void buySaveCard() {
-		
+	public int getPlayerTurn() {
+		return playerTurn;
 	}
-	
+
+	public void updatePlayerTurn() {
+		playerTurn = (playerTurn+1)%(players.size());
+	}
+
 	/**
 	 * 
 	 * @return
@@ -52,24 +48,33 @@ public class Game {
 		return players.get(playerTurn);
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public Player getNextPlayer() {
-		return players.get((playerTurn+1)%(players.size()));
-	}
-	
 	
 	public CardDeck getCardDeck() {
 		return cardDeck;
 	}
 
-	public void setCardDeck(CardDeck cardDeck) {
-		this.cardDeck = cardDeck;
+	public Player getWinner() {
+		int maxPoint = Integer.MIN_VALUE;
+		LocalTime earliestTime = LocalTime.MAX;
+		Player winner = null;
+		for (Player player: players) {
+			if (player.isAlive()) {
+				if (player.getPoints() > maxPoint) {
+			  	    winner = player;
+				    maxPoint = player.getPoints();
+				    earliestTime = player.getTimer();
+				}
+				else if (player.getPoints() == maxPoint && earliestTime.compareTo(player.getTimer())> 0) {
+			  	    winner = player;
+					earliestTime = player.getTimer();
+				}
+			}
+		}
+		return winner;
 	}
 
 	private void init() {
-		
+		cardDeck = new CardDeck();
+		players = new ArrayList<Player>();
 	}
 }
