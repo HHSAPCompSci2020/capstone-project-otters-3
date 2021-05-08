@@ -76,6 +76,17 @@ public class CardDeck {
 		return cards.remove(0);
 	}
 	
+	/**
+	 * Removes the card at index 0 of cards.
+	 * @return the top card in the deck or null if there are no more cards in deck
+	 */
+	public Card peekTopCard() {
+		if(cards.size()==0) {
+			return null;
+		}
+		return cards.get(0);
+	}
+	
 	public int getNumOfCards() {
 		return cards.size();
 	}

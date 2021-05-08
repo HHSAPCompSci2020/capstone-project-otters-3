@@ -13,12 +13,13 @@ public class Game {
 	
 	private ArrayList<Player> players;
 	private CardDeck cardDeck;
+	private int playerTurn;
 	
 	/**
 	 * A game of Suffocating Otters.
 	 */
 	public Game() {
-		inIt();
+		init();
 		cardDeck = new CardDeck();
 		players = new ArrayList<Player>();
 	}
@@ -30,20 +31,45 @@ public class Game {
 	}
 	
 	/**
-	 * Starts the current player's turn.
+	 * Draws a card.
 	 */
-	public void haveTurn() {
+	public void draw() {
 		
 	}
 	
 	/**
-	 * Ends the current player's turn.
+	 * Buys a save card.
 	 */
-	public void endTurn() {
+	public void buySaveCard() {
 		
 	}
 	
-	private void inIt() {
+	/**
+	 * 
+	 * @return
+	 */
+	public Player getCurrentPlayer() {
+		return players.get(playerTurn);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Player getNextPlayer() {
+		return players.get((playerTurn+1)%(players.size()));
+	}
+	
+	
+	public CardDeck getCardDeck() {
+		return cardDeck;
+	}
+
+	public void setCardDeck(CardDeck cardDeck) {
+		this.cardDeck = cardDeck;
+	}
+
+	private void init() {
 		
 	}
 }

@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import theDeathNotice.graphics.AddPlayers;
-import theDeathNotice.graphics.DrawingSurface;
 import theDeathNotice.graphics.StartPage;
 
 /**

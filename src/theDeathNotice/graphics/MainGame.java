@@ -8,7 +8,11 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import theDeathNotice.Card;
+import theDeathNotice.CardDeck;
 import theDeathNotice.Game;
+import theDeathNotice.Player;
+import theDeathNotice.SaveCard;
 
 /**
  * 
@@ -22,7 +26,9 @@ import theDeathNotice.Game;
  *
  */
 public class MainGame extends JFrame{
-	
+	 private static final String DEFAULT_DECK_IMAGE = "cards/back.png";
+	 private static boolean deckButtonHasDrawCard = false;
+	 private static int currentPlayerDrawCount = 0;
 	 private JButton takeCardButton;
 	 private JButton endTurnButton;
 	 private JButton instructionsButton;
@@ -47,7 +53,7 @@ public class MainGame extends JFrame{
 	        endTurnButton = new javax.swing.JButton();
 	        instructionsButton = new javax.swing.JButton();
 	        buySaveCardButton = new javax.swing.JButton();
-	        URL file = ClassLoader.getSystemClassLoader().getResource("cards/back.png");
+	        URL file = ClassLoader.getSystemClassLoader().getResource(DEFAULT_DECK_IMAGE);
 	        BufferedImage image=null;
 	        try {
 				image = ImageIO.read(file);
@@ -180,12 +186,46 @@ public class MainGame extends JFrame{
 
 	 }
 	 
+	 private void resetDeckButtonIcon(String iconFile) {
+         URL file = ClassLoader.getSystemClassLoader().getResource(iconFile);
+         BufferedImage image=null;
+         try {
+			  image = ImageIO.read(file);
+		   } catch (IOException e) {
+			  // TODO Auto-generated catch block
+			   e.printStackTrace();
+		}
+         ImageIcon icon = new ImageIcon(image);
+         deckButton.setIcon(icon);
+	 }
+	 
 	 private void takeCardButtonActionPerformed(ActionEvent evt) {
-		 
+		 if (deckButtonHasDrawCard) {
+		    CardDeck deck = game.getCardDeck();
+		    Card card = deck.drawTopCard();
+		    if (card == null) {
+		    	//pop up message with error
+		    }
+		    else {
+		    	//step 1: Change the deckButton back to default image
+		    	resetDeckButtonIcon(DEFAULT_DECK_IMAGE);
+			    //step 2:
+			    Player player = game.getCurrentPlayer();
+			    card.act(player);
+			    if (player.isAlive()) {
+			    	//update the scoreboard
+			    }
+			    else {
+			    	//declare the player is dead;
+			    }
+			    //set deckButtonHasDrawCard false
+			    deckButtonHasDrawCard = false;
+		    }
+		 }
 	 }
 	 
 	 private void endTurnButtonActionPerformed(ActionEvent evt) {
-		 
+		 currentPlayerDrawCount = 0;	 
 	 }
 	 
 	 private void instructionsButtonActionPerformed(ActionEvent evt) {
@@ -193,11 +233,29 @@ public class MainGame extends JFrame{
 	 }
 	 
 	 private void buySaveCardButtonActionPerformed(ActionEvent evt) {
-		 
+		 Player player = game.getCurrentPlayer();
+		 SaveCard card = new SaveCard("save");
+		 player.buySaveCard(card);
 	 }
 	 
 	 private void deckButtonActionPerformed(ActionEvent evt) {
-		 
+		 if (!deckButtonHasDrawCard) {
+			deckButtonHasDrawCard = true;
+			if (currentPlayerDrawCount <3) {
+				currentPlayerDrawCount++;
+			    CardDeck deck = game.getCardDeck();
+			    Card card = deck.peekTopCard();
+			    if (card == null) {
+			    	//pop up message with error that there is no card
+			    }
+			    else {
+	               resetDeckButtonIcon(card.getImageFile());
+			    }
+			}
+			else {
+				//pop up message to indicate already draw three cards
+			}
+		 }
 	 }
 	 
 	 public static void main(String args[]) {
