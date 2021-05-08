@@ -1,5 +1,6 @@
 package theDeathNotice;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -75,9 +76,10 @@ public class CardDeck {
 		return cards.remove(0);
 	}
 	
-	public int getRemainingCard() {
+	public int getNumOfCards() {
 		return cards.size();
 	}
+	
 	/** 
 	 * Shuffles the deck.
 	 */
@@ -101,6 +103,16 @@ public class CardDeck {
 		c.shuffleDeck();
 		c.shuffleDeck();
 		System.out.println(c.toString());
-		System.out.println("remain card=" + c.getRemainingCard());
+		System.out.println("remain card=" + c.getNumOfCards());
+		
+		while (c.getNumOfCards() > 0) {
+		Card card = c.drawTopCard();
+		try {
+			card.drawImage();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
 	}
 }

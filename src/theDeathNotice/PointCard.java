@@ -28,6 +28,11 @@ public class PointCard extends Card {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return super.toString()+ "=>point:" + pointValue;
+	}
+
 	
 	/**
 	 * Acts how it would when the player draws the card.

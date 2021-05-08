@@ -1,5 +1,10 @@
 package theDeathNotice;
 
+import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 /**
  * This class represents a card.
  * @author Skyla
@@ -40,10 +45,22 @@ public abstract class Card {
 	/** 
 	 * Draws the card using the imageFile.
 	 */
-	public void drawImage() {
-		
+	public void drawImage()  throws IOException {
+		URL u = ClassLoader.getSystemClassLoader().getResource(imageFile);
+		loadResourceByUrl(u, imageFile);
 	}
 
+    private void loadResourceByUrl (URL u, String resource)  throws IOException {
+        System.out.println("-> attempting input resource: "+resource);
+        if (u != null) {
+            String path = u.getPath();
+            path = path.replaceFirst("^/(.:/)", "$1");
+            System.out.println("    absolute resource path found :\n    " + path);
+            String s = new String(Files.readAllBytes(Paths.get(path)));
+        } else {
+            System.out.println("    no resource found: " + resource);
+        }
+    }
 	
 	@Override
 	public String toString() {
