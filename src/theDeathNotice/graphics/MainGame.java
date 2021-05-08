@@ -64,6 +64,23 @@ public class MainGame extends JFrame{
 			 player3Points.setText("Player " + playerNames.get(2) + ": " + 32);
 			 player4Points.setText("Player " + playerNames.get(3) + ": " + 33);
 		 }
+	     int turn = game.getPlayerTurn();
+	    	if (turn == 0) {
+	    		player1Points.setOpaque(true);
+	    		player1Points.setBackground(new java.awt.Color(255, 153, 153));
+	     	}
+	    	if (turn == 1) {
+	    		player2Points.setOpaque(true);
+	    		player2Points.setBackground(new java.awt.Color(255, 153, 153));
+	    	}
+	    	if (turn == 2) {
+	    		player3Points.setOpaque(true);
+	    		player3Points.setBackground(new java.awt.Color(255, 153, 153));
+	    	}
+	    	if (turn == 3) {
+	    		player4Points.setOpaque(true);
+	    		player4Points.setBackground(new java.awt.Color(255, 153, 153));
+	    	}
 	 }
 	 
 	 private void msgbox(String s) {
@@ -153,6 +170,7 @@ public class MainGame extends JFrame{
 
 	        player4Points.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 	        player4Points.setText("Player 4: ");
+	        
 
 	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 	        getContentPane().setLayout(layout);
@@ -270,11 +288,33 @@ public class MainGame extends JFrame{
 	 
 	 private void endTurnButtonActionPerformed(ActionEvent evt) {
 		 Player player = game.getCurrentPlayer();
+		 int turn = game.getPlayerTurn();
+	    	if (turn == 0) {
+	    		player1Points.setOpaque(false);
+	    		//player1Points.setBackground(new java.awt.Color(255, 153, 153));
+	     	}
+	    	if (turn == 1) {
+	    		player1Points.setOpaque(false);
+	    	}
+	    	if (turn == 2) {
+	    		player1Points.setOpaque(false);
+	    	}
+	    	if (turn == 3) {
+	    		player1Points.setOpaque(false);
+	    	}
 		 player.resetDrawCount(); 
+		 game.updatePlayerTurn();
 	 }
 	 
 	 private void instructionsButtonActionPerformed(ActionEvent evt) {
 		 
+	 }
+	 
+	 private String appendStar(String text, int count) {
+		 for (int i=0; i<count; i++) {
+			text = text + "*";
+		 }
+		 return text;
 	 }
 	 
 	 private void buySaveCardButtonActionPerformed(ActionEvent evt) {
@@ -282,6 +322,21 @@ public class MainGame extends JFrame{
 		 Card card = player.buySaveCard();
 		 if (card == null) {
 			 msgbox("Player" + player.getName() + "has no enough money to buy ");
+		 }
+		 else {
+		    	int turn = game.getPlayerTurn();
+		    	if (turn == 0) {
+		    	   player1Points.setText(appendStar(player1Points.getText(), player.getSaveCardCount()));
+		     	}
+		    	if (turn == 1) {
+		    		player2Points.setText(appendStar(player2Points.getText(), player.getSaveCardCount()));
+		    	}
+		    	if (turn == 2) {
+		    		player3Points.setText(appendStar(player3Points.getText(), player.getSaveCardCount()));
+		    	}
+		    	if (turn == 3) {
+		    		player4Points.setText(appendStar(player3Points.getText(), player.getSaveCardCount()));
+		    	}
 		 }
 	 }
 	 

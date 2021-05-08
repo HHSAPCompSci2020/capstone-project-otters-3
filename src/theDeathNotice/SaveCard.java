@@ -22,10 +22,6 @@ public class SaveCard extends Card {
 	 * @param player Player that draws the card.
 	 */
 	public void act(Player player) {
-		if (player.isAlive()) {
-			int currentPoints = player.getPoints();
-            int bonusPoints = currentPoints - player.getInitialPlayerNumber()-30;
-			player.addPoints(bonusPoints);
-		}
+		player.addSaveCard(this);
 	}
 }

@@ -48,6 +48,15 @@ public class Player {
 		return points;
 	}
 
+	public int getSaveCardCount() {
+		int count = 0;
+		for(Card card: currentHand) {
+			if (card instanceof SaveCard) {
+				count++;
+			}
+		}
+		return count;
+	}
 
 	public LocalTime getTimer() {
 		return timer;
@@ -72,10 +81,18 @@ public class Player {
 		}
 		points -= SaveCard.SAVE_CARD_COST;
 		SaveCard card = new SaveCard("saver");
-		currentHand.add(card);
+		addSaveCard(card);
 		return card;
 	}
 	
+	/**
+	 * 
+	 * @param card
+	 */
+	public void addSaveCard(Card card) {
+       	currentHand.add(card);
+	}
+			
 	/**
 	 * 
 	 * @return
@@ -110,15 +127,25 @@ public class Player {
 		this.alive = alive;
 	}
 
-
+	/**
+	 * 
+	 */
 	public void resetDrawCount() {
 		drawCount = 0;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getDrawCount() {
 		return drawCount;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean increaseDrawCount() {
 		if (drawCount<3) {
 		   drawCount++;
