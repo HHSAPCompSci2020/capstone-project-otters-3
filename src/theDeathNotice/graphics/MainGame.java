@@ -50,19 +50,19 @@ public class MainGame extends JFrame{
 		 initGame(playerNames);		 
 		 initComponents();
 		 if (playerNames.size() == 2) {
-			 player1Points.setText("Player " + playerNames.get(0));
-			 player2Points.setText("Player " + playerNames.get(1));
+			 player1Points.setText("Player " + playerNames.get(0) + ": " + 30);
+			 player2Points.setText("Player " + playerNames.get(1) + ": " + 31);
 		 }
 		 if (playerNames.size() == 3) {
-			 player1Points.setText("Player " + playerNames.get(0));
-			 player2Points.setText("Player " + playerNames.get(1));
-			 player3Points.setText("Player " + playerNames.get(2));
+			 player1Points.setText("Player " + playerNames.get(0) + ": " + 30);
+			 player2Points.setText("Player " + playerNames.get(1) + ": " + 31);
+			 player3Points.setText("Player " + playerNames.get(2) + ": " + 32);
 		 }
 		 if (playerNames.size() == 4) {
-			 player1Points.setText("Player " + playerNames.get(0));
-			 player2Points.setText("Player " + playerNames.get(1));
-			 player3Points.setText("Player " + playerNames.get(2));
-			 player4Points.setText("Player " + playerNames.get(3));
+			 player1Points.setText("Player " + playerNames.get(0) + ": " + 30);
+			 player2Points.setText("Player " + playerNames.get(1) + ": " + 31);
+			 player3Points.setText("Player " + playerNames.get(2) + ": " + 32);
+			 player4Points.setText("Player " + playerNames.get(3) + ": " + 33);
 		 }
 	 }
 	 

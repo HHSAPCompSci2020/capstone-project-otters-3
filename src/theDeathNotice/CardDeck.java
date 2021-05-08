@@ -61,8 +61,8 @@ public class CardDeck {
 			}
 		}
 		cards.add(new SaveCard("saver"));
-		//Math.r
-		for (int i=1; i<=4; i++) {
+		int r = (int) (Math.random()*5);
+		for (int i=1; i<=r; i++) {
 			cards.add(new DeadlyCard("dead"+"-" + String.valueOf(i)));
 		}
 	}
