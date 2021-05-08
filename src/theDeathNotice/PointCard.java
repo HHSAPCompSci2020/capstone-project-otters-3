@@ -16,8 +16,16 @@ public class PointCard extends Card {
 	 * @param cardID The ID of the card.
 	 * @param imageFile The directory of the image of the card.
 	 */
-	public PointCard(int cardID, String imageFile) {
-		super(cardID, imageFile);
+	public PointCard(String cardID) {
+		super(cardID);
+		int ind = cardID.indexOf('-');
+		String type = cardID.substring(0, ind);
+		if (type.equals("j") || type.equals("q") || type.equals("k")) {
+			pointValue=10;
+		}
+		else {
+			pointValue = Integer.parseInt(type);
+		}
 	}
 
 	

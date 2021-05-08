@@ -6,40 +6,101 @@ import java.util.Collections;
 /**
  * 
  * This class represents a card deck.
- * @author Andria
+ * @author Skyla
  * @version 1
  *
  */
 public class CardDeck {
 	
 	private ArrayList<Card> cards;
-	private ArrayList<Card> location; //helper field
+		
+	private String getSuit(int i) {
+		if (i==1)
+			return "c";
+		else if (i==2)
+			return "d";
+		else if (i==3)
+			return "h";
+		else if (i==4) 
+			return "s";
+		else 
+			return "c";
+	}
+	
+	private String getType(int i) {
+		if (i>=2 && i<=10) {
+			return String.valueOf(i);
+		}
+		else if (i==11) {
+			return "j";
+		}
+		else if (i==12) {
+			return "q";
+		}
+		else if (i==13) {
+			return "k";
+		}
+		else 
+			return "dead";
+			
+	}
 	
 	/**
 	 * Creates a CardDeck with a standard deck of cards.
 	 */
 	public CardDeck() {
 		cards = new ArrayList<Card>();
-		for (int n = 0; n < 13; n++) {
-			for (int q = 1; q <= 4; q++) {
-//				cards.add(new Card(n, q));
+		
+		for (int i=1; i<=4; i++) {
+			cards.add(new DeadlyCard("dead"+"-" + String.valueOf(i)));
+		}
+		for (int n = 2; n <= 13; n++) {
+			for (int q = 1; q <= 4; q++) {	    
+				cards.add(new PointCard(getType(n)+"-"+getSuit(q)));
 			}
+		}
+		for (int i=1; i<=4; i++) {
+			cards.add(new DeadlyCard("dead"+"-" + String.valueOf(i)));
 		}
 	}
 	
 	/**
 	 * Removes the card at index 0 of cards.
-	 * @return the card removed
+	 * @return the card removed or null if there are no more cards to draw
 	 */
 	public Card drawTopCard() {
+		if(cards.size()==0) {
+			return null;
+		}
 		return cards.remove(0);
 	}
 	
+	public int getRemainingCard() {
+		return cards.size();
+	}
 	/** 
 	 * Shuffles the deck.
 	 */
 	public void shuffleDeck() {
 		Collections.shuffle(cards);
 	}
+	 
+	@Override
+	public String toString() {
+		StringBuffer buf = new StringBuffer();
+	    for (Card card: cards)  {
+	    	buf.append(card);
+	    	buf.append("\n");
+	    }
+	    return buf.toString();
+	}
 
+	public static void main(String args[]) {
+		CardDeck c = new CardDeck();
+		c.shuffleDeck();
+		c.shuffleDeck();
+		c.shuffleDeck();
+		System.out.println(c.toString());
+		System.out.println("remain card=" + c.getRemainingCard());
+	}
 }

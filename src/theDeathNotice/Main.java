@@ -15,9 +15,9 @@ import theDeathNotice.graphics.StartPage;
  * @version 1
  *
  */
-public class Main extends JFrame{
+public class Main{
 	public static void main(String args[]) {
-		DrawingSurface drawing = new DrawingSurface();
+		//DrawingSurface drawing = new DrawingSurface();
 		JFrame window = new StartPage();
 
 		window.setSize(400, 300);

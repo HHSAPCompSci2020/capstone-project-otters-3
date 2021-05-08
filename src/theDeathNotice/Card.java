@@ -7,38 +7,35 @@ package theDeathNotice;
  *
  */
 public abstract class Card {
-	private int cardID;
+	private String cardID;
 	private String imageFile;
 
 	/** 
 	 * 
-	 * @param cardID the ID of the doc
-	 * @param imageFile The directory of the image of the card.
+	 * @param cardID the unique ID of the card
 	 */
-	public Card(int cardID, String imageFile) {
-		
+	public Card(String cardID) {
+		this.cardID = cardID;
+		this.imageFile = "cards/" + cardID + ".png";
 	}
 	
-	
-	public int getCardID() {
+	/**
+	 * Gets the ID of the card.
+	 * 
+	 * @return the ID of the card
+	 */
+	public String getCardID() {
 		return cardID;
 	}
 
-
-	public void setCardID(int cardID) {
-		this.cardID = cardID;
-	}
-
-
+	/**
+	 * Gets the full path of the image file of the card. 
+	 * 
+	 * @return returns the image file of the card
+	 */
 	public String getImageFile() {
 		return imageFile;
 	}
-
-
-	public void setImageFile(String imageFile) {
-		this.imageFile = imageFile;
-	}
-
 
 	/** 
 	 * Draws the card using the imageFile.
@@ -46,6 +43,13 @@ public abstract class Card {
 	public void drawImage() {
 		
 	}
+
+	
+	@Override
+	public String toString() {
+		return this.cardID;
+	}
+
 
 	/**
 	 * Acts how it would if a player plays the card.

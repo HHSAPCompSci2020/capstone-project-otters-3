@@ -12,13 +12,12 @@ public class SaveCard extends Card {
 	/** 
 	 * Creates a SaveCard.
 	 */
-	public SaveCard() {
-		super(12345, "SaveCardImageFile");
+	public SaveCard(String cardID) {
+		super(cardID);
 	}
 
 	@Override
 	public void act(Player player) {
 		player.addSaveCard(this);
 	}
-	
 }

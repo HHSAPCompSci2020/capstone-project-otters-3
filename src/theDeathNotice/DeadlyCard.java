@@ -14,13 +14,12 @@ public class DeadlyCard extends Card {
 	 * Creates a deadly card.
 	 * @param cardID
 	 */
-	public DeadlyCard(int cardID) {
-		super(cardID, "deadlyCardImageFile"); // temporary replacement
+	public DeadlyCard(String cardID) {
+		super(cardID);
 	}
 	
 	@Override
 	public void act(Player player) {
-        player.setAlive(player.removeSaveCard()); 
-      
+        player.setAlive(player.removeSaveCard());
 	}
 }
