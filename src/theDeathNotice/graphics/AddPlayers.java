@@ -17,70 +17,23 @@ import javax.swing.*;
  * saving names, click "Done". 
  *
  */
-public class AddPlayers extends JFrame implements ActionListener {
+public class AddPlayers extends JFrame {
 	
 	private JButton doneButton;
 	private JButton saveButton;
-<<<<<<< Updated upstream
     private JEditorPane typeName;
     private JLabel addPlayers;
     private JLabel enterName;
     private JScrollPane addName;
-=======
-    private JEditorPane jp;
-    private JLabel title;
-//    private JLabel jLabel2;
-    private JScrollPane jScrollPane;
     private ArrayList<String> players;
->>>>>>> Stashed changes
 	
     /**
      * Initializes the page.
      */
 	public AddPlayers() {
 		super("Add Players");
-<<<<<<< Updated upstream
 		initComponents();
-//		setSize(new Dimension(1000, 400));
-//		setLayout(null);
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		setResizable(false);
-//		
-//		typeName = new JEditorPane();
-//		typeName.setBounds(200, 200, 300, 100);
-//
-//		doneButton = new JButton("Done");
-//		doneButton.setBounds(getX()+getWidth()/2-50, getY()+2*getHeight()/3-50, 100, 60);
-//		doneButton.addActionListener(this);
-//		
-//		add(doneButton);
-//		add(saveButton);
-//		add(typeName);
-//		add(addName);
-=======
-		setSize(new Dimension(1000, 400));
-		setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
-		
-		jp = new JEditorPane();
-		jp.setBounds(300, 200, 300, 20);
-		jp.setContentType("text/plain");
-		jp.setText("Player Name Here");
-		
-		saveButton = new JButton("Add Player");
-		saveButton.setBounds(getX()+getWidth()/2-50, getY()+2*getHeight()/3-50, 100, 60);
-		saveButton.addActionListener(this);
-
-		doneButton = new JButton("Done");
-		doneButton.setBounds(getX()+getWidth()/2-50, getY()+2*getHeight()/3-50, 100, 60);
-		doneButton.addActionListener(this);
-		
-		add(doneButton);
-		add(jp);
-//		add(jScrollPane);
->>>>>>> Stashed changes
-
+		players = new ArrayList<String>();
 		setVisible(true);
 	}
 	
@@ -156,25 +109,24 @@ public class AddPlayers extends JFrame implements ActionListener {
 	}
 //	
 	private void saveButtonActionPerformed(ActionEvent e) {
-		
+		players.add(typeName.getText());
+		typeName.setText("");
 	}
 //	
 	private void doneButtonActionPerformed(ActionEvent e) {
-		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == doneButton) {
+		if (players.size() > 4) {
+			JOptionPane.showMessageDialog(this, "You have too many players. The maximum number of players allowed is 4. Please exit the game and try again.");
+		} else if (players.size() < 2) {
+			JOptionPane.showMessageDialog(this, "You need at least 2 players to play. Please add more players.");
+		} else {
 			setVisible(false);
+			JFrame window = new MainGame(players);
+			window.setVisible(true);
 		}
-		if (e.getSource() == saveButton) {
-			players.add(jp.getText());
-		}
-		if (e.getSource() == saveButton) {
-			
-		}
-		
+	}
+	
+	public ArrayList<String> getPlayers() {
+		return players;
 	}
 	
 }
