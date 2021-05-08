@@ -12,7 +12,7 @@ import theDeathNotice.Game;
 
 /**
  * 
- * @author skyla and andria
+ * @author Skyla
  * @version 1
  * 
  * This class represents the window or page where the main game is taking place.

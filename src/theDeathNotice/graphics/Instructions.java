@@ -4,7 +4,7 @@ import javax.swing.*;
 
 /**
  * 
- * @author skyla and andria
+ * @author Skyla
  * @version 1
  * 
  * The class representing the window or page of instructions.
