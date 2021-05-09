@@ -12,8 +12,8 @@ import java.util.Collections;
  *
  */
 public class CardDeck {
-	
 	private ArrayList<Card> cards;
+	private boolean topCardVisible=false;
 		
 	private String getSuit(int i) {
 		if (i==1)
@@ -90,6 +90,15 @@ public class CardDeck {
 		return cards.get(0);
 	}
 	
+	
+	public boolean isTopCardVisible() {
+		return topCardVisible;
+	}
+
+	public void setTopCardVisible(boolean topCardVisible) {
+		this.topCardVisible = topCardVisible;
+	}
+
 	public int getNumOfCards() {
 		return cards.size();
 	}

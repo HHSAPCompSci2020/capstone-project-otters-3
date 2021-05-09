@@ -24,5 +24,8 @@ public class DeadlyCard extends Card {
 	 */
 	public void act(Player player) {
         player.setAlive(player.removeSaveCard());
+        if (!player.isAlive()) {
+        	player.setPoints(0);
+        }
 	}
 }

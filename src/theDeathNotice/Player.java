@@ -44,6 +44,11 @@ public class Player {
 	}
 
 
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+
 	public int getPoints() {
 		return points;
 	}
@@ -108,7 +113,7 @@ public class Player {
 			   i++;
 		   }
 	   }
-	    return false;
+	   return false;
 	}
 
 	/**
