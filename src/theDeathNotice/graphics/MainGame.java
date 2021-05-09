@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import theDeathNotice.Card;
 import theDeathNotice.CardDeck;
 import theDeathNotice.Game;
 import theDeathNotice.Player;
-import theDeathNotice.SaveCard;
 
 /**
  * 
@@ -30,7 +28,6 @@ import theDeathNotice.SaveCard;
  */
 public class MainGame extends JFrame{
 	 private static final String DEFAULT_DECK_IMAGE = "cards/back.png";
-	 private static boolean deckButtonHasDrawCard = false;
 	 private JButton takeCardButton;
 	 private JButton endTurnButton;
 	 private JButton instructionsButton;
@@ -49,6 +46,14 @@ public class MainGame extends JFrame{
 	 public MainGame(List<String> playerNames) {
 		 initGame(playerNames);		 
 		 initComponents();
+		 player1Points.setOpaque(true);
+		 player1Points.setBackground(new java.awt.Color(255, 255, 255));
+		 player2Points.setOpaque(true);
+		 player2Points.setBackground(new java.awt.Color(255, 255, 255));
+		 player3Points.setOpaque(true);
+		 player3Points.setBackground(new java.awt.Color(255, 255, 255));
+		 player4Points.setOpaque(true);
+		 player4Points.setBackground(new java.awt.Color(255, 255, 255));
 		 if (playerNames.size() == 2) {
 			 player1Points.setText("Player " + playerNames.get(0) + ": " + 30);
 			 player2Points.setText("Player " + playerNames.get(1) + ": " + 31);
@@ -64,23 +69,7 @@ public class MainGame extends JFrame{
 			 player3Points.setText("Player " + playerNames.get(2) + ": " + 32);
 			 player4Points.setText("Player " + playerNames.get(3) + ": " + 33);
 		 }
-	     int turn = game.getPlayerTurn();
-	    	if (turn == 0) {
-	    		player1Points.setOpaque(true);
-	    		player1Points.setBackground(new java.awt.Color(255, 153, 153));
-	     	}
-	    	if (turn == 1) {
-	    		player2Points.setOpaque(true);
-	    		player2Points.setBackground(new java.awt.Color(255, 153, 153));
-	    	}
-	    	if (turn == 2) {
-	    		player3Points.setOpaque(true);
-	    		player3Points.setBackground(new java.awt.Color(255, 153, 153));
-	    	}
-	    	if (turn == 3) {
-	    		player4Points.setOpaque(true);
-	    		player4Points.setBackground(new java.awt.Color(255, 153, 153));
-	    	}
+	     refreshScoreBoard();
 	 }
 	 
 	 private void msgbox(String s) {
@@ -100,16 +89,8 @@ public class MainGame extends JFrame{
 	        endTurnButton = new javax.swing.JButton();
 	        instructionsButton = new javax.swing.JButton();
 	        buySaveCardButton = new javax.swing.JButton();
-	        URL file = ClassLoader.getSystemClassLoader().getResource(DEFAULT_DECK_IMAGE);
-	        BufferedImage image=null;
-	        try {
-				image = ImageIO.read(file);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        ImageIcon icon = new ImageIcon(image);
-	        deckButton = new javax.swing.JButton(icon);
+	        deckButton = new javax.swing.JButton();
+	        resetDeckButtonIcon(DEFAULT_DECK_IMAGE);
 	        scoreBoardLabel = new javax.swing.JLabel();
 	        player1Points = new javax.swing.JLabel();
 	        player2Points = new javax.swing.JLabel();
@@ -248,110 +229,74 @@ public class MainGame extends JFrame{
 	 }
 	 
 	 private void takeCardButtonActionPerformed(ActionEvent evt) {
-		 if (deckButtonHasDrawCard) {
 		    CardDeck deck = game.getCardDeck();
 		    Card card = deck.drawTopCard();
 		    if (card == null) {
 		    	msgbox("There is no card left");
 		    }
-		    else {
-		    	//step 1: Change the deckButton back to default image
+		    else if (deck.isTopCardVisible()){
 		    	resetDeckButtonIcon(DEFAULT_DECK_IMAGE);
-			    //step 2:
+		    	deck.setTopCardVisible(false);
 			    Player player = game.getCurrentPlayer();
 			    card.act(player);
-			    if (player.isAlive()) {
-			    	int point = player.getPoints();
-			    	int turn = game.getPlayerTurn();
-			    	if (turn == 0) {
-			    	   player1Points.setText("Player " + player.getName() + ": " + point);
-			     	}
-			    	if (turn == 1) {
-			    		player2Points.setText("Player " + player.getName() + ": " + point);
-			    	}
-			    	if (turn == 2) {
-			    		player3Points.setText("Player " + player.getName() + ": " + point);
-			    	}
-			    	if (turn == 3) {
-			    		player4Points.setText("Player " + player.getName() + ": " + point);
-			    	}
+			    refreshScoreBoard();			 
+			    if (!player.isAlive()) {
+			    	msgbox("Player " + player.getName() + " lost");
+			    	markDead();
 			    }
 			    else {
-			    	//declare the player is dead;
-			    	msgbox("Player " + player.getName() + " lost");
+				    card = deck.peekTopCard();
+				    if (card == null) {
+				    	msgbox("Empty Card Deck! and Player wins" + game.getWinner());
+				    }
 			    }
-			    //set deckButtonHasDrawCard false
-			    deckButtonHasDrawCard = false;
+
 		    }
-		 }
+		    else {
+		    	msgbox("Draw card first");
+		    }	    	    
 	 }
 	 
 	 private void endTurnButtonActionPerformed(ActionEvent evt) {
 		 Player player = game.getCurrentPlayer();
-		 int turn = game.getPlayerTurn();
-	    	if (turn == 0) {
-	    		player1Points.setOpaque(false);
-	    		//player1Points.setBackground(new java.awt.Color(255, 153, 153));
-	     	}
-	    	if (turn == 1) {
-	    		player1Points.setOpaque(false);
-	    	}
-	    	if (turn == 2) {
-	    		player1Points.setOpaque(false);
-	    	}
-	    	if (turn == 3) {
-	    		player1Points.setOpaque(false);
-	    	}
 		 player.resetDrawCount(); 
-		 game.updatePlayerTurn();
+		 if (!game.updateCurrentPlayerId()) {
+			player = game.getWinner();
+			msgbox("Player " + player.getName() + " wins");
+		 }	
+		 else {
+		    refreshScoreBoard();
+		 }
 	 }
 	 
 	 private void instructionsButtonActionPerformed(ActionEvent evt) {
 		 
 	 }
 	 
-	 private String appendStar(String text, int count) {
-		 for (int i=0; i<count; i++) {
-			text = text + "*";
-		 }
-		 return text;
-	 }
 	 
 	 private void buySaveCardButtonActionPerformed(ActionEvent evt) {
 		 Player player = game.getCurrentPlayer();
 		 Card card = player.buySaveCard();
 		 if (card == null) {
-			 msgbox("Player" + player.getName() + "has not enough money to buy ");
+			 msgbox("Player " + player.getName() + " has not enough money to buy ");
 		 }
 		 else {
-		    	int turn = game.getPlayerTurn();
-		    	if (turn == 0) {
-		    	   player1Points.setText(appendStar(player1Points.getText(), player.getSaveCardCount()));
-		     	}
-		    	if (turn == 1) {
-		    		player2Points.setText(appendStar(player2Points.getText(), player.getSaveCardCount()));
-		    	}
-		    	if (turn == 2) {
-		    		player3Points.setText(appendStar(player3Points.getText(), player.getSaveCardCount()));
-		    	}
-		    	if (turn == 3) {
-		    		player4Points.setText(appendStar(player3Points.getText(), player.getSaveCardCount()));
-		    	}
+			 refreshScoreBoard();
 		 }
 	 }
 	 
 	 private void deckButtonActionPerformed(ActionEvent evt) {
+		 CardDeck deck = game.getCardDeck();
 		 Player player = game.getCurrentPlayer();
-		 if (!deckButtonHasDrawCard) {
-			deckButtonHasDrawCard = true;
+		 if (!deck.isTopCardVisible()) {
 			boolean result = player.increaseDrawCount();
 			if (result) {
-			    CardDeck deck = game.getCardDeck();
 			    Card card = deck.peekTopCard();
 			    if (card == null) {
-			    	msgbox("Empty Card Deck! and Player wins" + game.getWinner());
+			    	msgbox("Empty Card Deck! and Player " + game.getWinner().getName() + " wins");
 			    }
 			    else {
+				   deck.setTopCardVisible(true);
 	               resetDeckButtonIcon(card.getImageFile());
 			    }
 			}
@@ -362,6 +307,64 @@ public class MainGame extends JFrame{
 		 else {
 			 msgbox("Player " + player.getName() + " please take the card away!");
 		 }
+	 }
+	 
+	 
+	 private String appendStar(int count) {
+		 String text="";
+		 for (int i=1; i<=count; i++) {
+			 text = text + "*";
+		 }
+		 return text;
+	 }
+	 
+	 
+	 JLabel getlabel(int playerId) {
+		 if (playerId == 0)
+			 return player1Points;
+		 else if (playerId == 1)
+			 return player2Points; 
+		 else if (playerId == 2)
+			 return player3Points; 
+		 else if (playerId == 3)
+			 return player4Points;
+		 else 
+		     return player1Points;
+	 }
+	 
+	 private void markDead() {
+		 List<Integer> ds = game.getDeadPlayerIds();
+		 for (Integer i: ds) {
+			 JLabel label = getlabel(i);
+			 label.setBackground(new java.awt.Color(128, 128, 128));
+		 }
+		 
+	 }
+	 
+	 private void resetOriginal() {
+		 int playerId = game.getCurrentPlayerId();
+		 List<Integer> ds = game.getDeadPlayerIds();
+		 for (int id=0; id<4; id++) {
+			 if (id!=playerId && !ds.contains(id)) {
+				 JLabel label = getlabel(id);
+				 label.setBackground(new java.awt.Color(255, 255, 255));
+			 }
+		 }
+	 }
+	 
+	 private void markCurrent() {
+	    Player player = game.getCurrentPlayer();	
+	    int point = player.getPoints(); 
+	    int playerId = game.getCurrentPlayerId();
+	    JLabel label= getlabel(playerId);
+		label.setBackground(new java.awt.Color(255, 153, 153));
+		label.setText("Player " + player.getName() + ": " + point + " "+appendStar(player.getSaveCardCount()));	 
+	 }
+	 
+	 private void refreshScoreBoard() {
+		markDead();
+		resetOriginal();
+        markCurrent();
 	 }
 	 
 	 public static void main(String args[]) {

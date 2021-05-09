@@ -12,8 +12,8 @@ import java.util.Collections;
  *
  */
 public class CardDeck {
-	
 	private ArrayList<Card> cards;
+	private boolean topCardVisible=false;
 		
 	private String getSuit(int i) {
 		if (i==1)
@@ -53,18 +53,18 @@ public class CardDeck {
 		cards = new ArrayList<Card>();
 		
 		for (int i=1; i<=4; i++) {
-			cards.add(new DeadlyCard("dead"+"-" + String.valueOf(i)));
+			cards.add(new DeathCard("dead"+"-" + String.valueOf(i)));
 		}
 		for (int n = 2; n <= 13; n++) {
 			for (int q = 1; q <= 4; q++) {	    
 				cards.add(new PointCard(getType(n)+"-"+getSuit(q)));
 			}
 		}
-		cards.add(new SaveCard("saver"));
+		cards.add(new SavingCard("saver"));
 		int r = (int) (Math.random()*5);
 		for (int i=1; i<=r; i++) {
 			// Need at least one?
-			cards.add(new DeadlyCard("dead"+"-" + String.valueOf(i)));
+			cards.add(new DeathCard("dead"+"-" + String.valueOf(i)));
 		}
 	}
 	
@@ -90,6 +90,15 @@ public class CardDeck {
 		return cards.get(0);
 	}
 	
+	
+	public boolean isTopCardVisible() {
+		return topCardVisible;
+	}
+
+	public void setTopCardVisible(boolean topCardVisible) {
+		this.topCardVisible = topCardVisible;
+	}
+
 	public int getNumOfCards() {
 		return cards.size();
 	}

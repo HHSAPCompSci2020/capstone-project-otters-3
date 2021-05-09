@@ -7,13 +7,13 @@ package theDeathNotice;
  * @version 1
  *
  */
-public class DeadlyCard extends Card {
+public class DeathCard extends Card {
 	
 	/** 
 	 * Creates a deadly card.
 	 * @param cardID
 	 */
-	public DeadlyCard(String cardID) {
+	public DeathCard(String cardID) {
 		super(cardID);
 	}
 	
@@ -24,5 +24,8 @@ public class DeadlyCard extends Card {
 	 */
 	public void act(Player player) {
         player.setAlive(player.removeSaveCard());
+        if (!player.isAlive()) {
+        	player.setPoints(0);
+        }
 	}
 }

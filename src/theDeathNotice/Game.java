@@ -15,7 +15,7 @@ public class Game {
 	
 	private ArrayList<Player> players;
 	private CardDeck cardDeck;
-	private int playerTurn;
+	private int currentPlayerId;
 	
 	/**
 	 * A game of Suffocating Otters.
@@ -32,21 +32,23 @@ public class Game {
 	}
 	
 	
-	public int getPlayerTurn() {
-		return playerTurn;
+	public int getCurrentPlayerId() {
+		return currentPlayerId;
 	}
 
-	public void updatePlayerTurn() {
+
+	public boolean updateCurrentPlayerId() {
 		//playerTurn = (playerTurn+1)%(players.size());
-		if (players.size()>1) {
-			playerTurn = (playerTurn+1)%(players.size());
+		if (numOfAlivePlayers()>1) {
+			currentPlayerId = (currentPlayerId+1)%(players.size());
 			Player player = getCurrentPlayer();
-			while (player.isAlive()== false) {
-				playerTurn = (playerTurn+1)%(players.size());
+			while (!player.isAlive()) {
+				currentPlayerId = (currentPlayerId+1)%(players.size());
 				player = getCurrentPlayer();				
 			}
+			return true;
 		} else {
-			// game over, declare winner Player player = getWinne() and points/time;
+			return false;
 		}
 	}
 
@@ -55,12 +57,21 @@ public class Game {
 	 * @return
 	 */
 	public Player getCurrentPlayer() {
-		return players.get(playerTurn);
+		return players.get(currentPlayerId);
 	}
-	
 	
 	public CardDeck getCardDeck() {
 		return cardDeck;
+	}
+	
+	public List<Integer> getDeadPlayerIds() {
+		ArrayList<Integer> dead = new ArrayList<>();
+		for (int i=0; i<players.size(); i++) {
+			if (!players.get(i).isAlive()) {
+				dead.add(i);
+			}
+		}
+		return dead;
 	}
 
 	public Player getWinner() {
@@ -83,6 +94,18 @@ public class Game {
 		return winner;
 	}
 
+	public int numOfAlivePlayers() {
+		int res = 0;;
+		
+		for (Player player: players) {
+			if (player.isAlive()) {
+				res++;
+			}
+		}
+		return res;
+	}
+	
+	
 	private void init() {
 		cardDeck = new CardDeck();
 		players = new ArrayList<Player>();

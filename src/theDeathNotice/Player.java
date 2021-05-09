@@ -44,6 +44,11 @@ public class Player {
 	}
 
 
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+
 	public int getPoints() {
 		return points;
 	}
@@ -51,7 +56,7 @@ public class Player {
 	public int getSaveCardCount() {
 		int count = 0;
 		for(Card card: currentHand) {
-			if (card instanceof SaveCard) {
+			if (card instanceof SavingCard) {
 				count++;
 			}
 		}
@@ -76,11 +81,11 @@ public class Player {
 	 * @return cardBought the card to be added to the hand or null if no money left to buy card
 	 */
 	public Card buySaveCard() {
-		if(points < SaveCard.SAVE_CARD_COST) {
+		if(points < SavingCard.SAVE_CARD_COST) {
 			return null;
 		}
-		points -= SaveCard.SAVE_CARD_COST;
-		SaveCard card = new SaveCard("saver");
+		points -= SavingCard.SAVE_CARD_COST;
+		SavingCard card = new SavingCard("saver");
 		addSaveCard(card);
 		return card;
 	}
@@ -100,7 +105,7 @@ public class Player {
 	public boolean removeSaveCard() {
 		int i = 0;
 	    while(i < currentHand.size()) {
-		   if(currentHand.get(i) instanceof SaveCard) {
+		   if(currentHand.get(i) instanceof SavingCard) {
 			   currentHand.remove(i);
 			   return true;
 		   }
@@ -108,7 +113,7 @@ public class Player {
 			   i++;
 		   }
 	   }
-	    return false;
+	   return false;
 	}
 
 	/**
