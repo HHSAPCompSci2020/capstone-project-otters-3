@@ -9,6 +9,7 @@ package theDeathNotice;
  */
 public class SaveCard extends Card {
     static int SAVE_CARD_COST = 30;
+   
 	/** 
 	 * Creates a SaveCard.
 	 */

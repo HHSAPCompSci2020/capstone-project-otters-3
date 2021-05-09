@@ -109,6 +109,20 @@ public class AddPlayers extends JFrame {
 	}
 //	
 	private void saveButtonActionPerformed(ActionEvent e) {
+		if (typeName.getText().equals("")) {
+			JOptionPane.showMessageDialog(this, "Please type the player's name into the textbox.");
+			return;
+		} 
+		boolean duplicate = false;
+		for (String s : players) {
+			if (s.equals(typeName.getText())) {
+				duplicate = true;
+			}
+		}
+		if (duplicate) {
+			JOptionPane.showMessageDialog(this, "This player has already been registered.");
+			return;
+		}
 		players.add(typeName.getText());
 		typeName.setText("");
 	}
