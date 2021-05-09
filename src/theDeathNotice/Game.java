@@ -37,7 +37,17 @@ public class Game {
 	}
 
 	public void updatePlayerTurn() {
-		playerTurn = (playerTurn+1)%(players.size());
+		//playerTurn = (playerTurn+1)%(players.size());
+		if (players.size()>1) {
+			playerTurn = (playerTurn+1)%(players.size());
+			Player player = getCurrentPlayer();
+			while (player.isAlive()== false) {
+				playerTurn = (playerTurn+1)%(players.size());
+				player = getCurrentPlayer();				
+			}
+		} else {
+			// game over, declare winner Player player = getWinne() and points/time;
+		}
 	}
 
 	/**

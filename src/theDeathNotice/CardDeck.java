@@ -63,6 +63,7 @@ public class CardDeck {
 		cards.add(new SaveCard("saver"));
 		int r = (int) (Math.random()*5);
 		for (int i=1; i<=r; i++) {
+			// Need at least one?
 			cards.add(new DeadlyCard("dead"+"-" + String.valueOf(i)));
 		}
 	}
@@ -116,16 +117,17 @@ public class CardDeck {
 		c.shuffleDeck();
 		c.shuffleDeck();
 		System.out.println(c.toString());
-		System.out.println("remain card=" + c.getNumOfCards());
+		System.out.println("remaining card=" + c.getNumOfCards());
 		
 		while (c.getNumOfCards() > 0) {
-		Card card = c.drawTopCard();
-		try {
-			card.drawImage();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Card card = c.drawTopCard();
+			try {
+				card.drawImage();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		}
+		// Game over, Declare winner
 	}
 }

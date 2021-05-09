@@ -321,7 +321,7 @@ public class MainGame extends JFrame{
 		 Player player = game.getCurrentPlayer();
 		 Card card = player.buySaveCard();
 		 if (card == null) {
-			 msgbox("Player" + player.getName() + "has no enough money to buy ");
+			 msgbox("Player" + player.getName() + "has not enough money to buy ");
 		 }
 		 else {
 		    	int turn = game.getPlayerTurn();
