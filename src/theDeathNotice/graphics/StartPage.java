@@ -16,7 +16,7 @@ import javax.swing.*;
  * If you want to play the game, click the "Begin" button. 
  *
  */
-public class StartPage extends JFrame implements ActionListener {
+public class StartPage extends JFrame {
 	
 	private JButton startButton;
 	private JLabel gameName;
@@ -28,25 +28,7 @@ public class StartPage extends JFrame implements ActionListener {
     
 	public StartPage() {
 		super("Start Page");
-		setSize(new Dimension(1000, 400));
-		setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
-		
-		JLabel gameName = new JLabel("The Death Notice");
-		gameName.setBounds(getWidth()/2-85, getHeight()/3, 200, 50);
-		gameName.setFont(new Font("Serif", Font.PLAIN, 24));
-
-		
-		startButton = new JButton("Play");
-		startButton.setBounds(getX()+getWidth()/2-50, getY()+2*getHeight()/3-50, 100, 60);
-		startButton.addActionListener(this);
-		
-		add(startButton);
-		add(gameName);
-
-		setVisible(true);
-//		initComponents();
+		initComponents();
 	}
 	
 	private void initComponents() {
@@ -93,17 +75,10 @@ public class StartPage extends JFrame implements ActionListener {
 	}
 //	
 	private void startButtonActionPerformed(ActionEvent e) {
-	
+		setVisible(false);
+		JFrame window = new AddPlayers();
+		window.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == startButton) {
-			setVisible(false);
-			JFrame window = new AddPlayers();
-			window.setBounds(getX(), getY(), getWidth(), getHeight());
-		}
-		
-	}	
 	
 }

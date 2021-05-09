@@ -398,6 +398,8 @@ public class MainGame extends JFrame{
 	                new MainGame(playerNames).setVisible(true);
 	            }
 	        });
-	    }
+	        
+	    } 
+
 	
 }

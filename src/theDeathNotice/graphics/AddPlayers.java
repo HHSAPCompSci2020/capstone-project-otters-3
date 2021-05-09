@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -16,7 +17,7 @@ import javax.swing.*;
  * saving names, click "Done". 
  *
  */
-public class AddPlayers extends JFrame implements ActionListener {
+public class AddPlayers extends JFrame {
 	
 	private JButton doneButton;
 	private JButton saveButton;
@@ -24,29 +25,15 @@ public class AddPlayers extends JFrame implements ActionListener {
     private JLabel addPlayers;
     private JLabel enterName;
     private JScrollPane addName;
+    private ArrayList<String> players;
 	
     /**
      * Initializes the page.
      */
 	public AddPlayers() {
 		super("Add Players");
-		setSize(new Dimension(1000, 400));
-		setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
-		
-		typeName = new JEditorPane();
-		typeName.setBounds(200, 200, 300, 100);
-
-		doneButton = new JButton("Done");
-		doneButton.setBounds(getX()+getWidth()/2-50, getY()+2*getHeight()/3-50, 100, 60);
-		doneButton.addActionListener(this);
-		
-		add(doneButton);
-		add(saveButton);
-		add(typeName);
-		add(addName);
-
+		initComponents();
+		players = new ArrayList<String>();
 		setVisible(true);
 	}
 	
@@ -118,23 +105,28 @@ public class AddPlayers extends JFrame implements ActionListener {
         );
 
         pack();
-		
+
 	}
 //	
 	private void saveButtonActionPerformed(ActionEvent e) {
-		
+		players.add(typeName.getText());
+		typeName.setText("");
 	}
 //	
 	private void doneButtonActionPerformed(ActionEvent e) {
-		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == doneButton) {
-			
+		if (players.size() > 4) {
+			JOptionPane.showMessageDialog(this, "You have too many players. The maximum number of players allowed is 4. Please exit the game and try again.");
+		} else if (players.size() < 2) {
+			JOptionPane.showMessageDialog(this, "You need at least 2 players to play. Please add more players.");
+		} else {
+			setVisible(false);
+			JFrame window = new MainGame(players);
+			window.setVisible(true);
 		}
-		
+	}
+	
+	public ArrayList<String> getPlayers() {
+		return players;
 	}
 	
 }
