@@ -7,13 +7,13 @@ package theDeathNotice;
  * @version 1
  *
  */
-public class SaveCard extends Card {
+public class SavingCard extends Card {
     static int SAVE_CARD_COST = 30;
    
 	/** 
 	 * Creates a SaveCard.
 	 */
-	public SaveCard(String cardID) {
+	public SavingCard(String cardID) {
 		super(cardID);
 	}
 

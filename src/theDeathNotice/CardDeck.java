@@ -53,18 +53,18 @@ public class CardDeck {
 		cards = new ArrayList<Card>();
 		
 		for (int i=1; i<=4; i++) {
-			cards.add(new DeadlyCard("dead"+"-" + String.valueOf(i)));
+			cards.add(new DeathCard("dead"+"-" + String.valueOf(i)));
 		}
 		for (int n = 2; n <= 13; n++) {
 			for (int q = 1; q <= 4; q++) {	    
 				cards.add(new PointCard(getType(n)+"-"+getSuit(q)));
 			}
 		}
-		cards.add(new SaveCard("saver"));
+		cards.add(new SavingCard("saver"));
 		int r = (int) (Math.random()*5);
 		for (int i=1; i<=r; i++) {
 			// Need at least one?
-			cards.add(new DeadlyCard("dead"+"-" + String.valueOf(i)));
+			cards.add(new DeathCard("dead"+"-" + String.valueOf(i)));
 		}
 	}
 	
