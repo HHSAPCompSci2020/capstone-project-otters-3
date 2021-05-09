@@ -149,7 +149,8 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return
+	 * @return true if the current player's draw count can be increased
+	 * false if the current player's draw count is already 3
 	 */
 	public boolean increaseDrawCount() {
 		if (drawCount<3) {
@@ -166,22 +167,5 @@ public class Player {
 	public void drawCard(CardDeck cards) {
 		Card card = cards.drawTopCard();
 		currentHand.add(card);
-//		if (card.getNum() == 1) {
-//			boolean hasSaveCard = false;
-//			int i = -1; 
-//			for (int n = 0; n < currentHand.size(); i++) {
-//				if (currentHand.get(n) instanceof SaveCard) {
-//					hasSaveCard = true;
-//					i = n;
-//				}
-//			}
-//			if (hasSaveCard) {
-//				currentHand.remove(i);
-//			} else {
-//				alive = false;
-//			}
-//			return;
-//		}
 	}
-	
 }

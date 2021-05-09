@@ -17,12 +17,12 @@ public class SavingCard extends Card {
 		super(cardID);
 	}
 
-
 	/**
-	 * Double the current player points
+	 * A saving card drawn from card deck is rewarded as two cards
 	 * @param player Player that draws the card.
 	 */
 	public void act(Player player) {
 		player.addSaveCard(this);
+		player.addSaveCard(new SavingCard("saving"));	
 	}
 }

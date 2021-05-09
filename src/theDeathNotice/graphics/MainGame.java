@@ -230,35 +230,40 @@ public class MainGame extends JFrame{
 	 
 	 private void takeCardButtonActionPerformed(ActionEvent evt) {
 		    CardDeck deck = game.getCardDeck();
-		    Card card = deck.drawTopCard();
-		    if (card == null) {
-		    	msgbox("There is no card left");
-		    }
-		    else if (deck.isTopCardVisible()){
-		    	resetDeckButtonIcon(DEFAULT_DECK_IMAGE);
-		    	deck.setTopCardVisible(false);
-			    Player player = game.getCurrentPlayer();
-			    card.act(player);
-			    refreshScoreBoard();			 
-			    if (!player.isAlive()) {
-			    	msgbox("Player " + player.getName() + " lost");
-			    	markDead();
+		    Player player = game.getCurrentPlayer();
+		    if (player.isAlive()) {
+			    Card card = deck.drawTopCard();
+			    if (card == null) {
+			    	msgbox("There is no card left to draw");
+			    }
+			    else if (deck.isTopCardVisible()){
+			    	resetDeckButtonIcon(DEFAULT_DECK_IMAGE);
+			    	deck.setTopCardVisible(false);
+				    card.act(player);
+				    refreshScoreBoard();			 
+				    if (!player.isAlive()) {
+				    	msgbox("Player " + player.getName() + " is dead");
+				    	//markDead();
+				    	endTurnActionInternal(player);
+				    }
+				    else {
+					    card = deck.peekTopCard();
+					    if (card == null) {
+					    	msgbox("Empty Card Deck! and Player " + game.getWinner().getName() + " wins");
+					    }
+				    }
+	
 			    }
 			    else {
-				    card = deck.peekTopCard();
-				    if (card == null) {
-				    	msgbox("Empty Card Deck! and Player wins" + game.getWinner());
-				    }
-			    }
-
+			    	msgbox("You must draw card first");
+			    }	 
 		    }
 		    else {
-		    	msgbox("Draw card first");
-		    }	    	    
+		    	msgbox("Player " + player.getName() + " is dead");
+		    }
 	 }
 	 
-	 private void endTurnButtonActionPerformed(ActionEvent evt) {
-		 Player player = game.getCurrentPlayer();
+	 private void endTurnActionInternal(Player player) {
 		 player.resetDrawCount(); 
 		 if (!game.updateCurrentPlayerId()) {
 			player = game.getWinner();
@@ -269,6 +274,22 @@ public class MainGame extends JFrame{
 		 }
 	 }
 	 
+	 private void endTurnButtonActionPerformed(ActionEvent evt) {
+		 Player player = game.getCurrentPlayer();
+		 if (player.isAlive()) {	 
+			 if (player.getDrawCount() == 0)
+			 {
+				 msgbox("You must at least draw once before you can end your turn");
+			 }
+			 else {
+				 endTurnActionInternal(player);
+			 }
+		 }
+		 else {
+			   msgbox("Player " + player.getName() + " is dead");
+		 }
+	 }
+	 
 	 private void instructionsButtonActionPerformed(ActionEvent evt) {
 		 
 	 }
@@ -276,36 +297,53 @@ public class MainGame extends JFrame{
 	 
 	 private void buySaveCardButtonActionPerformed(ActionEvent evt) {
 		 Player player = game.getCurrentPlayer();
-		 Card card = player.buySaveCard();
-		 if (card == null) {
-			 msgbox("Player " + player.getName() + " has not enough money to buy ");
+		 if (player.isAlive()) {	 
+			 CardDeck deck = game.getCardDeck();
+			 if (deck.isTopCardVisible())
+			 {
+				  msgbox("You can only buy save top before you draw card");
+			 }
+			 else {
+				 Card card = player.buySaveCard();
+				 if (card == null) {
+					 msgbox("Player " + player.getName() + " has not enough money to buy ");
+				 }
+				 else {
+					 refreshScoreBoard();
+				 }
+			 }
 		 }
 		 else {
-			 refreshScoreBoard();
+			 msgbox("Player " + player.getName() + " is dead");
 		 }
 	 }
 	 
 	 private void deckButtonActionPerformed(ActionEvent evt) {
 		 CardDeck deck = game.getCardDeck();
 		 Player player = game.getCurrentPlayer();
-		 if (!deck.isTopCardVisible()) {
-			boolean result = player.increaseDrawCount();
-			if (result) {
-			    Card card = deck.peekTopCard();
-			    if (card == null) {
-			    	msgbox("Empty Card Deck! and Player " + game.getWinner().getName() + " wins");
-			    }
-			    else {
-				   deck.setTopCardVisible(true);
-	               resetDeckButtonIcon(card.getImageFile());
-			    }
-			}
-			else {
-				msgbox("Player " + player.getName() + " already played 3 times, please yield turn to next player");
-			}
+		 if (player.isAlive()) {
+			 if (!deck.isTopCardVisible()) {
+				boolean result = player.increaseDrawCount();
+				if (result) {
+				    Card card = deck.peekTopCard();
+				    if (card == null) {
+				    	msgbox("Empty Card Deck! and Player " + game.getWinner().getName() + " wins");
+				    }
+				    else {
+					   deck.setTopCardVisible(true);
+		               resetDeckButtonIcon(card.getImageFile());
+				    }
+				}
+				else {
+					msgbox("Player " + player.getName() + " already played 3 times, please yield turn to next player");
+				}
+			 }
+			 else {
+				 msgbox("Player " + player.getName() + " please take the card away!");
+			 }
 		 }
 		 else {
-			 msgbox("Player " + player.getName() + " please take the card away!");
+			 msgbox("Player " + player.getName() + " is dead");
 		 }
 	 }
 	 
