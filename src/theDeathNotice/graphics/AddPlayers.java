@@ -29,6 +29,7 @@ import javax.swing.*;
  */
 public class AddPlayers extends JFrame {
     private static final int BUFFER_SIZE = 4096;
+    private static final byte[] READ_BUFFER = new byte[BUFFER_SIZE];
 	private JButton doneButton;
 	private JButton saveButton;
     private JEditorPane typeName;
