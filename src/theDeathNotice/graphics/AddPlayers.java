@@ -120,15 +120,27 @@ public class AddPlayers extends JFrame {
 	}
 //	
 	private void saveButtonActionPerformed(ActionEvent e) {
+		if (players.size() >= 4) {
+			try {
+				playSound();
+				System.out.println("hihi!");
+			} catch (UnsupportedAudioFileException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (LineUnavailableException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			JOptionPane.showMessageDialog(this, "There can only be a maximum of 4 players. The player was not added.");
+		}
 		if (typeName.getText().equals("")) {
 			try {
 				playSound();
 				System.out.println("hihi!");
 			} catch (UnsupportedAudioFileException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (LineUnavailableException e1) {
 				// TODO Auto-generated catch block
