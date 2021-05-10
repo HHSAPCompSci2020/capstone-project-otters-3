@@ -14,7 +14,7 @@ public class Player {
 	private String name;
 	private int points;
 	private int initialPlayerNumber;
-	private LocalTime timer;
+	private LocalTime time;
 	private ArrayList<Card> currentHand;
 	private boolean alive;
 	private int drawCount;
@@ -63,8 +63,8 @@ public class Player {
 		return count;
 	}
 
-	public LocalTime getTimer() {
-		return timer;
+	public LocalTime getTime() {
+		return time;
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class Player {
 	 */
 	public void addPoints(int pointsAdded) {
 		points += pointsAdded;
-		timer = LocalTime.now();
+		time = LocalTime.now();	
 	}
 	
 	/**
@@ -85,6 +85,7 @@ public class Player {
 			return null;
 		}
 		points -= SavingCard.SAVE_CARD_COST;
+		time = LocalTime.now();	
 		SavingCard card = new SavingCard("saver");
 		addSaveCard(card);
 		return card;

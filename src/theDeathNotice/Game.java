@@ -83,17 +83,28 @@ public class Game {
 				if (player.getPoints() > maxPoint) {
 			  	    winner = player;
 				    maxPoint = player.getPoints();
-				    earliestTime = player.getTimer();
+				    earliestTime = player.getTime();
 				}
-				else if (player.getPoints() == maxPoint && earliestTime.compareTo(player.getTimer())> 0) {
+				else if (player.getPoints() == maxPoint && earliestTime.compareTo(player.getTime())> 0) {
 			  	    winner = player;
-					earliestTime = player.getTimer();
+					earliestTime = player.getTime();
 				}
 			}
 		}
 		return winner;
 	}
 
+	public boolean hasMultiplePlayerWithSamePoints() {
+		for (int i=0; i<players.size(); i++) {
+			for (int j=i+1; j<players.size(); j++) {
+				if (players.get(i).getTime() == players.get(j).getTime()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 	public int numOfAlivePlayers() {
 		int res = 0;;
 		

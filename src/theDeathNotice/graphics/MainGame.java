@@ -57,11 +57,14 @@ public class MainGame extends JFrame{
 		 if (playerNames.size() == 2) {
 			 player1Points.setText("Player " + playerNames.get(0) + ": " + 30);
 			 player2Points.setText("Player " + playerNames.get(1) + ": " + 31);
+			 player3Points.setVisible(false);
+			 player4Points.setVisible(false);
 		 }
 		 if (playerNames.size() == 3) {
 			 player1Points.setText("Player " + playerNames.get(0) + ": " + 30);
 			 player2Points.setText("Player " + playerNames.get(1) + ": " + 31);
 			 player3Points.setText("Player " + playerNames.get(2) + ": " + 32);
+			 player4Points.setVisible(false);
 		 }
 		 if (playerNames.size() == 4) {
 			 player1Points.setText("Player " + playerNames.get(0) + ": " + 30);
@@ -83,7 +86,15 @@ public class MainGame extends JFrame{
 		 deck.shuffleDeck();
 		 deck.shuffleDeck();	 
 	 }
-	 
+	 /**
+	  * To be called if need to play again
+	  */
+	 private void resetComponents() {
+		 player1Points.setVisible(true);
+		 player2Points.setVisible(true);
+		 player3Points.setVisible(true);
+		 player4Points.setVisible(true);
+	 }
 	 private void initComponents() {
 		 takeCardButton = new javax.swing.JButton();
 	        endTurnButton = new javax.swing.JButton();
@@ -327,6 +338,9 @@ public class MainGame extends JFrame{
 				if (result) {
 				    Card card = deck.peekTopCard();
 				    if (card == null) {
+				    	if (game.hasMultiplePlayerWithSamePoints()) {
+				    		refreshScoreBoardWithTimeInfo();
+				    	}
 				    	msgbox("Empty Card Deck! and Player " + game.getWinner().getName() + " wins");
 				    }
 				    else {
@@ -390,19 +404,39 @@ public class MainGame extends JFrame{
 		 }
 	 }
 	 
-	 private void markCurrent() {
+	 private String displayPlayerInfo(Player player) {
+		return "Player" + " "+ player.getName() + ": " 
+	           + player.getPoints() + 
+	           " "+appendStar(player.getSaveCardCount());
+	 }
+	 
+	 private String displayPlayerInfoWithTime(Player player) {
+		return displayPlayerInfo(player) + "[+"+ player.getTime()+"]";
+	 }
+	 
+	 private void markCurrent(boolean displayTimeInfo) {
 	    Player player = game.getCurrentPlayer();	
-	    int point = player.getPoints(); 
 	    int playerId = game.getCurrentPlayerId();
 	    JLabel label= getlabel(playerId);
 		label.setBackground(new java.awt.Color(255, 153, 153));
-		label.setText("Player " + player.getName() + ": " + point + " "+appendStar(player.getSaveCardCount()));	 
+		if (displayTimeInfo) {
+		  label.setText(displayPlayerInfoWithTime(player));
+		}
+		else {
+	       label.setText(displayPlayerInfo(player));	 
+		}
 	 }
 	 
 	 private void refreshScoreBoard() {
 		markDead();
 		resetOriginal();
-        markCurrent();
+        markCurrent(false);
+	 }
+	 
+	 private void refreshScoreBoardWithTimeInfo() {
+		markDead();
+		resetOriginal();
+        markCurrent(true);
 	 }
 	 
 	 public static void main(String args[]) {
