@@ -17,6 +17,9 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
+import jay.jaysound.JayLayer;
+import jay.jaysound.JayLayerListener;
+
 /**
  * 
  * @author Andria
@@ -27,9 +30,10 @@ import javax.swing.*;
  * saving names, click "Done". 
  *
  */
-public class AddPlayers extends JFrame {
-    private static final int BUFFER_SIZE = 4096;
-    private static final byte[] READ_BUFFER = new byte[BUFFER_SIZE];
+public class AddPlayers extends JFrame implements JayLayerListener {
+	private JayLayer sound;
+	private JComboBox<String> effects;
+	
 	private JButton doneButton;
 	private JButton saveButton;
     private JEditorPane typeName;
@@ -46,6 +50,16 @@ public class AddPlayers extends JFrame {
 		initComponents();
 		players = new ArrayList<String>();
 		setVisible(true);
+		
+		String[] soundEffects = new String[]{"errorSound.mp3"};
+		effects = new JComboBox<String>(soundEffects);
+		add(effects);
+		
+		sound=new JayLayer("audio/","audio/",false);
+		sound.addPlayList();
+		sound.addSoundEffects(soundEffects);
+		sound.changePlayList(0);
+		sound.addJayLayerListener(this);
 	}
 	
 	private void initComponents() {
@@ -114,38 +128,18 @@ public class AddPlayers extends JFrame {
                     .addComponent(saveButton))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
-
         pack();
-
 	}
 //	
 	private void saveButtonActionPerformed(ActionEvent e) {
 		if (players.size() >= 4) {
-			try {
-				playSound();
-				System.out.println("hihi!");
-			} catch (UnsupportedAudioFileException e1) {
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			} catch (LineUnavailableException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			sound.playSoundEffect(0);
+			sound=new JayLayer("audio/","audio/",false);
 			JOptionPane.showMessageDialog(this, "There can only be a maximum of 4 players. The player was not added.");
 		}
 		if (typeName.getText().equals("")) {
-			try {
-				playSound();
-				System.out.println("hihi!");
-			} catch (UnsupportedAudioFileException e1) {
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			} catch (LineUnavailableException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			sound.playSoundEffect(0);
+			sound.stopSong();
 			JOptionPane.showMessageDialog(this, "Please type the player's name into the textbox.");
 			return;
 		} 
@@ -156,15 +150,6 @@ public class AddPlayers extends JFrame {
 			}
 		}
 		if (duplicate) {
-			try {
-				playSound();
-			} catch (UnsupportedAudioFileException e1) {
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			} catch (LineUnavailableException e1) {
-				e1.printStackTrace();
-			}
 			JOptionPane.showMessageDialog(this, "This player has already been registered.");
 			return;
 		}
@@ -174,18 +159,9 @@ public class AddPlayers extends JFrame {
 //	
 	private void doneButtonActionPerformed(ActionEvent e) {
 		if (players.size() > 4) {
-			try {
-				playSound();
-			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
-				e1.printStackTrace();
-			}
+			sound.playSoundEffect(0);
 			JOptionPane.showMessageDialog(this, "You have too many players. The maximum number of players allowed is 4. Please exit the game and try again.");
 		} else if (players.size() < 2) {
-			try {
-				playSound();
-			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
-				e1.printStackTrace();
-			}
 			JOptionPane.showMessageDialog(this, "You need at least 2 players to play. Please add more players.");
 		} else {
 			setVisible(false);
@@ -193,36 +169,29 @@ public class AddPlayers extends JFrame {
 			window.setVisible(true);
 		}
 	}
-	
-	private void playSound() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-		try { 
-			File errorSound = new File("errorSound.wav");
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(errorSound);
-			AudioFormat format = audioStream.getFormat();
-			DataLine.Info info = new DataLine.Info(Clip.class, format);
-			SourceDataLine audioLine = (SourceDataLine) AudioSystem.getLine(info);
-			Clip audioClip = (Clip)AudioSystem.getLine(info);
-			
-			audioLine.open(format);
-			audioLine.start();
-			audioClip.open(audioStream);
-			audioClip.start();
-			audioClip.close();
-			audioStream.close();
-		} catch (UnsupportedAudioFileException ex) {
-            System.out.println("The specified audio file is not supported.");
-            ex.printStackTrace();
-        } catch (LineUnavailableException ex) {
-            System.out.println("Audio line for playing back is unavailable.");
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            System.out.println("Error playing the audio file.");
-            ex.printStackTrace();
-        }   
+
+	@Override
+	public void musicStarted() {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	public ArrayList<String> getPlayers() {
-		return players;
+	@Override
+	public void musicStopped() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void playlistEnded() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void songEnded() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
