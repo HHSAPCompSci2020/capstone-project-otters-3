@@ -81,10 +81,10 @@ public class Player {
 	 * @return cardBought the card to be added to the hand or null if no money left to buy card
 	 */
 	public Card buySaveCard() {
-		if(points < SavingCard.SAVE_CARD_COST) {
+		if(points < SavingCard.CURRENT_COST) {
 			return null;
 		}
-		points -= SavingCard.SAVE_CARD_COST;
+		points -= SavingCard.CURRENT_COST;
 		time = LocalTime.now();	
 		SavingCard card = new SavingCard("saver");
 		addSaveCard(card);

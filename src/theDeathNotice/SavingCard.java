@@ -8,7 +8,8 @@ package theDeathNotice;
  *
  */
 public class SavingCard extends Card {
-    static int SAVE_CARD_COST = 30;
+	private final static int INITIAL_COST=30;
+	public static int CURRENT_COST = INITIAL_COST;
    
 	/** 
 	 * Creates a SaveCard.

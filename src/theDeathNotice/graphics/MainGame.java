@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import theDeathNotice.Card;
 import theDeathNotice.CardDeck;
 import theDeathNotice.Game;
 import theDeathNotice.Player;
+import theDeathNotice.SavingCard;
 
 /**
  * 
@@ -28,6 +30,8 @@ import theDeathNotice.Player;
  */
 public class MainGame extends JFrame{
 	 private static final String DEFAULT_DECK_IMAGE = "cards/back.png";
+	 private static final String EMPTY_DECK_IMAGE="cards/base.png";
+	 private static final String COST_IMAGE = "images/sale.png";
 	 private JButton takeCardButton;
 	 private JButton endTurnButton;
 	 private JButton instructionsButton;
@@ -38,6 +42,7 @@ public class MainGame extends JFrame{
 	 private JLabel player2Points;
 	 private JLabel player3Points;
 	 private JLabel player4Points;
+	 private JLabel cost;
 	 private Game game;
 	 
 	 /**
@@ -55,24 +60,25 @@ public class MainGame extends JFrame{
 		 player4Points.setOpaque(true);
 		 player4Points.setBackground(new java.awt.Color(255, 255, 255));
 		 if (playerNames.size() == 2) {
-			 player1Points.setText("Player " + playerNames.get(0) + ": " + 30);
-			 player2Points.setText("Player " + playerNames.get(1) + ": " + 31);
+			 player1Points.setText(playerNames.get(0) + ": " + 30);
+			 player2Points.setText(playerNames.get(1) + ": " + 31);
 			 player3Points.setVisible(false);
 			 player4Points.setVisible(false);
 		 }
 		 if (playerNames.size() == 3) {
-			 player1Points.setText("Player " + playerNames.get(0) + ": " + 30);
-			 player2Points.setText("Player " + playerNames.get(1) + ": " + 31);
-			 player3Points.setText("Player " + playerNames.get(2) + ": " + 32);
+			 player1Points.setText(playerNames.get(0) + ": " + 30);
+			 player2Points.setText(playerNames.get(1) + ": " + 31);
+			 player3Points.setText(playerNames.get(2) + ": " + 32);
 			 player4Points.setVisible(false);
 		 }
 		 if (playerNames.size() == 4) {
-			 player1Points.setText("Player " + playerNames.get(0) + ": " + 30);
-			 player2Points.setText("Player " + playerNames.get(1) + ": " + 31);
-			 player3Points.setText("Player " + playerNames.get(2) + ": " + 32);
-			 player4Points.setText("Player " + playerNames.get(3) + ": " + 33);
+			 player1Points.setText(playerNames.get(0) + ": " + 30);
+			 player2Points.setText(playerNames.get(1) + ": " + 31);
+			 player3Points.setText(playerNames.get(2) + ": " + 32);
+			 player4Points.setText(playerNames.get(3) + ": " + 33);
 		 }
 	     refreshScoreBoard();
+	     refreshSavingCardCost();  
 	 }
 	 
 	 private void msgbox(String s) {
@@ -96,7 +102,7 @@ public class MainGame extends JFrame{
 		 player4Points.setVisible(true);
 	 }
 	 private void initComponents() {
-		 takeCardButton = new javax.swing.JButton();
+		    takeCardButton = new javax.swing.JButton();
 	        endTurnButton = new javax.swing.JButton();
 	        instructionsButton = new javax.swing.JButton();
 	        buySaveCardButton = new javax.swing.JButton();
@@ -107,6 +113,8 @@ public class MainGame extends JFrame{
 	        player2Points = new javax.swing.JLabel();
 	        player3Points = new javax.swing.JLabel();
 	        player4Points = new javax.swing.JLabel();
+	        cost = new javax.swing.JLabel();
+	        setCostImage();
 
 	        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 	        
@@ -135,7 +143,7 @@ public class MainGame extends JFrame{
 	        });
 
 	        buySaveCardButton.setBackground(new java.awt.Color(153, 255, 153));
-	        buySaveCardButton.setText("Buy Save Card ");
+	        buySaveCardButton.setText("Buy Save Card");
 	        buySaveCardButton.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
 	                buySaveCardButtonActionPerformed(evt);
@@ -149,8 +157,8 @@ public class MainGame extends JFrame{
 	        });
 
 	        scoreBoardLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-	        scoreBoardLabel.setText("Scoreboard: ");
-
+	        scoreBoardLabel.setText("SCOREBOARD");
+	      
 	        player1Points.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 	        player1Points.setText("Player 1: ");
 
@@ -162,6 +170,10 @@ public class MainGame extends JFrame{
 
 	        player4Points.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 	        player4Points.setText("Player 4: ");
+	        
+	        cost.setFont(new java.awt.Font("Avenir", 1, 18)); // NOI18N
+	        cost.setText("Saving Card Cost: ");
+	        cost.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 	        
 
 	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,11 +199,18 @@ public class MainGame extends JFrame{
 	                            .addComponent(takeCardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 	                            .addComponent(buySaveCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
 	                .addContainerGap(82, Short.MAX_VALUE))
+	            .addGroup(layout.createSequentialGroup()
+	            		 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                    .addComponent(cost)
+	                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 	        );
 	        layout.setVerticalGroup(
 	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 	            .addGroup(layout.createSequentialGroup()
-	                .addContainerGap(87, Short.MAX_VALUE)
+	                //.addContainerGap(87, Short.MAX_VALUE)
+	            		.addContainerGap(47, Short.MAX_VALUE)
+	                .addComponent(cost)
+	                .addGap(18, 18, 18)
 	                .addComponent(scoreBoardLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 	                    .addGroup(layout.createSequentialGroup()
@@ -239,46 +258,67 @@ public class MainGame extends JFrame{
          deckButton.setIcon(icon);
 	 }
 	 
+	 private void setCostImage() {
+         URL file = ClassLoader.getSystemClassLoader().getResource(COST_IMAGE);
+         BufferedImage image=null;
+         try {
+			  image = ImageIO.read(file);
+		   } catch (IOException e) {
+			  // TODO Auto-generated catch block
+			   e.printStackTrace();
+		}
+         ImageIcon icon = new ImageIcon(image);
+         cost.setIcon(icon);
+	 }
 	 private void takeCardButtonActionPerformed(ActionEvent evt) {
+		    if (game.isOver())
+		    	return;
 		    CardDeck deck = game.getCardDeck();
 		    Player player = game.getCurrentPlayer();
 		    if (player.isAlive()) {
 			    Card card = deck.drawTopCard();
 			    if (card == null) {
-			    	msgbox("There is no card left to draw");
+			    	resetDeckButtonIcon(EMPTY_DECK_IMAGE);
+			    	msgbox(Messages.EMPTY_CARD_DECK);
 			    }
 			    else if (deck.isTopCardVisible()){
 			    	resetDeckButtonIcon(DEFAULT_DECK_IMAGE);
 			    	deck.setTopCardVisible(false);
 				    card.act(player);
-				    refreshScoreBoard();			 
+				    refreshScoreBoard();
+				    refreshSavingCardCost();
 				    if (!player.isAlive()) {
-				    	msgbox("Player " + player.getName() + " is dead");
-				    	//markDead();
+				    	msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
+				    	markDead();
 				    	endTurnActionInternal(player);
 				    }
 				    else {
 					    card = deck.peekTopCard();
 					    if (card == null) {
-					    	msgbox("Empty Card Deck! and Player " + game.getWinner().getName() + " wins");
+					    	game.setOver(true);
+					    	resetDeckButtonIcon(EMPTY_DECK_IMAGE);
+					    	msgbox(MessageFormat.format(Messages.CARD_DECK_EMPTY, game.getWinner().getName()));
 					    }
 				    }
 	
 			    }
 			    else {
-			    	msgbox("You must draw card first");
+			    	msgbox(Messages.DRAW_CARD_FIRST);
 			    }	 
 		    }
 		    else {
-		    	msgbox("Player " + player.getName() + " is dead");
+		    	msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
 		    }
 	 }
 	 
 	 private void endTurnActionInternal(Player player) {
+		 if (game.isOver())
+		    return;
 		 player.resetDrawCount(); 
 		 if (!game.updateCurrentPlayerId()) {
 			player = game.getWinner();
-			msgbox("Player " + player.getName() + " wins");
+			game.setOver(true);
+			msgbox(MessageFormat.format(Messages.PLAYER_WIN, player.getName()));
 		 }	
 		 else {
 		    refreshScoreBoard();
@@ -286,18 +326,20 @@ public class MainGame extends JFrame{
 	 }
 	 
 	 private void endTurnButtonActionPerformed(ActionEvent evt) {
+		 if (game.isOver())
+			    return;
 		 Player player = game.getCurrentPlayer();
 		 if (player.isAlive()) {	 
 			 if (player.getDrawCount() == 0)
 			 {
-				 msgbox("You must at least draw once before you can end your turn");
+				 msgbox(Messages.PLAYER_MUST_DRAW_ONCE);
 			 }
 			 else {
 				 endTurnActionInternal(player);
 			 }
 		 }
 		 else {
-			   msgbox("Player " + player.getName() + " is dead");
+			 msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
 		 }
 	 }
 	 
@@ -307,17 +349,19 @@ public class MainGame extends JFrame{
 	 
 	 
 	 private void buySaveCardButtonActionPerformed(ActionEvent evt) {
+		 if (game.isOver())
+			    return;
 		 Player player = game.getCurrentPlayer();
 		 if (player.isAlive()) {	 
 			 CardDeck deck = game.getCardDeck();
 			 if (deck.isTopCardVisible())
 			 {
-				  msgbox("You can only buy save top before you draw card");
+				  msgbox(Messages.NOT_ALLOWD_TO_BUY_CARD);
 			 }
 			 else {
 				 Card card = player.buySaveCard();
 				 if (card == null) {
-					 msgbox("Player " + player.getName() + " has not enough money to buy ");
+					 msgbox(MessageFormat.format(Messages.NO_ENOUCH_MONDY_TO_BUY_CARD, player.getName()));
 				 }
 				 else {
 					 refreshScoreBoard();
@@ -325,11 +369,13 @@ public class MainGame extends JFrame{
 			 }
 		 }
 		 else {
-			 msgbox("Player " + player.getName() + " is dead");
+			 msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
 		 }
 	 }
 	 
 	 private void deckButtonActionPerformed(ActionEvent evt) {
+		 if (game.isOver())
+			    return;
 		 CardDeck deck = game.getCardDeck();
 		 Player player = game.getCurrentPlayer();
 		 if (player.isAlive()) {
@@ -341,7 +387,9 @@ public class MainGame extends JFrame{
 				    	if (game.hasMultiplePlayerWithSamePoints()) {
 				    		refreshScoreBoardWithTimeInfo();
 				    	}
-				    	msgbox("Empty Card Deck! and Player " + game.getWinner().getName() + " wins");
+				    	game.setOver(true);
+				    	resetDeckButtonIcon(EMPTY_DECK_IMAGE);
+				    	msgbox(MessageFormat.format(Messages.CARD_DECK_EMPTY, game.getWinner().getName()));
 				    }
 				    else {
 					   deck.setTopCardVisible(true);
@@ -349,15 +397,15 @@ public class MainGame extends JFrame{
 				    }
 				}
 				else {
-					msgbox("Player " + player.getName() + " already played 3 times, please yield turn to next player");
+					msgbox(MessageFormat.format(Messages.YIELD_TO_NEXT_PLAYER, player.getName()));
 				}
 			 }
 			 else {
-				 msgbox("Player " + player.getName() + " please take the card away!");
+				 msgbox(MessageFormat.format(Messages.PLAYER_TAKE_CARD, player.getName()));
 			 }
 		 }
 		 else {
-			 msgbox("Player " + player.getName() + " is dead");
+			 msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
 		 }
 	 }
 	 
@@ -405,7 +453,7 @@ public class MainGame extends JFrame{
 	 }
 	 
 	 private String displayPlayerInfo(Player player) {
-		return "Player" + " "+ player.getName() + ": " 
+		return player.getName() + ": " 
 	           + player.getPoints() + 
 	           " "+appendStar(player.getSaveCardCount());
 	 }
@@ -437,6 +485,11 @@ public class MainGame extends JFrame{
 		markDead();
 		resetOriginal();
         markCurrent(true);
+	 }
+	 
+	 private void refreshSavingCardCost() {
+		 String text = "Saving Card Cost: " + String.valueOf(SavingCard.CURRENT_COST);
+		 cost.setText(text);
 	 }
 	 
 	 public static void main(String args[]) {

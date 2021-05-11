@@ -15,7 +15,9 @@ public class Game {
 	
 	private ArrayList<Player> players;
 	private CardDeck cardDeck;
+	private PricingModel model;
 	private int currentPlayerId;
+	private boolean isOver=false;
 	
 	/**
 	 * A game of Suffocating Otters.
@@ -31,6 +33,11 @@ public class Game {
 		}
 	}
 	
+	private void init() {
+		cardDeck = new CardDeck(this);
+		model = new PricingModel(this);
+		players = new ArrayList<Player>();
+	}
 	
 	public int getCurrentPlayerId() {
 		return currentPlayerId;
@@ -62,6 +69,10 @@ public class Game {
 	
 	public CardDeck getCardDeck() {
 		return cardDeck;
+	}
+	
+	public PricingModel getPricingModel() {
+		return model;
 	}
 	
 	public List<Integer> getDeadPlayerIds() {
@@ -116,9 +127,24 @@ public class Game {
 		return res;
 	}
 	
-	
-	private void init() {
-		cardDeck = new CardDeck();
-		players = new ArrayList<Player>();
+	public int getLowestPoint() {
+		int res = Integer.MAX_VALUE;
+		
+		for (Player player: players) {
+			if (player.isAlive()) {
+				res = Math.min(res, player.getPoints());
+			}
+		}
+		return res;
 	}
+
+	public boolean isOver() {
+		return isOver;
+	}
+
+	public void setOver(boolean isOver) {
+		this.isOver = isOver;
+	}
+	
+	
 }
