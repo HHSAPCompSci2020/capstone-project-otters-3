@@ -19,6 +19,7 @@ import theDeathNotice.graphics.StartPage;
  */
 public class Main{
 	public static void main(String args[]) {
+		ArrayList<String> playerNames = new ArrayList<String>();
 		ArrayList<String> s = new ArrayList<String>();
 		s.add("hello");
 		s.add("hi");
@@ -45,11 +46,11 @@ public class Main{
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form 
+        // Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainGame(playerNames).setVisible(true);
             }
-        });*/
+        });
 	}
 }
