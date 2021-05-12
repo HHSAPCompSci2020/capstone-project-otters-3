@@ -31,7 +31,7 @@ import theDeathNotice.SavingCard;
  *          cards on the right side.
  *
  */
-
+<<<<<<< HEAD
 public class MainGame extends JFrame implements JayLayerListener {
 	private static final String DEFAULT_DECK_IMAGE = "cards/back.png";
 	private static final String EMPTY_DECK_IMAGE = "cards/base.png";
@@ -77,7 +77,232 @@ public class MainGame extends JFrame implements JayLayerListener {
 			player2Points.setText(playerNames.get(1) + ": " + 31);
 			player3Points.setText(playerNames.get(2) + ": " + 32);
 			player4Points.setVisible(false);
+=======
+public class MainGame extends JFrame{
+	 private static final String DEFAULT_DECK_IMAGE = "cards/back.png";
+	 private static final String EMPTY_DECK_IMAGE="cards/base.png";
+	 private static final String COST_IMAGE = "images/sale.png";
+	 private JButton takeCardButton;
+	 private JButton endTurnButton;
+	 private JButton instructionsButton;
+	 private JButton buySaveCardButton;
+	 private JButton deckButton;
+	 private JLabel scoreBoardLabel;
+	 private JLabel player1Points;
+	 private JLabel player2Points;
+	 private JLabel player3Points;
+	 private JLabel player4Points;
+	 private JLabel cost;
+	 private Game game;
+	 
+	 /**
+	  * Initializes the page.
+	  */
+	 public MainGame(List<String> playerNames) {
+		 initGame(playerNames);		 
+		 initComponents();
+		 player1Points.setOpaque(true);
+		 player1Points.setBackground(new java.awt.Color(255, 255, 255));
+		 player2Points.setOpaque(true);
+		 player2Points.setBackground(new java.awt.Color(255, 255, 255));
+		 player3Points.setOpaque(true);
+		 player3Points.setBackground(new java.awt.Color(255, 255, 255));
+		 player4Points.setOpaque(true);
+		 player4Points.setBackground(new java.awt.Color(255, 255, 255));
+		 if (playerNames.size() == 2) {
+			 player1Points.setText(playerNames.get(0) + ": " + 30);
+			 player2Points.setText(playerNames.get(1) + ": " + 31);
+			 player3Points.setVisible(false);
+			 player4Points.setVisible(false);
+		 }
+		 if (playerNames.size() == 3) {
+			 player1Points.setText(playerNames.get(0) + ": " + 30);
+			 player2Points.setText(playerNames.get(1) + ": " + 31);
+			 player3Points.setText(playerNames.get(2) + ": " + 32);
+			 player4Points.setVisible(false);
+		 }
+		 if (playerNames.size() == 4) {
+			 player1Points.setText(playerNames.get(0) + ": " + 30);
+			 player2Points.setText(playerNames.get(1) + ": " + 31);
+			 player3Points.setText(playerNames.get(2) + ": " + 32);
+			 player4Points.setText(playerNames.get(3) + ": " + 33);
+		 }
+	     refreshScoreBoard();
+	     refreshSavingCardCost();  
+	 }
+	 
+	 private void msgbox(String s) {
+		 JOptionPane.showMessageDialog(this, s);
+	 }
+	 
+	 private void initGame(List<String> playerNames) {
+		 game = new Game(playerNames);
+		 CardDeck deck = game.getCardDeck();
+		 deck.shuffleDeck();
+		 deck.shuffleDeck();
+		 deck.shuffleDeck();	 
+	 }
+	 /**
+	  * To be called if need to play again
+	  */
+	 private void resetComponents() {
+		 player1Points.setVisible(true);
+		 player2Points.setVisible(true);
+		 player3Points.setVisible(true);
+		 player4Points.setVisible(true);
+	 }
+	 private void initComponents() {
+		    takeCardButton = new javax.swing.JButton();
+	        endTurnButton = new javax.swing.JButton();
+	        instructionsButton = new javax.swing.JButton();
+	        buySaveCardButton = new javax.swing.JButton();
+	        deckButton = new javax.swing.JButton();
+	        resetDeckButtonIcon(DEFAULT_DECK_IMAGE);
+	        scoreBoardLabel = new javax.swing.JLabel();
+	        player1Points = new javax.swing.JLabel();
+	        player2Points = new javax.swing.JLabel();
+	        player3Points = new javax.swing.JLabel();
+	        player4Points = new javax.swing.JLabel();
+	        cost = new javax.swing.JLabel();
+	        setCostImage();
 
+	        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+	        
+	        takeCardButton.setBackground(new java.awt.Color(255, 153, 153));
+	        takeCardButton.setText("<html><center><b>Take Card</b></center></html>");
+	        takeCardButton.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                takeCardButtonActionPerformed(evt);
+	            }
+	        });
+
+	        endTurnButton.setBackground(new java.awt.Color(0, 204, 204));
+	        endTurnButton.setText("<html><center><b>End Turn</b></center></html>");
+	        endTurnButton.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                endTurnButtonActionPerformed(evt);
+	            }
+	        });
+
+	        instructionsButton.setBackground(new java.awt.Color(204, 204, 255));
+	        instructionsButton.setText("<html><center><b>Instructions</b></center></html>");
+	        instructionsButton.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                instructionsButtonActionPerformed(evt);
+	            }
+	        });
+
+	        buySaveCardButton.setBackground(new java.awt.Color(153, 255, 153));
+	        buySaveCardButton.setText("<html><center><b>Buy Card</b></center></html>");
+	        buySaveCardButton.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                buySaveCardButtonActionPerformed(evt);
+	            }
+	        });
+
+	        deckButton.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                deckButtonActionPerformed(evt);
+	            }
+	        });
+      
+	        scoreBoardLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+	        scoreBoardLabel.setText("<html><center><b>Score Board</b></center></html>");
+	      
+	        player1Points.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+	        player1Points.setText("Player 1: ");
+
+	        player2Points.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+	        player2Points.setText("Player 2:");
+
+	        player3Points.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+	        player3Points.setText("Player 3:");
+
+	        player4Points.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+	        player4Points.setText("Player 4: ");
+	        
+	        cost.setFont(new java.awt.Font("Avenir", 1, 18)); // NOI18N
+	        cost.setText("Saving Card Price: ");
+	        cost.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+	        
+	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+	        getContentPane().setLayout(layout);
+	        layout.setHorizontalGroup(
+	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            .addGroup(layout.createSequentialGroup()
+	                .addContainerGap(28, Short.MAX_VALUE)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                    .addComponent(scoreBoardLabel)
+	                    .addGroup(layout.createSequentialGroup()
+	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                            .addComponent(player4Points)
+	                            .addComponent(player1Points)
+	                            .addComponent(player2Points)
+	                            .addComponent(player3Points))
+	                        .addGap(102, 102, 102)
+	                        .addComponent(deckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                        .addGap(96, 96, 96)
+	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+	                            .addComponent(instructionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                            .addComponent(endTurnButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                            .addComponent(takeCardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                            .addComponent(buySaveCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
+	                .addContainerGap(82, Short.MAX_VALUE))
+	            .addGroup(layout.createSequentialGroup()
+	            		 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                    .addComponent(cost)
+	                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	        );
+	        layout.setVerticalGroup(
+	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            .addGroup(layout.createSequentialGroup()
+	                //.addContainerGap(87, Short.MAX_VALUE)
+	            		.addContainerGap(47, Short.MAX_VALUE)
+	                .addComponent(cost)
+	                .addGap(18, 18, 18)
+	                .addComponent(scoreBoardLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                    .addGroup(layout.createSequentialGroup()
+	                        .addGap(35, 35, 35)
+	                        .addComponent(player1Points))
+	                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+	                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+	                        .addComponent(takeCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+	                    .addGroup(layout.createSequentialGroup()
+	                        .addGap(30, 30, 30)
+	                        .addComponent(player2Points)
+	                        .addGap(37, 37, 37)
+	                        .addComponent(player3Points)
+	                        .addGap(32, 32, 32)
+	                        .addComponent(player4Points)
+	                        .addContainerGap(132, Short.MAX_VALUE))
+	                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+	                        .addGap(18, 18, 18)
+	                        .addComponent(endTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                        .addGap(18, 18, 18)
+	                        .addComponent(buySaveCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                        .addGap(18, 18, 18)
+	                        .addComponent(instructionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
+	            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addComponent(deckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	        );
+
+	        pack();
+
+	 }
+	 
+	 private void resetDeckButtonIcon(String iconFile) {
+         URL file = ClassLoader.getSystemClassLoader().getResource(iconFile);
+         BufferedImage image=null;
+         try {
+			  image = ImageIO.read(file);
+		   } catch (IOException e) {
+			  // TODO Auto-generated catch block
+			   e.printStackTrace();
+>>>>>>> 07fc9b2... updating
 		}
 		if (playerNames.size() == 4) {
 			player1Points.setText(playerNames.get(0) + ": " + 30);
@@ -150,7 +375,7 @@ public class MainGame extends JFrame implements JayLayerListener {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		takeCardButton.setBackground(new java.awt.Color(255, 153, 153));
-		takeCardButton.setText("<html><center><b>Take Card</b></center></html>");
+		takeCardButton.setText("Take Card");
 		takeCardButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				takeCardButtonActionPerformed(evt);
@@ -158,7 +383,7 @@ public class MainGame extends JFrame implements JayLayerListener {
 		});
 
 		endTurnButton.setBackground(new java.awt.Color(0, 204, 204));
-		endTurnButton.setText("<html><center><b>End Turn</b></center></html>");
+		endTurnButton.setText("End Turn");
 		endTurnButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				endTurnButtonActionPerformed(evt);
@@ -166,7 +391,7 @@ public class MainGame extends JFrame implements JayLayerListener {
 		});
 
 		instructionsButton.setBackground(new java.awt.Color(204, 204, 255));
-		instructionsButton.setText("<html><center><b>Instructions</b></center></html>");
+		instructionsButton.setText("Instructions");
 		instructionsButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				instructionsButtonActionPerformed(evt);
@@ -174,7 +399,7 @@ public class MainGame extends JFrame implements JayLayerListener {
 		});
 
 		buySaveCardButton.setBackground(new java.awt.Color(153, 255, 153));
-		buySaveCardButton.setText("<html><center><b>Buy Save Card</b></center></html>");
+		buySaveCardButton.setText("Buy Save Card");
 		buySaveCardButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				buySaveCardButtonActionPerformed(evt);
@@ -188,7 +413,7 @@ public class MainGame extends JFrame implements JayLayerListener {
 		});
 
 		scoreBoardLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-		scoreBoardLabel.setText("<html><center><b>Score Board</b></center></html>");
+		scoreBoardLabel.setText("SCOREBOARD");
 
 		player1Points.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 		player1Points.setText("Player 1: ");
@@ -203,7 +428,7 @@ public class MainGame extends JFrame implements JayLayerListener {
 		player4Points.setText("Player 4: ");
 
 		cost.setFont(new java.awt.Font("Avenir", 1, 18)); // NOI18N
-		cost.setText("Saving Card Price: ");
+		cost.setText("Saving Card Cost: ");
 		cost.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -256,9 +481,9 @@ public class MainGame extends JFrame implements JayLayerListener {
 										.addComponent(endTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addGap(18, 18, 18)
-										.addComponent(buySaveCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54,
+										.addComponent(instructionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addGap(18, 18, 18).addComponent(instructionsButton,
+										.addGap(18, 18, 18).addComponent(buySaveCardButton,
 												javax.swing.GroupLayout.PREFERRED_SIZE, 54,
 												javax.swing.GroupLayout.PREFERRED_SIZE))))
 				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
@@ -507,12 +732,12 @@ public class MainGame extends JFrame implements JayLayerListener {
 	private void refreshScoreBoardWithTimeInfo() {
 		markDead();
 		resetOriginal();
-
+<<<<<<< HEAD
 		markCurrent(true);
 	}
 
 	private void refreshSavingCardCost() {
-		String text = "Saving Card Price: " + String.valueOf(SavingCard.CURRENT_COST);
+		String text = "Saving Card Cost: " + String.valueOf(SavingCard.CURRENT_COST);
 		cost.setText(text);
 	}
 
@@ -580,4 +805,52 @@ public class MainGame extends JFrame implements JayLayerListener {
 
 	}
 
+=======
+        markCurrent(true);
+	 }
+	 
+	 private void refreshSavingCardCost() {
+		 String text = "Saving Card Price: " + String.valueOf(SavingCard.CURRENT_COST);
+		 cost.setText(text);
+	 }
+	 
+	 public static void main(String args[]) {
+		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
+		    List<String> playerNames = Arrays.asList(names);	    
+		    
+	        /* Set the Nimbus look and feel */
+	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+	         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+	         */
+	        try {
+	            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+	                if ("Nimbus".equals(info.getName())) {
+	                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+	                    break;
+	                }
+	            }
+	        } catch (ClassNotFoundException ex) {
+	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	        } catch (InstantiationException ex) {
+	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	        } catch (IllegalAccessException ex) {
+	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	        }
+	        //</editor-fold>
+	        //</editor-fold>
+
+	        /* Create and display the form */
+	        java.awt.EventQueue.invokeLater(new Runnable() {
+	            public void run() {
+	                new MainGame(playerNames).setVisible(true);
+	            }
+	        });
+	        
+	    } 
+
+	
+>>>>>>> 07fc9b2... updating
 }
