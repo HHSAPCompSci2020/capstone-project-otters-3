@@ -21,6 +21,13 @@ import jay.jaysound.JayLayerListener;
 import theDeathNotice.Game;
 import theDeathNotice.Player;
 
+/**
+ * @author Andria
+ * @version 1.0
+ * 
+ * This class represents the last page.
+ */
+
 public class EndingPage extends JFrame implements JayLayerListener {
 	private JLabel congrats;
 	private JLabel second;
