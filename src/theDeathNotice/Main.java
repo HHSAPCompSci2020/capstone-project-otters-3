@@ -19,11 +19,7 @@ import theDeathNotice.graphics.StartPage;
  */
 public class Main{
 	public static void main(String args[]) {
-		ArrayList<String> s = new ArrayList<String>();
-		s.add("hello");
-		s.add("hi");
-		s.add("another name");
-		JFrame window = new EndingPage(s);
+		JFrame window = new StartPage();
 
 		window.setVisible(true);
 		try {

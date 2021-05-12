@@ -84,6 +84,27 @@ public class Game {
 		}
 		return dead;
 	}
+	
+	public ArrayList<Player> getStandings() {
+		ArrayList<Player> standings = new ArrayList<Player>();
+		for (int i = 0; i < players.size(); i++) {
+			standings.add(players.get(i));
+		}
+		boolean sorted = false;
+		Player temp;
+		while(!sorted) {
+			sorted = true;
+			for (int i = 1; i < standings.size(); i++) {
+				if (standings.get(i).getPoints() < standings.get(i-1).getPoints()) {
+					temp = standings.get(i);
+					standings.set(i, standings.get(i-1));
+					standings.set(i-1, temp);
+					sorted = false;
+				}
+			}
+		}
+		return standings;
+	}
 
 	public Player getWinner() {
 		int maxPoint = Integer.MIN_VALUE;

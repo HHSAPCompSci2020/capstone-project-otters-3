@@ -18,6 +18,8 @@ import javax.swing.JTextArea;
 
 import jay.jaysound.JayLayer;
 import jay.jaysound.JayLayerListener;
+import theDeathNotice.Game;
+import theDeathNotice.Player;
 
 public class EndingPage extends JFrame implements JayLayerListener {
 	private JLabel congrats;
@@ -29,7 +31,7 @@ public class EndingPage extends JFrame implements JayLayerListener {
 	private JayLayer sound;
 	private JComboBox<String> effects;
 
-	public EndingPage(ArrayList<String> playerStandings) {
+	public EndingPage(Game game) {
 		super("Congratulations!");
 		setSize(400, 300);
 		setResizable(false);
@@ -52,11 +54,12 @@ public class EndingPage extends JFrame implements JayLayerListener {
 		second = new JLabel();
 		third = new JLabel();
 		fourth = new JLabel();
+		ArrayList<Player> playerStandings = game.getStandings();
 		JLabel[] labels = new JLabel[] {null, second, third, fourth};
 		String[] nums = new String[] {"1st", "2nd", "3rd", "4th"};
 		for (int i = 1; i < 3; i++) {
 			if (i < playerStandings.size()) {
-				labels[i].setText(nums[i] + ": " + playerStandings.get(i));
+				labels[i].setText(nums[i] + ": " + playerStandings.get(i).getName());
 			}
 			labels[i].setBounds(getWidth()/2-90,  getHeight()/2 - 150 - 20*(4-i), 400, 300);
 			labels[i].setFont(new Font("font", Font.PLAIN, 14));
@@ -65,7 +68,7 @@ public class EndingPage extends JFrame implements JayLayerListener {
 			labels[i].setVisible(true);
 		}
 		
-		congrats = new JLabel("Congrats! " + playerStandings.get(0) + " won!");
+		congrats = new JLabel("Congrats! " + playerStandings.get(0).getName() + " won!");
 		congrats.setBounds(getWidth()/2-90,  getHeight()/2 - 300 , 400, 400);
 		congrats.setFont(new Font("font", Font.PLAIN, 18));
 		add(congrats);

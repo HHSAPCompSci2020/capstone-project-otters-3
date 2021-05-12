@@ -220,7 +220,6 @@ public class AddPlayers extends JFrame implements JayLayerListener {
 		} else {
 			setVisible(false);
 			JFrame window = new MainGame(players);
-			window.setVisible(true);
 		}
 	}
 

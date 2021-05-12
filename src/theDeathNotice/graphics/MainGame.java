@@ -312,8 +312,14 @@ public class MainGame extends JFrame{
 	 }
 	 
 	 private void endTurnActionInternal(Player player) {
-		 if (game.isOver())
+		 if (game.isOver()) {
+			 // honestly not sure if this is the correct place to put it but yea ***
+			setVisible(false);
+			JFrame window = new EndingPage(game);
+			window.setVisible(true);
+			 // ***
 		    return;
+		 }
 		 player.resetDrawCount(); 
 		 if (!game.updateCurrentPlayerId()) {
 			player = game.getWinner();
@@ -326,8 +332,14 @@ public class MainGame extends JFrame{
 	 }
 	 
 	 private void endTurnButtonActionPerformed(ActionEvent evt) {
-		 if (game.isOver())
+		 if (game.isOver()) {
+			 // honestly not sure if this is the correct place to put it but yea ***
+			setVisible(false);
+			JFrame window = new EndingPage(game);
+			window.setVisible(true);
+			 // ***
 			return;
+		 }
 		 CardDeck deck = game.getCardDeck();
 		 if (deck.isTopCardVisible()) {
 		     msgbox(Messages.END_TURN_NOT_ALLOWED); 
