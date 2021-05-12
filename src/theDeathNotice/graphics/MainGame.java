@@ -84,19 +84,30 @@ public class MainGame extends JFrame implements JayLayerListener{
 		 }
 	     refreshScoreBoard();
 	     refreshSavingCardCost();  
+	     
+			String[] soundEffects = new String[]{"errorSound.mp3"};
+			effects = new JComboBox<String>(soundEffects);
+			add(effects);
+			
+			sound=new JayLayer("audio/","audio/",false);
+			sound.addPlayList();
+			sound.addSoundEffects(soundEffects);
+			sound.changePlayList(0);
+			sound.addJayLayerListener(this);
 	 }
 	 
 	 private void msgbox(String s) {
-		 //sound.playSoundEffect(0);
-	     //sound = new JayLayer("audio/", "audio/", false);
-		 //String[] soundEffects = new String[] { "errorSound.mp3" };
-		 //effects = new JComboBox<String>(soundEffects);
-		 //add(effects);
-		 //sound = new JayLayer("audio/", "audio/", false);
-		 //sound.addPlayList();
-		 //sound.addSoundEffects(soundEffects);
-		 //sound.changePlayList(0);
-		 //sound.addJayLayerListener(this);
+			sound.playSoundEffect(0);
+			sound=new JayLayer("audio/","audio/",false);
+			String[] soundEffects = new String[]{"errorSound.mp3"};
+			effects = new JComboBox<String>(soundEffects);
+			add(effects);
+			
+			sound=new JayLayer("audio/","audio/",false);
+			sound.addPlayList();
+			sound.addSoundEffects(soundEffects);
+			sound.changePlayList(0);
+			sound.addJayLayerListener(this);
 
 		 JOptionPane.showMessageDialog(this, s);
 	 }
@@ -378,8 +389,12 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 
 	 
 	 private void buySaveCardButtonActionPerformed(ActionEvent evt) {
-		 if (game.isOver())
-			 return;
+		 if (game.isOver()) {
+				setVisible(false);
+				JFrame window = new EndingPage(game);
+				window.setVisible(true);
+				return;
+		 }
 		 Player player = game.getCurrentPlayer();
 		 if (player.isAlive()) {	 
 			 CardDeck deck = game.getCardDeck();
@@ -403,8 +418,12 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 }
 	 
 	 private void deckButtonActionPerformed(ActionEvent evt) {
-		 if (game.isOver())
-			    return;
+		 if (game.isOver()) {
+				setVisible(false);
+				JFrame window = new EndingPage(game);
+				window.setVisible(true);
+				return;
+		 }
 		 CardDeck deck = game.getCardDeck();
 		 Player player = game.getCurrentPlayer();
 		 if (player.isAlive()) {
