@@ -305,8 +305,12 @@ public class MainGame extends JFrame implements JayLayerListener{
          cost.setIcon(icon);
 	 }
 	 private void takeCardButtonActionPerformed(ActionEvent evt) {
-		    if (game.isOver())
+		    if (game.isOver()) {
+				setVisible(false);
+				JFrame window = new EndingPage(game);
+				window.setVisible(true);
 		    	return;
+		    }
 		    CardDeck deck = game.getCardDeck();
 		    Player player = game.getCurrentPlayer();
 		    if (player.isAlive()) {
@@ -346,8 +350,12 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 }
 	 
 	 private void endTurnActionInternal(Player player) {
-		 if (game.isOver())
-		    return;
+		    if (game.isOver()) {
+				setVisible(false);
+				JFrame window = new EndingPage(game);
+				window.setVisible(true);
+		    	return;
+		    }
 		 player.resetDrawCount(); 
 		 if (!game.updateCurrentPlayerId()) {
 			player = game.getWinner();
