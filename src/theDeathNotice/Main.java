@@ -1,10 +1,12 @@
 package theDeathNotice;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 import theDeathNotice.graphics.AddPlayers;
+import theDeathNotice.graphics.EndingPage;
 import theDeathNotice.graphics.MainGame;
 import theDeathNotice.graphics.StartPage;
 
@@ -17,7 +19,11 @@ import theDeathNotice.graphics.StartPage;
  */
 public class Main{
 	public static void main(String args[]) {
-		JFrame window = new StartPage();
+		ArrayList<String> s = new ArrayList<String>();
+		s.add("hello");
+		s.add("hi");
+		s.add("another name");
+		JFrame window = new EndingPage(s);
 
 		window.setVisible(true);
 		try {
