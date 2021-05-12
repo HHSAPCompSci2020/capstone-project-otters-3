@@ -11,4 +11,5 @@ public class Messages {
 	public final static String NO_ENOUCH_MONDY_TO_BUY_CARD="Player {0} does not have enough money to buy a saving card";
     public final static String YIELD_TO_NEXT_PLAYER="Player {0} already played 3 times, please yield turn to next player";
     public final static String PLAYER_TAKE_CARD="Player {0} please take the card away";
+    public final static String END_TURN_NOT_ALLOWED="You must draw card to end turn";
 }

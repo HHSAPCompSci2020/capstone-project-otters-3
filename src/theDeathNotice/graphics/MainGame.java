@@ -327,19 +327,25 @@ public class MainGame extends JFrame{
 	 
 	 private void endTurnButtonActionPerformed(ActionEvent evt) {
 		 if (game.isOver())
-			    return;
-		 Player player = game.getCurrentPlayer();
-		 if (player.isAlive()) {	 
-			 if (player.getDrawCount() == 0)
-			 {
-				 msgbox(Messages.PLAYER_MUST_DRAW_ONCE);
-			 }
-			 else {
-				 endTurnActionInternal(player);
-			 }
+			return;
+		 CardDeck deck = game.getCardDeck();
+		 if (deck.isTopCardVisible()) {
+		     msgbox(Messages.END_TURN_NOT_ALLOWED); 
 		 }
 		 else {
-			 msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
+			 Player player = game.getCurrentPlayer();
+			 if (player.isAlive()) {	 
+				 if (player.getDrawCount() == 0)
+				 {
+					 msgbox(Messages.PLAYER_MUST_DRAW_ONCE);
+				 }
+				 else {
+					 endTurnActionInternal(player);
+				 }
+			 }
+			 else {
+				 msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
+			 }
 		 }
 	 }
 	 
@@ -350,7 +356,7 @@ public class MainGame extends JFrame{
 	 
 	 private void buySaveCardButtonActionPerformed(ActionEvent evt) {
 		 if (game.isOver())
-			    return;
+			 return;
 		 Player player = game.getCurrentPlayer();
 		 if (player.isAlive()) {	 
 			 CardDeck deck = game.getCardDeck();

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * This class represents a game of TheDeathNotice.
  * 
- * @author Andria and Skyla
+ * @author Skyla
  * @version 1
  *
  */
