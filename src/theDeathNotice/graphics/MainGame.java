@@ -87,6 +87,17 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 }
 	 
 	 private void msgbox(String s) {
+		 //sound.playSoundEffect(0);
+	     //sound = new JayLayer("audio/", "audio/", false);
+		 //String[] soundEffects = new String[] { "errorSound.mp3" };
+		 //effects = new JComboBox<String>(soundEffects);
+		 //add(effects);
+		 //sound = new JayLayer("audio/", "audio/", false);
+		 //sound.addPlayList();
+		 //sound.addSoundEffects(soundEffects);
+		 //sound.changePlayList(0);
+		 //sound.addJayLayerListener(this);
+
 		 JOptionPane.showMessageDialog(this, s);
 	 }
 	 
@@ -246,6 +257,14 @@ public class MainGame extends JFrame implements JayLayerListener{
 	        );
 
 	        pack();
+	        
+
+	        
+	        //sound = new JayLayer("audio/", "audio/", false);
+	        //sound.addPlayList();
+	        //sound.addSoundEffects(soundEffects);
+	        //sound.changePlayList(0);
+	        //sound.addJayLayerListener(this);
 
 	 }
 	 
