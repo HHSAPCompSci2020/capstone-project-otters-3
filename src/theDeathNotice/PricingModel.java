@@ -50,9 +50,9 @@ public class PricingModel {
 		return this.currentPrice;
 	}
 	
-	public void main(String args[]) {
-		int n = getPrice();
-		System.out.printf("price: %d", n);
-		
-	}
+//	public void main(String args[]) {
+//		int n = getPrice();
+//		System.out.printf("price: %d", n);
+//		
+//	}
 }

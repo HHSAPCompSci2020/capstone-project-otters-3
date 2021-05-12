@@ -119,7 +119,7 @@ public class MainGame extends JFrame{
 	        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 	        
 	        takeCardButton.setBackground(new java.awt.Color(255, 153, 153));
-	        takeCardButton.setText("Take Card");
+	        takeCardButton.setText("<html><center><b>Take Card</b></center></html>");
 	        takeCardButton.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
 	                takeCardButtonActionPerformed(evt);
@@ -127,7 +127,7 @@ public class MainGame extends JFrame{
 	        });
 
 	        endTurnButton.setBackground(new java.awt.Color(0, 204, 204));
-	        endTurnButton.setText("End Turn");
+	        endTurnButton.setText("<html><center><b>End Turn</b></center></html>");
 	        endTurnButton.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
 	                endTurnButtonActionPerformed(evt);
@@ -135,7 +135,7 @@ public class MainGame extends JFrame{
 	        });
 
 	        instructionsButton.setBackground(new java.awt.Color(204, 204, 255));
-	        instructionsButton.setText("Instructions");
+	        instructionsButton.setText("<html><center><b>Instructions</b></center></html>");
 	        instructionsButton.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
 	                instructionsButtonActionPerformed(evt);
@@ -143,7 +143,7 @@ public class MainGame extends JFrame{
 	        });
 
 	        buySaveCardButton.setBackground(new java.awt.Color(153, 255, 153));
-	        buySaveCardButton.setText("Buy Save Card");
+	        buySaveCardButton.setText("<html><center><b>Buy Card</b></center></html>");
 	        buySaveCardButton.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
 	                buySaveCardButtonActionPerformed(evt);
@@ -155,9 +155,9 @@ public class MainGame extends JFrame{
 	                deckButtonActionPerformed(evt);
 	            }
 	        });
-
+      
 	        scoreBoardLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-	        scoreBoardLabel.setText("SCOREBOARD");
+	        scoreBoardLabel.setText("<html><center><b>Score Board</b></center></html>");
 	      
 	        player1Points.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 	        player1Points.setText("Player 1: ");
@@ -172,10 +172,9 @@ public class MainGame extends JFrame{
 	        player4Points.setText("Player 4: ");
 	        
 	        cost.setFont(new java.awt.Font("Avenir", 1, 18)); // NOI18N
-	        cost.setText("Saving Card Cost: ");
+	        cost.setText("Saving Card Price: ");
 	        cost.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 	        
-
 	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 	        getContentPane().setLayout(layout);
 	        layout.setHorizontalGroup(
@@ -232,9 +231,9 @@ public class MainGame extends JFrame{
 	                        .addGap(18, 18, 18)
 	                        .addComponent(endTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                        .addGap(18, 18, 18)
-	                        .addComponent(instructionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                        .addComponent(buySaveCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                        .addGap(18, 18, 18)
-	                        .addComponent(buySaveCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
+	                        .addComponent(instructionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
 	            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
 	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 	                .addComponent(deckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -494,7 +493,7 @@ public class MainGame extends JFrame{
 	 }
 	 
 	 private void refreshSavingCardCost() {
-		 String text = "Saving Card Cost: " + String.valueOf(SavingCard.CURRENT_COST);
+		 String text = "Saving Card Price: " + String.valueOf(SavingCard.CURRENT_COST);
 		 cost.setText(text);
 	 }
 	 

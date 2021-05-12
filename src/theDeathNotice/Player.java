@@ -37,12 +37,9 @@ public class Player {
 		return name;
 	}
 
-	
-
 	public int getInitialPlayerNumber() {
 		return initialPlayerNumber;
 	}
-
 
 	public void setPoints(int points) {
 		this.points = points;

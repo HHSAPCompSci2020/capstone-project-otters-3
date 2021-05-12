@@ -2,6 +2,7 @@ package theDeathNotice;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -96,7 +97,7 @@ public class Game {
 				    maxPoint = player.getPoints();
 				    earliestTime = player.getTime();
 				}
-				else if (player.getPoints() == maxPoint && earliestTime.compareTo(player.getTime())> 0) {
+				else if (player.getPoints() == maxPoint && earliestTime.compareTo(player.getTime()) > 0) {
 			  	    winner = player;
 					earliestTime = player.getTime();
 				}
@@ -108,7 +109,7 @@ public class Game {
 	public boolean hasMultiplePlayerWithSamePoints() {
 		for (int i=0; i<players.size(); i++) {
 			for (int j=i+1; j<players.size(); j++) {
-				if (players.get(i).getTime() == players.get(j).getTime()) {
+				if (players.get(i).getPoints() == players.get(j).getPoints()) {
 					return true;
 				}
 			}
@@ -145,6 +146,4 @@ public class Game {
 	public void setOver(boolean isOver) {
 		this.isOver = isOver;
 	}
-	
-	
 }
