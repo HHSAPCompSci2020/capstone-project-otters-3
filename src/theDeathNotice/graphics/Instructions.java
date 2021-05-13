@@ -3,13 +3,12 @@ package theDeathNotice.graphics;
 import javax.swing.*;
 
 /**
- * 
- * @author Skyla
- * @version 1
- * 
  * The class representing the window or page of instructions.
  * This class has the instructions of the game for the players
  * to refer to.
+ * 
+ * @author Skyla
+ * @version 1
  *
  */
 

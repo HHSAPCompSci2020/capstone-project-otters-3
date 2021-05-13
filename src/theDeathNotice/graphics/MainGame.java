@@ -20,14 +20,13 @@ import theDeathNotice.Player;
 import theDeathNotice.SavingCard;
 
 /**
- * 
- * @author Skyla
- * @version 1
- * 
  * This class represents the window or page where the main game is taking place.
  * There is a scoreboard that refreshes each turn on the left side, the draw deck
  * in the middle, and buttons to draw, end your turn, see the instructions, visit 
  * the store, and see players' cards on the right side.  
+ * 
+ * @author Skyla
+ * @version 1
  *
  */
 public class MainGame extends JFrame implements JayLayerListener{
