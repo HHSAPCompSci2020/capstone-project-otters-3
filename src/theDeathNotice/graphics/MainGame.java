@@ -392,7 +392,7 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 }
 	 
 	 private void instructionsButtonActionPerformed(ActionEvent evt) {
-		 
+		 Instructions ins =new Instructions(this);
 	 }
 	 
 	 
