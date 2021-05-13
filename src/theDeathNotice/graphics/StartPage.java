@@ -19,7 +19,7 @@ public class StartPage extends JFrame {
 	private JLabel gameName;
 
 	/**
-     * Initializes the page;
+     * Initializes the page.
      * 
      */
     
@@ -70,7 +70,7 @@ public class StartPage extends JFrame {
 
         pack();	
 	}
-//	
+
 	private void startButtonActionPerformed(ActionEvent e) {
 		setVisible(false);
 		JFrame window = new AddPlayers();
