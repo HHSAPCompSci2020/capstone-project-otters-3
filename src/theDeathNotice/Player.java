@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 /**
  * 
+ * This class represents a player in the game.
+ * 
  * @author Skyla
  * @version 1
  *
