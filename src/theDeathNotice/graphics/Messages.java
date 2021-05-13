@@ -3,7 +3,7 @@ package theDeathNotice.graphics;
 public class Messages {
 	
 	/**
-	 * 
+	 * This message pops up when somebody pressed the card deck when it's empty. 
 	 */
 	public final static String EMPTY_CARD_DECK= "Empty Card Deck";
 	
