@@ -42,7 +42,11 @@ public class Instructions {//extends JDialog implements ActionListener {
        		+ "sample text sample text sample test   <br>" 
        		+ "sample text sample text sample test</p>"
        		+ "</body></html>";
-
+       
+       /**
+        * Initializes the page.
+        * @param frame The MainGame JFrame that we use to open up this class.
+        */
 	   public Instructions(JFrame frame) {
 		   JOptionPane.showMessageDialog(frame,
 				    text,
