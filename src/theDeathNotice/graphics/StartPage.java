@@ -6,7 +6,7 @@ import javax.swing.*;
 
 /**
  * 
- * @author skyla and andria
+ * @author Andria
  * @version 1
  * 
  * This class represents the window or page of the starting screen.
@@ -19,7 +19,7 @@ public class StartPage extends JFrame {
 	private JLabel gameName;
 
 	/**
-     * Initializes the page;
+     * Initializes the page.
      * 
      */
     
@@ -70,7 +70,7 @@ public class StartPage extends JFrame {
 
         pack();	
 	}
-//	
+
 	private void startButtonActionPerformed(ActionEvent e) {
 		setVisible(false);
 		JFrame window = new AddPlayers();
