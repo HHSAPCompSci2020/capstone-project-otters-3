@@ -111,7 +111,7 @@ public class Player {
 	}
 	
 	/**
-	 * 
+	 * Adds a save card to the player hand.
 	 * @param card
 	 */
 	public void addSaveCard(Card card) {
@@ -119,7 +119,7 @@ public class Player {
 	}
 			
 	/**
-	 * 
+	 * Removes a save card from the player hand. 
 	 * @return whether the player had a saving card or not
 	 */
 	public boolean removeSaveCard() {
@@ -168,7 +168,7 @@ public class Player {
 	}
 	
 	/**
-	 * 
+	 * Incraments the number of times a player has drawn for their turn.
 	 * @return true if the current player's draw count can be increased
 	 * false if the current player's draw count is already 3
 	 */
