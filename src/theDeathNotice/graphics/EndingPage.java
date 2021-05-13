@@ -77,7 +77,7 @@ public class EndingPage extends JFrame implements JayLayerListener {
 			labels[i].setVisible(true);
 		}
 		
-		congrats = new JLabel("Congrats! " + playerStandings.get(0) + " won!");
+		congrats = new JLabel("Congrats! " + playerStandings.get(0).getName() + " won!");
 		congrats.setBounds(getWidth()/2-90,  getHeight()/2 - 300 , 400, 400);
 		congrats.setFont(new Font("font", Font.PLAIN, 18));
 		add(congrats);
