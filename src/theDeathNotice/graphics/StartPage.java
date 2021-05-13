@@ -6,7 +6,7 @@ import javax.swing.*;
 
 /**
  * 
- * @author skyla and andria
+ * @author Andria
  * @version 1
  * 
  * This class represents the window or page of the starting screen.
