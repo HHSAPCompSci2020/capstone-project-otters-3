@@ -334,6 +334,9 @@ public class MainGame extends JFrame implements JayLayerListener{
 					    card = deck.peekTopCard();
 					    if (card == null) {
 					    	game.setOver(true);
+							setVisible(false);
+							JFrame window = new EndingPage(game);
+							window.setVisible(true);
 					    	resetDeckButtonIcon(EMPTY_DECK_IMAGE);
 					    	msgbox(MessageFormat.format(Messages.CARD_DECK_EMPTY, game.getWinner().getName()));
 					    }
@@ -451,6 +454,9 @@ public class MainGame extends JFrame implements JayLayerListener{
 				    		refreshScoreBoardWithTimeInfo();
 				    	}
 				    	game.setOver(true);
+						setVisible(false);
+						JFrame window = new EndingPage(game);
+						window.setVisible(true);
 				    	resetDeckButtonIcon(EMPTY_DECK_IMAGE);
 				    	msgbox(MessageFormat.format(Messages.CARD_DECK_EMPTY, game.getWinner().getName()));
 				    }
