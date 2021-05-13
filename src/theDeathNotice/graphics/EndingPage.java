@@ -99,7 +99,7 @@ public class EndingPage extends JFrame implements JayLayerListener {
 	}
 	
 	
-	public void playAgainActionPerformed(ActionEvent e) {
+	private void playAgainActionPerformed(ActionEvent e) {
 		sound.stopSong();
 		setVisible(false);
 		JFrame window = new AddPlayers();
