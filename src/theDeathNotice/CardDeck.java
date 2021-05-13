@@ -63,19 +63,38 @@ public class CardDeck {
 		return cards.get(0);
 	}
 	
-	
+	/**
+	 * If the card at the top of the deck is visible to all players (the front is showing) or not.
+	 * 
+	 * @return true if the top card is visible, false otherwise 
+	 */
 	public boolean isTopCardVisible() {
 		return topCardVisible;
 	}
-
+	
+	/**
+	 * Sets the card at the top of the deck visible to all players (flips the card).
+	 * 
+	 * @param topCardVisible
+	 */
 	public void setTopCardVisible(boolean topCardVisible) {
 		this.topCardVisible = topCardVisible;
 	}
-
+	
+	/**
+	 * The number of cards left in the deck (not drawn yet).
+	 * 
+	 * @return The number of cards left in the deck.
+	 */
 	public int getNumOfCards() {
 		return cards.size();
 	}
 	
+	/**
+	 * How many steps or cards there are until the next DeathCard.
+	 * 
+	 * @return the number of cards until the next DeathCard
+	 */
 	public int getDeathDistance() {
 		int steps = 0;
 		for (Card card: cards)  {
