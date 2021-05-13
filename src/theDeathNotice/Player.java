@@ -19,8 +19,11 @@ public class Player {
 	private boolean alive;
 	private int drawCount;
 	
+
 	/**
-	 * 
+	 * This class represents a player.
+	 * @param name the name of the player
+	 * @param initialPlayerNumber the number of the player
 	 */
 	public Player(String name, int initialPlayerNumber) {
 		this.name = name;
@@ -32,24 +35,43 @@ public class Player {
 	}
 
 
-
+	/**
+	 * 
+	 * @return the name of the player
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * 
+	 * @return the inital player number of the player
+	 */
 	public int getInitialPlayerNumber() {
 		return initialPlayerNumber;
 	}
 
+	/**
+	 * 
+	 * @param points the number of points to set the points to
+	 */
 	public void setPoints(int points) {
 		this.points = points;
 	}
 
 
+	/**
+	 * 
+	 * @return the number of points the player has
+	 */
 	public int getPoints() {
 		return points;
 	}
 
+	/**
+	 * 
+	 * @return the number of saving cards the player has
+	 */
 	public int getSaveCardCount() {
 		int count = 0;
 		for(Card card: currentHand) {
@@ -65,7 +87,7 @@ public class Player {
 	}
 
 	/**
-	 * adds pointsAdded to the points
+	 * adds points Added to the points
 	 * @param number of points added to the field points (can be a negative number to subtract points)
 	 */
 	public void addPoints(int pointsAdded) {
@@ -98,7 +120,7 @@ public class Player {
 			
 	/**
 	 * 
-	 * @return
+	 * @return whether the player had a saving card or not
 	 */
 	public boolean removeSaveCard() {
 		int i = 0;
@@ -116,7 +138,7 @@ public class Player {
 
 	/**
 	 * 
-	 * @return
+	 * @return whether the player is alive or not
 	 */
 	public boolean isAlive() {
 		return alive;
@@ -124,14 +146,14 @@ public class Player {
 
 	/**
 	 * 
-	 * @param alive
+	 * @param alive what to set the player's alive status to
 	 */
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
 
 	/**
-	 * 
+	 * Resets the draw count.
 	 */
 	public void resetDrawCount() {
 		drawCount = 0;
@@ -139,7 +161,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return
+	 * @return the drawCount
 	 */
 	public int getDrawCount() {
 		return drawCount;
