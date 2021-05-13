@@ -134,7 +134,7 @@ public class CardDeck {
 			return "dead";
 			
 	}
-	public static void main(String args[]) {
+//	public static void main(String args[]) {
 //		CardDeck c = new CardDeck();
 //		c.shuffleDeck();
 //		c.shuffleDeck();
@@ -152,5 +152,5 @@ public class CardDeck {
 //			}
 //		}
 //		// Game over, Declare winner
-	}
+//	}
 }
