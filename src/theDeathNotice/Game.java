@@ -100,6 +100,7 @@ public class Game {
 	}
 
 	/**
+	 * Gets who the current player is (whose turn it is).
 	 * 
 	 * @return the player who's the current player
 	 */
@@ -108,6 +109,8 @@ public class Game {
 	}
 	
 	/**
+	 * Gets the CardDeck used for the game.
+	 * 
 	 * @return the card deck of the game
 	 */
 	public CardDeck getCardDeck() {
@@ -115,6 +118,8 @@ public class Game {
 	}
 	
 	/**
+	 * Gets the pricing model for SaveCard.
+	 * 
 	 * @return the pricing model of the game
 	 */
 	public PricingModel getPricingModel() {
@@ -122,6 +127,7 @@ public class Game {
 	}
 	
 	/**
+	 * Gets the playerIDs of the dead players.
 	 * 
 	 * @return the playerIDs of the dead players
 	 */
@@ -136,6 +142,8 @@ public class Game {
 	}
 
 	/**
+	 * Gets which player the the winner is.
+	 * 
 	 * @return the winner
 	 */
 	public Player getWinner() {
@@ -160,6 +168,7 @@ public class Game {
 	
 	
 	/**
+	 * If there are multiple players that are tied. 
 	 * 
 	 * @return whether or not there are multiple players with the same number of points
 	 */
@@ -175,6 +184,8 @@ public class Game {
 	}
 	
 	/**
+	 * Gets the number of players alive.
+	 * 
 	 * @return the number of players alive
 	 */
 	public int numOfAlivePlayers() {
@@ -189,6 +200,8 @@ public class Game {
 	}
 	
 	/**
+	 * Gets the point amount of the remaining player with the lowest amount of points.
+	 * 
 	 * @return the point value of the alive player with the lowest point value
 	 */
 	public int getLowestPoint() {
@@ -203,6 +216,7 @@ public class Game {
 	}
 	
 	/**
+	 * Whether or not the game is over.
 	 * 
 	 * @return whether the game is over or not
 	 */
@@ -211,6 +225,7 @@ public class Game {
 	}
 
 	/**
+	 * Sets the game to over when it ends.
 	 * 
 	 * @param isOver whether the game is over or not
 	 */
