@@ -52,7 +52,7 @@ Must-have Features:
 Want-to-have Features:
 [These are features that you would like to have by the project due date, but you’re unsure whether you’ll hit all of them. A good final project would have perhaps half of these completed. At least 5 are required. Again, fully describe each.]
 * The cards in the deck will be customized such that it fits the “Suffocating Otter” prompt, instead of just using a standard deck of cards. In other words, the cards will be designed such that the “deadly” card will be a “plastic” card, the “save” card will be a “doctor” card, etc. 
-*  A “Would you like to play again?” button after the player dies. This could be implemented in the case of using different computers, as this would not work for a shared computer.
+*  A “Would you like to play again?” button after the game ends.
 * Instead of doing a multiplayer feature where players play on a shared computer, we could implement it so that players are able to play against each other on different computers.
 * Implement the cards from advanced version, which you can buy in the store (each counts as a feature):
    * If the player plays a certain card (“See the Future”), they have the ability to see the next three cards in the deck, allowing them to change their plan for the game accordingly.
