@@ -21,12 +21,16 @@ public class Game {
 	private boolean isOver=false;
 	
 	/**
-	 * A game of Suffocating Otters.
+	 * A game of The Death Notice.
 	 */
 	public Game() {
 		init();
 	}
 	
+	/**
+	 * A game of The Death Notice
+	 * @param names The names of the players 
+	 */
 	public Game(List<String> names) {
 		init();
 		for (int i=0; i<names.size(); i++) {
@@ -40,10 +44,17 @@ public class Game {
 		players = new ArrayList<Player>();
 	}
 	
+	/**
+	 * @return the ID of the current player
+	 */
 	public int getCurrentPlayerId() {
 		return currentPlayerId;
 	}
-
+	
+	/**
+	 * 
+	 * @return the players in an ArrayList in the order of their standings
+	 */
 	public ArrayList<Player> getStandings() {
 		ArrayList<Player> standings = new ArrayList<Player>();
 		for (int i = 0; i < players.size(); i++) {
@@ -64,7 +75,10 @@ public class Game {
 		}
 		return standings;
 	}
-
+	
+	/**
+	 * @return
+	 */
 	public boolean updateCurrentPlayerId() {
 		//playerTurn = (playerTurn+1)%(players.size());
 		if (numOfAlivePlayers()>1) {
@@ -82,20 +96,30 @@ public class Game {
 
 	/**
 	 * 
-	 * @return
+	 * @return the player who's the current player
 	 */
 	public Player getCurrentPlayer() {
 		return players.get(currentPlayerId);
 	}
 	
+	/**
+	 * @return the card deck of the game
+	 */
 	public CardDeck getCardDeck() {
 		return cardDeck;
 	}
 	
+	/**
+	 * @return the pricing model of the game
+	 */
 	public PricingModel getPricingModel() {
 		return model;
 	}
 	
+	/**
+	 * 
+	 * @return the playerIDs of the dead players
+	 */
 	public List<Integer> getDeadPlayerIds() {
 		ArrayList<Integer> dead = new ArrayList<>();
 		for (int i=0; i<players.size(); i++) {
@@ -106,6 +130,9 @@ public class Game {
 		return dead;
 	}
 
+	/**
+	 * @return the winner
+	 */
 	public Player getWinner() {
 		int maxPoint = Integer.MIN_VALUE;
 		LocalTime earliestTime = LocalTime.MAX;
@@ -125,7 +152,12 @@ public class Game {
 		}
 		return winner;
 	}
-
+	
+	
+	/**
+	 * 
+	 * @return whether or not there are multiple players with the same number of points
+	 */
 	public boolean hasMultiplePlayerWithSamePoints() {
 		for (int i=0; i<players.size(); i++) {
 			for (int j=i+1; j<players.size(); j++) {
@@ -137,6 +169,9 @@ public class Game {
 		return false;
 	}
 	
+	/**
+	 * @return the number of players alive
+	 */
 	public int numOfAlivePlayers() {
 		int res = 0;;
 		
@@ -148,6 +183,9 @@ public class Game {
 		return res;
 	}
 	
+	/**
+	 * @return the point value of the alive player with the lowest point value
+	 */
 	public int getLowestPoint() {
 		int res = Integer.MAX_VALUE;
 		
@@ -158,11 +196,19 @@ public class Game {
 		}
 		return res;
 	}
-
+	
+	/**
+	 * 
+	 * @return whether the game is over or not
+	 */
 	public boolean isOver() {
 		return isOver;
 	}
 
+	/**
+	 * 
+	 * @param isOver whether the game is over or not
+	 */
 	public void setOver(boolean isOver) {
 		this.isOver = isOver;
 	}

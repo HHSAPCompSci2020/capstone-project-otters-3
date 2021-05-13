@@ -38,6 +38,10 @@ public class EndingPage extends JFrame implements JayLayerListener {
 	private JayLayer sound;
 	private JComboBox<String> effects;
 
+	/**
+	 * initializes the game
+	 * @param game the completed game with the player standings
+	 */
 	public EndingPage(Game game) {
 		super("Congratulations!");
 		setSize(400, 300);
