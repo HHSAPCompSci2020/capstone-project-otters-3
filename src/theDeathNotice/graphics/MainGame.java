@@ -360,7 +360,10 @@ public class MainGame extends JFrame implements JayLayerListener{
 		 if (!game.updateCurrentPlayerId()) {
 			player = game.getWinner();
 			game.setOver(true);
-			msgbox(MessageFormat.format(Messages.PLAYER_WIN, player.getName()));
+			setVisible(false);
+			JFrame window = new EndingPage(game);
+			window.setVisible(true);
+//			msgbox(MessageFormat.format(Messages.PLAYER_WIN, player.getName()));
 		 }	
 		 else {
 		    refreshScoreBoard();
