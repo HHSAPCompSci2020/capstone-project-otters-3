@@ -45,6 +45,8 @@ public class Game {
 	}
 	
 	/**
+	 * Gets the ID of the current player.
+	 * 
 	 * @return the ID of the current player
 	 */
 	public int getCurrentPlayerId() {
@@ -52,6 +54,7 @@ public class Game {
 	}
 	
 	/**
+	 * Gets the players in the order of their standings.
 	 * 
 	 * @return the players in an ArrayList in the order of their standings
 	 */
@@ -77,7 +80,9 @@ public class Game {
 	}
 	
 	/**
-	 * @return
+	 * Updates the player's ID when another player dies.
+	 * 
+	 * @return whether or not there are multiple players (more than 1) still alive
 	 */
 	public boolean updateCurrentPlayerId() {
 		//playerTurn = (playerTurn+1)%(players.size());
