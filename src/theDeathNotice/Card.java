@@ -75,4 +75,5 @@ public abstract class Card {
 	public abstract void act(Player player);
 	
 	
+	
 }
