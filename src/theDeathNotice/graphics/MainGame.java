@@ -368,8 +368,12 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 }
 	 
 	 private void endTurnButtonActionPerformed(ActionEvent evt) {
-		 if (game.isOver())
-			return;
+		 if (game.isOver()) {
+				setVisible(false);
+				JFrame window = new EndingPage(game);
+				window.setVisible(true);
+				return;
+		 }
 		 CardDeck deck = game.getCardDeck();
 		 if (deck.isTopCardVisible()) {
 		     msgbox(Messages.END_TURN_NOT_ALLOWED); 
