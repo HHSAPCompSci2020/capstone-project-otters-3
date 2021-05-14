@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.text.MessageFormat;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -84,20 +83,10 @@ public class MainGame extends JFrame implements JayLayerListener{
 	     refreshScoreBoard();
 	     refreshSavingCardCost();  
 	     
-
-//			String[] soundEffects = new String[]{"errorSound.mp3"};
-//		  	effects = new JComboBox<String>(soundEffects);
-//			add(effects);
-//			
-//			sound=new JayLayer("audio/","audio/",false);
-//			sound.addPlayList();
-//			sound.addSoundEffects(soundEffects);
-//			sound.changePlayList(0);
-//			sound.addJayLayerListener(this);
 	 }
 	 
-	 private void msgbox(String s) {
-			String[] soundEffects = new String[]{"errorSound.mp3"};
+	 private void makeSound(String file) {
+			String[] soundEffects = new String[]{file};
 		  	effects = new JComboBox<String>(soundEffects);
 			add(effects);
 			
@@ -107,16 +96,10 @@ public class MainGame extends JFrame implements JayLayerListener{
 			sound.changePlayList(0);
 			sound.addJayLayerListener(this);		 
 			sound.playSoundEffect(0);
-//			sound=new JayLayer("audio/","audio/",false);
-//			soundEffects = new String[]{"errorSound.mp3"};
-//			effects = new JComboBox<String>(soundEffects);
-//			add(effects);
-//			
-//			sound=new JayLayer("audio/","audio/",false);
-//			sound.addPlayList();
-//			sound.addSoundEffects(soundEffects);
-//			sound.changePlayList(0);
-//			sound.addJayLayerListener(this);
+	 }
+	 
+	 private void msgbox(String s) {
+		    makeSound("errorSound.mp3");
 		    JOptionPane.showMessageDialog(this, s, "error", JOptionPane.ERROR_MESSAGE);
 	 }
 	 
@@ -125,37 +108,17 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 }
 	 
 	 private void declareDead(String s) {
-			String[] soundEffects = new String[]{"Oh.mp3"};
-		  	effects = new JComboBox<String>(soundEffects);
-			add(effects);
-			
-			sound=new JayLayer("audio/","audio/",false);
-			sound.addPlayList();
-			sound.addSoundEffects(soundEffects);
-			sound.changePlayList(0);
-			sound.addJayLayerListener(this);		 
-			sound.playSoundEffect(0);
-
-//			sound=new JayLayer("audio/","audio/",false);
-//			String[] soundEffects = new String[]{"Oh.mp3"};
-//			effects = new JComboBox<String>(soundEffects);
-//			add(effects);
-//			
-//			sound=new JayLayer("audio/","audio/",false);
-//			sound.addPlayList();
-//			sound.addSoundEffects(soundEffects);
-//			sound.changePlayList(0);
-//			sound.addJayLayerListener(this);		 
+		    makeSound("Oh.mp3");	 
 		    JOptionPane.showMessageDialog(this, s); 
 	 }
 	 
 	 private void initGame(List<String> playerNames) {
-		 game = new Game(playerNames);
-		 CardDeck deck = game.getCardDeck();
-		 deck.shuffleDeck();
-		 deck.shuffleDeck();
-		 deck.shuffleDeck();
-		 SavingCard.init();
+			 game = new Game(playerNames);
+			 CardDeck deck = game.getCardDeck();
+			 deck.shuffleDeck();
+			 deck.shuffleDeck();
+			 deck.shuffleDeck();
+			 SavingCard.init();
 	 }
 	 
 	 private void initComponents() {
@@ -495,7 +458,7 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 }
 	 
 	 
-	 JLabel getlabel(int playerId) {
+	 private JLabel getlabel(int playerId) {
 		 if (playerId == 0)
 			 return player1Points;
 		 else if (playerId == 1)
@@ -514,7 +477,6 @@ public class MainGame extends JFrame implements JayLayerListener{
 			 JLabel label = getlabel(i);
 			 label.setBackground(new java.awt.Color(128, 128, 128));
 		 }
-		 
 	 }
 	 
 	 private void resetOriginal() {
@@ -568,41 +530,39 @@ public class MainGame extends JFrame implements JayLayerListener{
 		 cost.setText(text);
 	 }
 	 
-	 public static void main(String args[]) {
-		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
-		    List<String> playerNames = Arrays.asList(names);	    
-		    
-	        /* Set the Nimbus look and feel */
-	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-	         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-	         */
-	        try {
-	            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-	                if ("Nimbus".equals(info.getName())) {
-	                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-	                    break;
-	                }
-	            }
-	        } catch (ClassNotFoundException ex) {
-	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        } catch (InstantiationException ex) {
-	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        } catch (IllegalAccessException ex) {
-	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        }
-	        //</editor-fold>
-	        //</editor-fold>
-	        java.awt.EventQueue.invokeLater(new Runnable() {
-	            public void run() {
-	                new MainGame(playerNames).setVisible(true);
-	            }
-	        });
-
-		//markCurrent(true);
-	}
+//	 public static void main(String args[]) {
+//		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
+//		    List<String> playerNames = Arrays.asList(names);	    
+//		    
+//	        /* Set the Nimbus look and feel */
+//	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//	         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//	         */
+//	        try {
+//	            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//	                if ("Nimbus".equals(info.getName())) {
+//	                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//	                    break;
+//	                }
+//	            }
+//	        } catch (ClassNotFoundException ex) {
+//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        } catch (InstantiationException ex) {
+//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        } catch (IllegalAccessException ex) {
+//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        }
+//	        //</editor-fold>
+//	        //</editor-fold>
+//	        java.awt.EventQueue.invokeLater(new Runnable() {
+//	            public void run() {
+//	                new MainGame(playerNames).setVisible(true);
+//	            }
+//	        });
+//	}
 
 	@Override
 	public void musicStarted() {

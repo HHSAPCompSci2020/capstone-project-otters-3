@@ -15,7 +15,7 @@ import javax.swing.*;
 public class Instructions {//extends JDialog implements ActionListener {
        String text="<html><body>" 
        		+ "<h4>Instructions:</h4>"
-    		+ "The goal of this game is to get as many points as possible without dying.<br>" 
+    		+ "<p>The goal of this game is to get as many points as possible without dying.<br>" 
        		+ "During a player’s turn, they can choose to draw 1, 2, or 3 cards by first clicking on the deck to reveal the card, then clicking on “Take Card”.  <br>" 
        		+ "The cards they draw correspond to how many points the player gets (J, Q, K are all 10). <br>" 
        		+ "The player is then given the number of points that is denoted by their card.   <br>" 
@@ -27,7 +27,7 @@ public class Instructions {//extends JDialog implements ActionListener {
        		+ "The cost of a “saving” card changes throughuot the game according to the current situation.   <br>" 
        		+ "Allow the next player to go through their turn (as soon as a player presses the “end turn” button, their turn is over).<br>" 
        		+ "Continue this process until all the cards in the deck are gone.   <br>" 
-       		+ "Whoever of the remaining players has the most points wins, and the player who reaches the point value first wins in the case of a tie. \n" 
+       		+ "Whoever of the remaining players has the most points wins, and the player who reaches the point value first wins in the case of a tie. <br>" 
        		+ "</p>"
        		
  //      		+ "<h4>Rule 2:</h4>"
