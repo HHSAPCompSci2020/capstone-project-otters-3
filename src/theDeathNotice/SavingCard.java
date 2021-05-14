@@ -26,4 +26,8 @@ public class SavingCard extends Card {
 		player.addSaveCard(this);
 		player.addSaveCard(new SavingCard("saving"));	
 	}
+	
+	public static void init() {
+		CURRENT_COST = INITIAL_COST;
+	}
 }

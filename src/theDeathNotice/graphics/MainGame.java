@@ -85,7 +85,7 @@ public class MainGame extends JFrame implements JayLayerListener{
 	     refreshSavingCardCost();  
 	     
 			String[] soundEffects = new String[]{"errorSound.mp3"};
-			effects = new JComboBox<String>(soundEffects);
+		  	effects = new JComboBox<String>(soundEffects);
 			add(effects);
 			
 			sound=new JayLayer("audio/","audio/",false);
@@ -107,8 +107,26 @@ public class MainGame extends JFrame implements JayLayerListener{
 			sound.addSoundEffects(soundEffects);
 			sound.changePlayList(0);
 			sound.addJayLayerListener(this);
-
-		 JOptionPane.showMessageDialog(this, s);
+		    JOptionPane.showMessageDialog(this, s, "error", JOptionPane.ERROR_MESSAGE);
+	 }
+	 
+	 private void declareWinner(String s) {
+		   JOptionPane.showMessageDialog(this, s); 
+	 }
+	 
+	 private void declareDead(String s) {
+			sound.playSoundEffect(0);
+			sound=new JayLayer("audio/","audio/",false);
+			String[] soundEffects = new String[]{"Oh.mp3"};
+			effects = new JComboBox<String>(soundEffects);
+			add(effects);
+			
+			sound=new JayLayer("audio/","audio/",false);
+			sound.addPlayList();
+			sound.addSoundEffects(soundEffects);
+			sound.changePlayList(0);
+			sound.addJayLayerListener(this);		 
+		    JOptionPane.showMessageDialog(this, s); 
 	 }
 	 
 	 private void initGame(List<String> playerNames) {
@@ -116,7 +134,8 @@ public class MainGame extends JFrame implements JayLayerListener{
 		 CardDeck deck = game.getCardDeck();
 		 deck.shuffleDeck();
 		 deck.shuffleDeck();
-		 deck.shuffleDeck();	 
+		 deck.shuffleDeck();
+		 SavingCard.init();
 	 }
 	 /**
 	  * To be called if need to play again
@@ -127,6 +146,7 @@ public class MainGame extends JFrame implements JayLayerListener{
 		 player3Points.setVisible(true);
 		 player4Points.setVisible(true);
 	 }
+	 
 	 private void initComponents() {
 		    takeCardButton = new javax.swing.JButton();
 	        endTurnButton = new javax.swing.JButton();
@@ -268,14 +288,6 @@ public class MainGame extends JFrame implements JayLayerListener{
 
 	        pack();
 	        
-
-	        
-	        //sound = new JayLayer("audio/", "audio/", false);
-	        //sound.addPlayList();
-	        //sound.addSoundEffects(soundEffects);
-	        //sound.changePlayList(0);
-	        //sound.addJayLayerListener(this);
-
 	 }
 	 
 	 private void resetDeckButtonIcon(String iconFile) {
@@ -303,11 +315,9 @@ public class MainGame extends JFrame implements JayLayerListener{
          ImageIcon icon = new ImageIcon(image);
          cost.setIcon(icon);
 	 }
+	 
 	 private void takeCardButtonActionPerformed(ActionEvent evt) {
 		    if (game.isOver()) {
-				setVisible(false);
-				JFrame window = new EndingPage(game);
-				window.setVisible(true);
 		    	return;
 		    }
 		    CardDeck deck = game.getCardDeck();
@@ -325,7 +335,7 @@ public class MainGame extends JFrame implements JayLayerListener{
 				    refreshScoreBoard();
 				    refreshSavingCardCost();
 				    if (!player.isAlive()) {
-				    	msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
+				    	declareDead(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
 				    	markDead();
 				    	endTurnActionInternal(player);
 				    }
@@ -333,11 +343,11 @@ public class MainGame extends JFrame implements JayLayerListener{
 					    card = deck.peekTopCard();
 					    if (card == null) {
 					    	game.setOver(true);
+					    	resetDeckButtonIcon(EMPTY_DECK_IMAGE);
+					    	declareWinner(MessageFormat.format(Messages.CARD_DECK_EMPTY, game.getWinner().getName()));
 							setVisible(false);
 							JFrame window = new EndingPage(game);
 							window.setVisible(true);
-					    	resetDeckButtonIcon(EMPTY_DECK_IMAGE);
-					    	msgbox(MessageFormat.format(Messages.CARD_DECK_EMPTY, game.getWinner().getName()));
 					    }
 				    }
 	
@@ -347,25 +357,21 @@ public class MainGame extends JFrame implements JayLayerListener{
 			    }	 
 		    }
 		    else {
-		    	msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
+		    	declareDead(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
 		    }
 	 }
 	 
 	 private void endTurnActionInternal(Player player) {
-		    if (game.isOver()) {
-				setVisible(false);
-				JFrame window = new EndingPage(game);
-				window.setVisible(true);
-		    	return;
-		    }
+		 if (game.isOver()) {
+		    return;
+		 }
 		 player.resetDrawCount(); 
 		 if (!game.updateCurrentPlayerId()) {
-			player = game.getWinner();
 			game.setOver(true);
+			declareWinner(MessageFormat.format(Messages.PLAYER_WIN, game.getWinner().getName()));
 			setVisible(false);
 			JFrame window = new EndingPage(game);
 			window.setVisible(true);
-//			msgbox(MessageFormat.format(Messages.PLAYER_WIN, player.getName()));
 		 }	
 		 else {
 		    refreshScoreBoard();
@@ -374,10 +380,7 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 
 	 private void endTurnButtonActionPerformed(ActionEvent evt) {
 		 if (game.isOver()) {
-				setVisible(false);
-				JFrame window = new EndingPage(game);
-				window.setVisible(true);
-				return;
+			 return;
 		 }
 		 CardDeck deck = game.getCardDeck();
 		 if (deck.isTopCardVisible()) {
@@ -395,7 +398,7 @@ public class MainGame extends JFrame implements JayLayerListener{
 				 }
 			 }
 			 else {
-				 msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
+				 declareDead(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
 			 }
 		 }
 	 }
@@ -407,9 +410,6 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 
 	 private void buySaveCardButtonActionPerformed(ActionEvent evt) {
 		 if (game.isOver()) {
-				setVisible(false);
-				JFrame window = new EndingPage(game);
-				window.setVisible(true);
 				return;
 		 }
 		 Player player = game.getCurrentPlayer();
@@ -430,15 +430,12 @@ public class MainGame extends JFrame implements JayLayerListener{
 			 }
 		 }
 		 else {
-			 msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
+			 declareDead(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
 		 }
 	 }
 	 
 	 private void deckButtonActionPerformed(ActionEvent evt) {
 		 if (game.isOver()) {
-				setVisible(false);
-				JFrame window = new EndingPage(game);
-				window.setVisible(true);
 				return;
 		 }
 		 CardDeck deck = game.getCardDeck();
@@ -453,11 +450,11 @@ public class MainGame extends JFrame implements JayLayerListener{
 				    		refreshScoreBoardWithTimeInfo();
 				    	}
 				    	game.setOver(true);
+				    	resetDeckButtonIcon(EMPTY_DECK_IMAGE);
+				    	declareWinner(MessageFormat.format(Messages.CARD_DECK_EMPTY, game.getWinner().getName()));
 						setVisible(false);
 						JFrame window = new EndingPage(game);
 						window.setVisible(true);
-				    	resetDeckButtonIcon(EMPTY_DECK_IMAGE);
-				    	msgbox(MessageFormat.format(Messages.CARD_DECK_EMPTY, game.getWinner().getName()));
 				    }
 				    else {
 					   deck.setTopCardVisible(true);
@@ -473,7 +470,7 @@ public class MainGame extends JFrame implements JayLayerListener{
 			 }
 		 }
 		 else {
-			 msgbox(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
+			 declareDead(MessageFormat.format(Messages.PLAYER_DEAD, player.getName()));
 		 }
 	 }
 	 
