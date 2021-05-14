@@ -46,8 +46,8 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 private JLabel cost;
 	 private Game game;
 
-	private JayLayer sound;
-	private JComboBox<String> effects;
+	 private JayLayer sound;
+	 private JComboBox<String> effects;
 	
 	 /**
 	  * Initializes the page.
@@ -84,6 +84,19 @@ public class MainGame extends JFrame implements JayLayerListener{
 	     refreshScoreBoard();
 	     refreshSavingCardCost();  
 	     
+
+//			String[] soundEffects = new String[]{"errorSound.mp3"};
+//		  	effects = new JComboBox<String>(soundEffects);
+//			add(effects);
+//			
+//			sound=new JayLayer("audio/","audio/",false);
+//			sound.addPlayList();
+//			sound.addSoundEffects(soundEffects);
+//			sound.changePlayList(0);
+//			sound.addJayLayerListener(this);
+	 }
+	 
+	 private void msgbox(String s) {
 			String[] soundEffects = new String[]{"errorSound.mp3"};
 		  	effects = new JComboBox<String>(soundEffects);
 			add(effects);
@@ -92,33 +105,28 @@ public class MainGame extends JFrame implements JayLayerListener{
 			sound.addPlayList();
 			sound.addSoundEffects(soundEffects);
 			sound.changePlayList(0);
-			sound.addJayLayerListener(this);
-	 }
-	 
-	 private void msgbox(String s) {
+			sound.addJayLayerListener(this);		 
 			sound.playSoundEffect(0);
-			sound=new JayLayer("audio/","audio/",false);
-			String[] soundEffects = new String[]{"errorSound.mp3"};
-			effects = new JComboBox<String>(soundEffects);
-			add(effects);
-			
-			sound=new JayLayer("audio/","audio/",false);
-			sound.addPlayList();
-			sound.addSoundEffects(soundEffects);
-			sound.changePlayList(0);
-			sound.addJayLayerListener(this);
+//			sound=new JayLayer("audio/","audio/",false);
+//			soundEffects = new String[]{"errorSound.mp3"};
+//			effects = new JComboBox<String>(soundEffects);
+//			add(effects);
+//			
+//			sound=new JayLayer("audio/","audio/",false);
+//			sound.addPlayList();
+//			sound.addSoundEffects(soundEffects);
+//			sound.changePlayList(0);
+//			sound.addJayLayerListener(this);
 		    JOptionPane.showMessageDialog(this, s, "error", JOptionPane.ERROR_MESSAGE);
 	 }
 	 
 	 private void declareWinner(String s) {
-		   JOptionPane.showMessageDialog(this, s); 
+		    JOptionPane.showMessageDialog(this, s); 
 	 }
 	 
 	 private void declareDead(String s) {
-			sound.playSoundEffect(0);
-			sound=new JayLayer("audio/","audio/",false);
 			String[] soundEffects = new String[]{"Oh.mp3"};
-			effects = new JComboBox<String>(soundEffects);
+		  	effects = new JComboBox<String>(soundEffects);
 			add(effects);
 			
 			sound=new JayLayer("audio/","audio/",false);
@@ -126,6 +134,18 @@ public class MainGame extends JFrame implements JayLayerListener{
 			sound.addSoundEffects(soundEffects);
 			sound.changePlayList(0);
 			sound.addJayLayerListener(this);		 
+			sound.playSoundEffect(0);
+
+//			sound=new JayLayer("audio/","audio/",false);
+//			String[] soundEffects = new String[]{"Oh.mp3"};
+//			effects = new JComboBox<String>(soundEffects);
+//			add(effects);
+//			
+//			sound=new JayLayer("audio/","audio/",false);
+//			sound.addPlayList();
+//			sound.addSoundEffects(soundEffects);
+//			sound.changePlayList(0);
+//			sound.addJayLayerListener(this);		 
 		    JOptionPane.showMessageDialog(this, s); 
 	 }
 	 
@@ -136,15 +156,6 @@ public class MainGame extends JFrame implements JayLayerListener{
 		 deck.shuffleDeck();
 		 deck.shuffleDeck();
 		 SavingCard.init();
-	 }
-	 /**
-	  * To be called if need to play again
-	  */
-	 private void resetComponents() {
-		 player1Points.setVisible(true);
-		 player2Points.setVisible(true);
-		 player3Points.setVisible(true);
-		 player4Points.setVisible(true);
 	 }
 	 
 	 private void initComponents() {
