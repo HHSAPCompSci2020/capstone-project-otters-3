@@ -68,20 +68,20 @@ public class EndingPage extends JFrame implements JayLayerListener {
 		JLabel[] labels = new JLabel[] {null, second, third, fourth};
 		String[] nums = new String[] {"1st", "2nd", "3rd", "4th"};
 		
-		ArrayList<Player> playerStandings = game.getStandings();
+//		ArrayList<Player> playerStandings = game.getStandings();
 		
-		for (int i = 1; i < 3; i++) {
-			if (i < playerStandings.size()) {
-				labels[i].setText(nums[i] + ": " + playerStandings.get(i).getName());
-			}
-			labels[i].setBounds(getWidth()/2-90,  getHeight()/2 - 150 - 20*(4-i), 400, 300);
-			labels[i].setFont(new Font("font", Font.PLAIN, 14));
-			add(labels[i], BorderLayout.CENTER);
-			labels[i].setAlignmentX(CENTER_ALIGNMENT);
-			labels[i].setVisible(true);
-		}
-		
-		congrats = new JLabel("Congrats! " + playerStandings.get(0).getName() + " won!");
+//		for (int i = 1; i < 3; i++) {
+//			if (i < playerStandings.size()) {
+//				labels[i].setText(nums[i] + ": " + playerStandings.get(i).getName());
+//			}
+//			labels[i].setBounds(getWidth()/2-90,  getHeight()/2 - 150 - 20*(4-i), 400, 300);
+//			labels[i].setFont(new Font("font", Font.PLAIN, 14));
+//			add(labels[i], BorderLayout.CENTER);
+//			labels[i].setAlignmentX(CENTER_ALIGNMENT);
+//			labels[i].setVisible(true);
+//		}
+//		
+		congrats = new JLabel("Congrats! " + game.getWinner() + " won!");
 		congrats.setBounds(getWidth()/2-90,  getHeight()/2 - 300 , 400, 400);
 		congrats.setFont(new Font("font", Font.PLAIN, 18));
 		add(congrats);
