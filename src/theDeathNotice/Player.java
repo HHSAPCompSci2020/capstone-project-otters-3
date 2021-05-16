@@ -20,6 +20,7 @@ public class Player {
 	private ArrayList<Card> currentHand;
 	private boolean alive;
 	private int drawCount;
+	private final int MAX_PLAYER_NAME_LENGTH = 15;
 	
 
 	/**
@@ -28,7 +29,12 @@ public class Player {
 	 * @param initialPlayerNumber the number of the player
 	 */
 	public Player(String name, int initialPlayerNumber) {
-		this.name = name;
+		if (name == null)
+			name = "player unknown";
+		else if (name.length()<=MAX_PLAYER_NAME_LENGTH)
+			this.name = name;
+	    else
+	    	this.name=name.substring(0, MAX_PLAYER_NAME_LENGTH+1);
 		this.initialPlayerNumber = initialPlayerNumber;
 		alive = true;
 		points = 30;

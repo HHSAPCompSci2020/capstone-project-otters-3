@@ -74,6 +74,8 @@ public class AddPlayers extends JFrame implements JayLayerListener {
 
         addName.setViewportView(typeName);
 
+        
+        doneButton.setBackground(new java.awt.Color(255, 0, 255));
         doneButton.setText("Done");
         doneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,10 +84,11 @@ public class AddPlayers extends JFrame implements JayLayerListener {
         });
 
         addPlayers.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        addPlayers.setText("Add Players:");
+        addPlayers.setText("<html><center><b>Add Players</b><center></html>");
 
         enterName.setText("Enter Player Name:");
 
+        saveButton.setBackground(new java.awt.Color(255, 51, 51));
         saveButton.setText("Save");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,9 +133,8 @@ public class AddPlayers extends JFrame implements JayLayerListener {
         );
         pack();
 	}
-//	
-	private void saveButtonActionPerformed(ActionEvent e) {
-		if (players.size() >= 4) {
+	
+	 private void playSound() {
 			sound.playSoundEffect(0);
 			sound=new JayLayer("audio/","audio/",false);
 			String[] soundEffects = new String[]{"errorSound.mp3"};
@@ -144,25 +146,57 @@ public class AddPlayers extends JFrame implements JayLayerListener {
 			sound.addSoundEffects(soundEffects);
 			sound.changePlayList(0);
 			sound.addJayLayerListener(this);
+	 }
+	 
+//	
+	private void saveButtonActionPerformed(ActionEvent e) {
+		if (players.size() >= 4) {
+//			sound.playSoundEffect(0);
+//			sound=new JayLayer("audio/","audio/",false);
+//			String[] soundEffects = new String[]{"errorSound.mp3"};
+//			effects = new JComboBox<String>(soundEffects);
+//			add(effects);
+//			
+//			sound=new JayLayer("audio/","audio/",false);
+//			sound.addPlayList();
+//			sound.addSoundEffects(soundEffects);
+//			sound.changePlayList(0);
+//			sound.addJayLayerListener(this);
+			playSound();
 			
 			JOptionPane.showMessageDialog(this, "There can only be a maximum of 4 players. The player was not added.");
 			return;
 		}
 		if (typeName.getText().equals("")) {
-			sound.playSoundEffect(0);
-			sound=new JayLayer("audio/","audio/",false);
-			String[] soundEffects = new String[]{"errorSound.mp3"};
-			effects = new JComboBox<String>(soundEffects);
-			add(effects);
-			
-			sound=new JayLayer("audio/","audio/",false);
-			sound.addPlayList();
-			sound.addSoundEffects(soundEffects);
-			sound.changePlayList(0);
-			sound.addJayLayerListener(this);
+//			sound.playSoundEffect(0);
+//			sound=new JayLayer("audio/","audio/",false);
+//			String[] soundEffects = new String[]{"errorSound.mp3"};
+//			effects = new JComboBox<String>(soundEffects);
+//			add(effects);
+//			
+//			sound=new JayLayer("audio/","audio/",false);
+//			sound.addPlayList();
+//			sound.addSoundEffects(soundEffects);
+//			sound.changePlayList(0);
+//			sound.addJayLayerListener(this);
+			playSound();
 			JOptionPane.showMessageDialog(this, "Please type the player's name into the textbox.");
 			return;
 		} 
+		int len = typeName.getText().length();
+		if (len > 15) {
+            playSound();
+			JOptionPane.showMessageDialog(this, "Player name can not exceed 15 characters.");
+			return;		
+		}
+		for (int i=0; i<len; i++) {
+			if (Character.isLetterOrDigit(typeName.getText().charAt(i)) == false) {
+                playSound();
+				JOptionPane.showMessageDialog(this, "Player name can only contain alphabetic or digit character.");
+				return;
+			}
+		}
+		
 		boolean duplicate = false;
 		for (String s : players) {
 			if (s.equals(typeName.getText())) {
@@ -192,29 +226,31 @@ public class AddPlayers extends JFrame implements JayLayerListener {
 //	
 	private void doneButtonActionPerformed(ActionEvent e) {
 		if (players.size() > 4) {
-			sound.playSoundEffect(0);
-			sound=new JayLayer("audio/","audio/",false);
-			String[] soundEffects = new String[]{"errorSound.mp3"};
-			effects = new JComboBox<String>(soundEffects);
-			add(effects);
-			
-			sound=new JayLayer("audio/","audio/",false);
-			sound.addPlayList();
-			sound.addSoundEffects(soundEffects);
-			sound.changePlayList(0);
-			sound.addJayLayerListener(this);
+//			sound.playSoundEffect(0);
+//			sound=new JayLayer("audio/","audio/",false);
+//			String[] soundEffects = new String[]{"errorSound.mp3"};
+//			effects = new JComboBox<String>(soundEffects);
+//			add(effects);
+//			
+//			sound=new JayLayer("audio/","audio/",false);
+//			sound.addPlayList();
+//			sound.addSoundEffects(soundEffects);
+//			sound.changePlayList(0);
+//			sound.addJayLayerListener(this);
+			playSound();
 			JOptionPane.showMessageDialog(this, "You have too many players. The maximum number of players allowed is 4. Please exit the game and try again.");
 		} else if (players.size() < 2) {
-			sound.playSoundEffect(0);
-			sound=new JayLayer("audio/","audio/",false);
-			String[] soundEffects = new String[]{"errorSound.mp3"};
-			effects = new JComboBox<String>(soundEffects);
-			add(effects);
-			sound=new JayLayer("audio/","audio/",false);
-			sound.addPlayList();
-			sound.addSoundEffects(soundEffects);
-			sound.changePlayList(0);
-			sound.addJayLayerListener(this);
+//			sound.playSoundEffect(0);
+//			sound=new JayLayer("audio/","audio/",false);
+//			String[] soundEffects = new String[]{"errorSound.mp3"};
+//			effects = new JComboBox<String>(soundEffects);
+//			add(effects);
+//			sound=new JayLayer("audio/","audio/",false);
+//			sound.addPlayList();
+//			sound.addSoundEffects(soundEffects);
+//			sound.changePlayList(0);
+//			sound.addJayLayerListener(this);
+			playSound();
 			
 			JOptionPane.showMessageDialog(this, "You need at least 2 players to play. Please add more players.");
 		} else {

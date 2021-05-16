@@ -6,8 +6,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -29,6 +33,7 @@ import theDeathNotice.Player;
  */
 
 public class EndingPage extends JFrame implements JayLayerListener {
+	private static final String BOLLOON_IMAGE = "images/bolloons.png";
 	private JLabel congrats;
 	private JLabel second;
 	private JLabel third;
@@ -81,12 +86,13 @@ public class EndingPage extends JFrame implements JayLayerListener {
 //			labels[i].setVisible(true);
 //		}
 //		
-		congrats = new JLabel("Congrats! " + game.getWinner() + " won!");
+		congrats = new JLabel("Congrats! " + game.getWinner().getName() + " won!");
 		congrats.setBounds(getWidth()/2-90,  getHeight()/2 - 300 , 400, 400);
 		congrats.setFont(new Font("font", Font.PLAIN, 18));
 		add(congrats);
 		congrats.setAlignmentX(CENTER_ALIGNMENT);
 		congrats.setVisible(true);
+	
 
 		playAgain = new JButton("Play Again");
 		playAgain.setBounds(getWidth()/2-50, getHeight()/2 + 50, 100, 20);
@@ -138,5 +144,16 @@ public class EndingPage extends JFrame implements JayLayerListener {
 		
 	}
 	
-
+	 private void setImage() {
+         URL file = ClassLoader.getSystemClassLoader().getResource(BOLLOON_IMAGE);
+         BufferedImage image=null;
+         try {
+			  image = ImageIO.read(file);
+		   } catch (IOException e) {
+			  // TODO Auto-generated catch block
+			   e.printStackTrace();
+		}
+         ImageIcon icon = new ImageIcon(image);
+         congrats.setIcon(icon);
+	 }	
 }
