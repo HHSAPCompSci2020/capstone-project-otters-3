@@ -52,8 +52,9 @@ public class AddPlayers extends JFrame {
 //		sound.addSoundEffects(soundEffects);
 //		sound.changePlayList(0);
 //		sound.addJayLayerListener(this);
+		
 	}
-	
+
 	private void initComponents() {
 		addName = new javax.swing.JScrollPane();
         typeName = new javax.swing.JEditorPane();
@@ -141,19 +142,21 @@ public class AddPlayers extends JFrame {
 //	 }
 	 
 	 private void playSound() {
-         URL file = ClassLoader.getSystemClassLoader().getResource("audio/errorSound.mp3");
-			try {
-				BufferedInputStream bs = new BufferedInputStream(file.openStream());
-				javazoom.jl.player.Player player = new javazoom.jl.player.Player(bs);
-				player.play();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JavaLayerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	 }
+//            URL file = ClassLoader.getSystemClassLoader().getResource("audio/errorSound.mp3");
+//			try {
+//				BufferedInputStream bs = new BufferedInputStream(file.openStream());
+//				javazoom.jl.player.Player player = new javazoom.jl.player.Player(bs);
+//				player.play();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (JavaLayerException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+		    SoundPlayer soundPlayer = new SoundPlayer("audio/errorSound.mp3");
+		    soundPlayer.start();
+    }
 	 
 //	
 	private void saveButtonActionPerformed(ActionEvent e) {

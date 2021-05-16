@@ -104,23 +104,24 @@ public class MainGame extends JFrame {
 //			
 //	 }
 	 
-	 private void makeSound(String audiofile) {
-            URL file = ClassLoader.getSystemClassLoader().getResource(audiofile);
-			try {
-				BufferedInputStream bs = new BufferedInputStream(file.openStream());
-				javazoom.jl.player.Player player = new javazoom.jl.player.Player(bs);
-				player.play();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JavaLayerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	 }
+//	 private void makeSound(String audiofile) {
+//            URL file = ClassLoader.getSystemClassLoader().getResource(audiofile);
+//			try {
+//				BufferedInputStream bs = new BufferedInputStream(file.openStream());
+//				javazoom.jl.player.Player player = new javazoom.jl.player.Player(bs);
+//				player.play();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (JavaLayerException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//	 }
 	 
 	 private void msgbox(String s) {
-		    makeSound("audio/errorSound.mp3");
+		    SoundPlayer soundPlayer = new SoundPlayer("audio/errorSound.mp3");
+		    soundPlayer.start();
 		    JOptionPane.showMessageDialog(this, s, "error", JOptionPane.ERROR_MESSAGE);
 	 }
 	 
@@ -129,7 +130,8 @@ public class MainGame extends JFrame {
 	 }
 	 
 	 private void declareDead(String s) {
-		    makeSound("audio/Oh.mp3");	 
+		    SoundPlayer soundPlayer = new SoundPlayer("audio/Oh.mp3");
+		    soundPlayer.start();
 		    JOptionPane.showMessageDialog(this, s); 
 	 }
 	 

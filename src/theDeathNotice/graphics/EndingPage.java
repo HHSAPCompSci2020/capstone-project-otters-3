@@ -3,7 +3,6 @@ package theDeathNotice.graphics;
 import java.awt.event.ActionEvent;
 
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -15,8 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-
-import javazoom.jl.decoder.JavaLayerException;
 //import jay.jaysound.JayLayer;
 //import jay.jaysound.JayLayerListener;
 import theDeathNotice.CardDeck;
@@ -59,7 +56,7 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 //		sound.changePlayList(0);
 //		sound.addJayLayerListener(this);
 		initComponents();
-		playSound("audio/applause.mp3");
+		playSound();
 //		sound.nextSong();
 	}
 	
@@ -162,19 +159,9 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
          jLabel1.setIcon(icon);
 	 }	
 	 
-	 private void playSound(String audiofile) {
-         URL file = ClassLoader.getSystemClassLoader().getResource(audiofile);
-			try {
-				BufferedInputStream bs = new BufferedInputStream(file.openStream());
-				javazoom.jl.player.Player player = new javazoom.jl.player.Player(bs);
-				player.play();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JavaLayerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	 private void playSound() {
+		    SoundPlayer soundPlayer = new SoundPlayer("audio/applause.mp3");
+		    soundPlayer.start();
 	 }
 	 
 	 public static void main(String args[]) {
