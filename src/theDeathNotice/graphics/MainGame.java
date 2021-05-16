@@ -2,6 +2,8 @@ package theDeathNotice.graphics;
 
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+//import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.text.MessageFormat;
@@ -11,13 +13,15 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import jay.jaysound.JayLayer;
-import jay.jaysound.JayLayerListener;
+//import jay.jaysound.JayLayer;
+//import jay.jaysound.JayLayerListener;
 import theDeathNotice.Card;
 import theDeathNotice.CardDeck;
 import theDeathNotice.Game;
 import theDeathNotice.Player;
 import theDeathNotice.SavingCard;
+import javazoom.jl.player.*;
+import javazoom.jl.decoder.JavaLayerException;
 
 /**
  * This class represents the window or page where the main game is taking place.
@@ -29,7 +33,7 @@ import theDeathNotice.SavingCard;
  * @version 1
  *
  */
-public class MainGame extends JFrame implements JayLayerListener{
+public class MainGame extends JFrame {
 	 private static final String DEFAULT_DECK_IMAGE = "cards/back.png";
 	 private static final String EMPTY_DECK_IMAGE="cards/base.png";
 	 private static final String COST_IMAGE = "images/sale.png";
@@ -46,8 +50,8 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 private JLabel cost;
 	 private Game game;
 
-	 private JayLayer sound;
-	 private JComboBox<String> effects;
+	 //private JayLayer sound;
+	 //private JComboBox<String> effects;
 	
 	 /**
 	  * Initializes the page.
@@ -86,21 +90,37 @@ public class MainGame extends JFrame implements JayLayerListener{
 	     
 	 }
 	 
-	 private void makeSound(String file) {
-			String[] soundEffects = new String[]{file};
-		  	effects = new JComboBox<String>(soundEffects);
-			add(effects);
-			
-			sound=new JayLayer("audio/","audio/",false);
-			sound.addPlayList();
-			sound.addSoundEffects(soundEffects);
-			sound.changePlayList(0);
-			sound.addJayLayerListener(this);		 
-			sound.playSoundEffect(0);
+//	 private void makeSound(String file) {
+//			String[] soundEffects = new String[]{file};
+//		  	effects = new JComboBox<String>(soundEffects);
+//			add(effects);
+//			
+//			sound=new JayLayer("audio/","audio/",false);
+//			sound.addPlayList();
+//			sound.addSoundEffects(soundEffects);
+//			sound.changePlayList(0);
+//			sound.addJayLayerListener(this);		 
+//			sound.playSoundEffect(0);
+//			
+//	 }
+	 
+	 private void makeSound(String audiofile) {
+            URL file = ClassLoader.getSystemClassLoader().getResource(audiofile);
+			try {
+				BufferedInputStream bs = new BufferedInputStream(file.openStream());
+				javazoom.jl.player.Player player = new javazoom.jl.player.Player(bs);
+				player.play();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JavaLayerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	 }
 	 
 	 private void msgbox(String s) {
-		    makeSound("errorSound.mp3");
+		    makeSound("audio/errorSound.mp3");
 		    JOptionPane.showMessageDialog(this, s, "error", JOptionPane.ERROR_MESSAGE);
 	 }
 	 
@@ -109,7 +129,7 @@ public class MainGame extends JFrame implements JayLayerListener{
 	 }
 	 
 	 private void declareDead(String s) {
-		    makeSound("Oh.mp3");	 
+		    makeSound("audio/Oh.mp3");	 
 		    JOptionPane.showMessageDialog(this, s); 
 	 }
 	 
@@ -634,29 +654,29 @@ public class MainGame extends JFrame implements JayLayerListener{
 	        });
 	}
 
-	@Override
-	public void musicStarted() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void musicStopped() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void playlistEnded() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void songEnded() {
-		// TODO Auto-generated method stub
-
-	}
+//	@Override
+//	public void musicStarted() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void musicStopped() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void playlistEnded() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void songEnded() {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 	
 }

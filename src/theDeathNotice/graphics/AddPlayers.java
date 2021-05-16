@@ -1,24 +1,16 @@
 package theDeathNotice.graphics;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.SourceDataLine;
-import javax.sound.sampled.UnsupportedAudioFileException;
+
 import javax.swing.*;
 
-import jay.jaysound.JayLayer;
-import jay.jaysound.JayLayerListener;
+import javazoom.jl.decoder.JavaLayerException;
+//import jay.jaysound.JayLayer;
+//import jay.jaysound.JayLayerListener;
 
 /**
  * 
@@ -30,9 +22,9 @@ import jay.jaysound.JayLayerListener;
  * saving names, click "Done". 
  *
  */
-public class AddPlayers extends JFrame implements JayLayerListener {
-	private JayLayer sound;
-	private JComboBox<String> effects;
+public class AddPlayers extends JFrame {
+	//private JayLayer sound;
+	//private JComboBox<String> effects;
 	
 	private JButton doneButton;
 	private JButton saveButton;
@@ -51,15 +43,15 @@ public class AddPlayers extends JFrame implements JayLayerListener {
 		players = new ArrayList<String>();
 		setVisible(true);
 		
-		String[] soundEffects = new String[]{"errorSound.mp3"};
-		effects = new JComboBox<String>(soundEffects);
-		add(effects);
-		
-		sound=new JayLayer("audio/","audio/",false);
-		sound.addPlayList();
-		sound.addSoundEffects(soundEffects);
-		sound.changePlayList(0);
-		sound.addJayLayerListener(this);
+//		String[] soundEffects = new String[]{"errorSound.mp3"};
+//		effects = new JComboBox<String>(soundEffects);
+//		add(effects);
+//		
+//		sound=new JayLayer("audio/","audio/",false);
+//		sound.addPlayList();
+//		sound.addSoundEffects(soundEffects);
+//		sound.changePlayList(0);
+//		sound.addJayLayerListener(this);
 	}
 	
 	private void initComponents() {
@@ -134,23 +126,7 @@ public class AddPlayers extends JFrame implements JayLayerListener {
         pack();
 	}
 	
-	 private void playSound() {
-			sound.playSoundEffect(0);
-			sound=new JayLayer("audio/","audio/",false);
-			String[] soundEffects = new String[]{"errorSound.mp3"};
-			effects = new JComboBox<String>(soundEffects);
-			add(effects);
-			
-			sound=new JayLayer("audio/","audio/",false);
-			sound.addPlayList();
-			sound.addSoundEffects(soundEffects);
-			sound.changePlayList(0);
-			sound.addJayLayerListener(this);
-	 }
-	 
-//	
-	private void saveButtonActionPerformed(ActionEvent e) {
-		if (players.size() >= 4) {
+//	 private void playSound() {
 //			sound.playSoundEffect(0);
 //			sound=new JayLayer("audio/","audio/",false);
 //			String[] soundEffects = new String[]{"errorSound.mp3"};
@@ -162,23 +138,32 @@ public class AddPlayers extends JFrame implements JayLayerListener {
 //			sound.addSoundEffects(soundEffects);
 //			sound.changePlayList(0);
 //			sound.addJayLayerListener(this);
+//	 }
+	 
+	 private void playSound() {
+         URL file = ClassLoader.getSystemClassLoader().getResource("audio/errorSound.mp3");
+			try {
+				BufferedInputStream bs = new BufferedInputStream(file.openStream());
+				javazoom.jl.player.Player player = new javazoom.jl.player.Player(bs);
+				player.play();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JavaLayerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	 }
+	 
+//	
+	private void saveButtonActionPerformed(ActionEvent e) {
+		if (players.size() >= 4) {
 			playSound();
 			
 			JOptionPane.showMessageDialog(this, "There can only be a maximum of 4 players. The player was not added.");
 			return;
 		}
 		if (typeName.getText().equals("")) {
-//			sound.playSoundEffect(0);
-//			sound=new JayLayer("audio/","audio/",false);
-//			String[] soundEffects = new String[]{"errorSound.mp3"};
-//			effects = new JComboBox<String>(soundEffects);
-//			add(effects);
-//			
-//			sound=new JayLayer("audio/","audio/",false);
-//			sound.addPlayList();
-//			sound.addSoundEffects(soundEffects);
-//			sound.changePlayList(0);
-//			sound.addJayLayerListener(this);
 			playSound();
 			JOptionPane.showMessageDialog(this, "Please type the player's name into the textbox.");
 			return;
@@ -204,17 +189,7 @@ public class AddPlayers extends JFrame implements JayLayerListener {
 			}
 		}
 		if (duplicate) {
-			sound.playSoundEffect(0);
-			sound=new JayLayer("audio/","audio/",false);
-			String[] soundEffects = new String[]{"errorSound.mp3"};
-			effects = new JComboBox<String>(soundEffects);
-			add(effects);
-			
-			sound=new JayLayer("audio/","audio/",false);
-			sound.addPlayList();
-			sound.addSoundEffects(soundEffects);
-			sound.changePlayList(0);
-			sound.addJayLayerListener(this);
+	        playSound();
 			
 			typeName.setText("");
 			JOptionPane.showMessageDialog(this, "This player has already been registered.");
@@ -226,32 +201,10 @@ public class AddPlayers extends JFrame implements JayLayerListener {
 //	
 	private void doneButtonActionPerformed(ActionEvent e) {
 		if (players.size() > 4) {
-//			sound.playSoundEffect(0);
-//			sound=new JayLayer("audio/","audio/",false);
-//			String[] soundEffects = new String[]{"errorSound.mp3"};
-//			effects = new JComboBox<String>(soundEffects);
-//			add(effects);
-//			
-//			sound=new JayLayer("audio/","audio/",false);
-//			sound.addPlayList();
-//			sound.addSoundEffects(soundEffects);
-//			sound.changePlayList(0);
-//			sound.addJayLayerListener(this);
 			playSound();
 			JOptionPane.showMessageDialog(this, "You have too many players. The maximum number of players allowed is 4. Please exit the game and try again.");
 		} else if (players.size() < 2) {
-//			sound.playSoundEffect(0);
-//			sound=new JayLayer("audio/","audio/",false);
-//			String[] soundEffects = new String[]{"errorSound.mp3"};
-//			effects = new JComboBox<String>(soundEffects);
-//			add(effects);
-//			sound=new JayLayer("audio/","audio/",false);
-//			sound.addPlayList();
-//			sound.addSoundEffects(soundEffects);
-//			sound.changePlayList(0);
-//			sound.addJayLayerListener(this);
 			playSound();
-			
 			JOptionPane.showMessageDialog(this, "You need at least 2 players to play. Please add more players.");
 		} else {
 			setVisible(false);
@@ -260,28 +213,28 @@ public class AddPlayers extends JFrame implements JayLayerListener {
 		}
 	}
 
-	@Override
-	public void musicStarted() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void musicStopped() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void playlistEnded() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void songEnded() {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void musicStarted() {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//	
+//	@Override
+//	public void musicStopped() {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//	
+//	@Override
+//	public void playlistEnded() {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//	
+//	@Override
+//	public void songEnded() {
+//		// TODO Auto-generated method stub
+//		
+//	}
 	
 }
