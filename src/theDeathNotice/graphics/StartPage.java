@@ -19,9 +19,10 @@ import javax.swing.*;
  *
  */
 public class StartPage extends JFrame {
-	private static final String ARROW_IMAGE = "images/arrow.png";
+	private static final String DRIPPING_WATER_IMAGE = "images/drippingWater.png";
 	private JButton startButton;
 	private JLabel gameName;
+	private javax.swing.JLabel jLabel1;
 
 	/**
      * Initializes the page.
@@ -36,50 +37,58 @@ public class StartPage extends JFrame {
 	private void initComponents() {
 		gameName = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        gameName.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        gameName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        gameName.setText("<html><center><b>The Death Notice</b></center></html>");
-        setImage();
-        
-        startButton.setBackground(new java.awt.Color(51, 153, 255));
-        startButton.setForeground(new java.awt.Color(204, 0, 0));
-        startButton.setOpaque(true);
-        startButton.setText("<html><center><b>Begin!</b></center></html>");
+ 
+        startButton.setText("Begin!");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
             }
         });
+        
+        gameName.setBackground(new java.awt.Color(255, 102, 102));
+        gameName.setFont(new java.awt.Font("Libian SC", 0, 36)); // NOI18N
+        gameName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gameName.setText("The Death Notice");
+        gameName.setOpaque(true);
 
+        setImage();
+     
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(149, Short.MAX_VALUE)
-                .addComponent(startButton)
-                .addContainerGap(169, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-               // .addComponent(gameName, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(gameName, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(gameName, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(startButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
-                //.addComponent(gameName, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(gameName, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(gameName, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(startButton)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
-        pack();	
+        pack();
 	}
 
 	private void startButtonActionPerformed(ActionEvent e) {
@@ -89,7 +98,7 @@ public class StartPage extends JFrame {
 	}
 
 	 private void setImage() {
-         URL file = ClassLoader.getSystemClassLoader().getResource(ARROW_IMAGE);
+         URL file = ClassLoader.getSystemClassLoader().getResource(DRIPPING_WATER_IMAGE);
          BufferedImage image=null;
          try {
 			  image = ImageIO.read(file);
@@ -98,7 +107,7 @@ public class StartPage extends JFrame {
 			   e.printStackTrace();
 		}
          ImageIcon icon = new ImageIcon(image);
-         gameName.setIcon(icon);
+         jLabel1.setIcon(icon);
 	 }
 	
 }

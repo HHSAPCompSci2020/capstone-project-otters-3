@@ -75,7 +75,7 @@ public class AddPlayers extends JFrame implements JayLayerListener {
         addName.setViewportView(typeName);
 
         
-        doneButton.setBackground(new java.awt.Color(255, 0, 255));
+        doneButton.setBackground(new java.awt.Color(255, 145, 255));
         doneButton.setText("Done");
         doneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +88,7 @@ public class AddPlayers extends JFrame implements JayLayerListener {
 
         enterName.setText("Enter Player Name:");
 
-        saveButton.setBackground(new java.awt.Color(255, 51, 51));
+        saveButton.setBackground(new java.awt.Color(255, 88, 77));
         saveButton.setText("Save");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

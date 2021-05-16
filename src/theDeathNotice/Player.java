@@ -39,6 +39,7 @@ public class Player {
 		alive = true;
 		points = 30;
 		points += initialPlayerNumber;
+		time = LocalTime.now();
 		currentHand = new ArrayList<Card>();
 	}
 
