@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.text.MessageFormat;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -195,7 +196,7 @@ public class MainGame extends JFrame implements JayLayerListener{
 	        cost.setText("Saving Card Price: ");
 	        cost.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 	        
-	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+	        /*javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 	        getContentPane().setLayout(layout);
 	        layout.setHorizontalGroup(
 	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,9 +256,77 @@ public class MainGame extends JFrame implements JayLayerListener{
 	                        .addGap(18, 18, 18)
 	                        .addComponent(instructionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
 	            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addContainerGap(50, Short.MAX_VALUE)
 	                .addComponent(deckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	        );
+
+	        pack();*/
+	        
+	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+	        getContentPane().setLayout(layout);
+	        layout.setHorizontalGroup(
+	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            .addGroup(layout.createSequentialGroup()
+	                .addContainerGap(33, Short.MAX_VALUE)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                    .addComponent(player1Points)
+	                    .addComponent(player2Points)
+	                    .addComponent(player3Points)
+	                    .addComponent(player4Points)
+	                    .addComponent(scoreBoardLabel))
+	                .addGap(40, 40, 40)
+	                .addComponent(deckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                    .addGroup(layout.createSequentialGroup()
+	                        .addGap(80, 80, 80)
+	                        .addComponent(instructionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+	                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                            .addComponent(endTurnButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                            .addComponent(buySaveCardButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                            .addComponent(takeCardButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
+	                .addContainerGap(52, Short.MAX_VALUE))
+	            .addGroup(layout.createSequentialGroup()
+	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                .addComponent(cost)
+	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	        );
+	        layout.setVerticalGroup(
+	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            .addGroup(layout.createSequentialGroup()
+	                .addContainerGap(27, Short.MAX_VALUE)
+	                .addComponent(cost)
+	                .addGap(38, 38, 38)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                    .addGroup(layout.createSequentialGroup()
+	                        .addComponent(scoreBoardLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                        .addGap(42, 42, 42)
+	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                            .addGroup(layout.createSequentialGroup()
+	                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                                    .addGroup(layout.createSequentialGroup()
+	                                        .addComponent(player1Points)
+	                                        .addGap(31, 31, 31)
+	                                        .addComponent(player2Points)
+	                                        .addGap(33, 33, 33)
+	                                        .addComponent(player3Points))
+	                                    .addGroup(layout.createSequentialGroup()
+	                                        .addComponent(endTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                                        .addGap(18, 18, 18)
+	                                        .addComponent(buySaveCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+	                                .addGap(18, 18, 18)
+	                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                                    .addComponent(instructionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                                    .addComponent(player4Points))
+	                                .addContainerGap(107, Short.MAX_VALUE))
+	                            .addGroup(layout.createSequentialGroup()
+	                                .addComponent(deckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+	                    .addGroup(layout.createSequentialGroup()
+	                        .addComponent(takeCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                        .addGap(0, 0, Short.MAX_VALUE))))
 	        );
 
 	        pack();
@@ -530,39 +599,39 @@ public class MainGame extends JFrame implements JayLayerListener{
 		 cost.setText(text);
 	 }
 	 
-//	 public static void main(String args[]) {
-//		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
-//		    List<String> playerNames = Arrays.asList(names);	    
-//		    
-//	        /* Set the Nimbus look and feel */
-//	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//	         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//	         */
-//	        try {
-//	            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//	                if ("Nimbus".equals(info.getName())) {
-//	                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//	                    break;
-//	                }
-//	            }
-//	        } catch (ClassNotFoundException ex) {
-//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//	        } catch (InstantiationException ex) {
-//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//	        } catch (IllegalAccessException ex) {
-//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//	        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//	        }
-//	        //</editor-fold>
-//	        //</editor-fold>
-//	        java.awt.EventQueue.invokeLater(new Runnable() {
-//	            public void run() {
-//	                new MainGame(playerNames).setVisible(true);
-//	            }
-//	        });
-//	}
+	 public static void main(String args[]) {
+		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
+		    List<String> playerNames = Arrays.asList(names);	    
+		    
+	        /* Set the Nimbus look and feel */
+	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+	         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+	         */
+	        try {
+	            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+	                if ("Nimbus".equals(info.getName())) {
+	                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+	                    break;
+	                }
+	            }
+	        } catch (ClassNotFoundException ex) {
+	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	        } catch (InstantiationException ex) {
+	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	        } catch (IllegalAccessException ex) {
+	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	        }
+	        //</editor-fold>
+	        //</editor-fold>
+	        java.awt.EventQueue.invokeLater(new Runnable() {
+	            public void run() {
+	                new MainGame(playerNames).setVisible(true);
+	            }
+	        });
+	}
 
 	@Override
 	public void musicStarted() {
