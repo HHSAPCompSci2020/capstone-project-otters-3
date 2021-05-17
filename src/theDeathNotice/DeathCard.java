@@ -18,8 +18,8 @@ public class DeathCard extends Card {
 	}
 	
 	/**
-	 * If the current player hand has saver card, remove one saver card
-	 * and Mark the player as alive or not
+	 * If the current player hand has saver card, remove one saving card
+	 * and mark the player as alive or dead.
 	 * @param player Player that draws the card.
 	 */
 	public void act(Player player) {
