@@ -57,12 +57,13 @@ public class AddPlayers extends JFrame {
 	}
 
 	private void initComponents() {
-		addName = new javax.swing.JScrollPane();
-        typeName = new javax.swing.JEditorPane();
-        doneButton = new javax.swing.JButton();
-        addPlayers = new javax.swing.JLabel();
-        enterName = new javax.swing.JLabel();
-        saveButton = new javax.swing.JButton();
+		addName = new JScrollPane();
+        typeName = new JEditorPane();
+        doneButton = new JButton();
+        addPlayers = new JLabel();
+        enterName = new JLabel();
+        saveButton = new JButton();
+        instructions = new JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,7 +91,6 @@ public class AddPlayers extends JFrame {
             }
         });
         
-        instructions = new JLabel();
         instructions.setText("<html><center>Click \"save \" after typing each player's name into the text field. "
         		+ "Click \"done\" when you have typed and saved all of the players' names."
         		+ "Note that this program only supports 2-4 players.<center></html>");
