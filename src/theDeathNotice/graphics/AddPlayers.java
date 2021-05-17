@@ -91,9 +91,9 @@ public class AddPlayers extends JFrame {
             }
         });
         
-        instructions.setText("<html><center>Click \"save \" after typing each player's name into the text field. "
-        		+ "Click \"done\" when you have typed and saved all of the players' names."
-        		+ "Note that this program only supports 2-4 players.<center></html>");
+        instructions.setText("<html><left>Click \"save \" after typing each player's name into the text field. "
+        		+ "Click \"done\" when you have typed and saved all of the players' names. "
+        		+ "Note that this program only supports 2-4 players.<left></html>");
         instructions.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         add(instructions);
 
