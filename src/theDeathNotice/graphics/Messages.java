@@ -10,17 +10,17 @@ package theDeathNotice.graphics;
 public class Messages {
 	
 	/**
-	 * This message pops up when somebody pressed the card deck when it's empty. 
+	 * This message pops up when somebody presses the card deck when it is empty. 
 	 */
 	public final static String EMPTY_CARD_DECK= "Card Deck is Empty";
 	
 	/**
-	 * This message pops up when a player has not drawn a card yet.
+	 * This message pops up when a player has not drawn a card yet (presses take card before drawing a card).
 	 */
 	public final static String DRAW_CARD_FIRST = "Please draw a card first";
 	
 	/**
-	 * This message pops up when the card deck is empty.
+	 * This message pops up when the card deck is empty and the game has ended.
 	 */
 	public final static String CARD_DECK_EMPTY="Card Deck is Empty. {0} wins!";
 	
