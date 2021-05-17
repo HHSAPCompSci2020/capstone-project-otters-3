@@ -16,7 +16,8 @@ public class SavingCard extends Card {
 	public static int CURRENT_COST = INITIAL_COST;
    
 	/** 
-	 * Creates a SaveCard.
+	 * Creates a SavingCard.
+	 * @param cardID the unique ID of the card
 	 */
 	public SavingCard(String cardID) {
 		super(cardID);

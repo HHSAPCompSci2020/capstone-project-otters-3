@@ -21,10 +21,12 @@ import theDeathNotice.Game;
 import theDeathNotice.SavingCard;
 
 /**
+ * This class represents the ending page. The sound of applause plays when the window pops up. 
+ * Click "play again" to lead to the AddPlayers page and to start a whole new game. 
+ * Click "end game" to close the window. 
+ * 
  * @author Andria
  * @version 1.0
- * 
- * This class represents the last page.
  */
 
 public class EndingPage extends JFrame /* implements JayLayerListener*/ {
@@ -164,6 +166,7 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 		    soundPlayer.start();
 	 }
 	 
+	 //test
 	 public static void main(String args[]) {
 	        /* Set the Nimbus look and feel */
 	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

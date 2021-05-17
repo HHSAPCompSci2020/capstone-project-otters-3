@@ -14,13 +14,12 @@ import javazoom.jl.decoder.JavaLayerException;
 
 /**
  * 
- * @author Andria
- * @version 1
- * 
  * This class represents the window or page for adding players.
  * In this class, you save 2-4 player names. Once you are finished 
  * saving names, click "Done". 
- *
+ * 
+ * @author Andria
+ * @version 1
  */
 public class AddPlayers extends JFrame {
 	//private JayLayer sound;
@@ -36,7 +35,7 @@ public class AddPlayers extends JFrame {
     private JLabel instructions;
 	
     /**
-     * Initializes the page.
+     * Initializes the page, the buttons, the scrollpanes, and the labels and puts them at their respective places.
      */
 	public AddPlayers() {
 		super("Add Players");

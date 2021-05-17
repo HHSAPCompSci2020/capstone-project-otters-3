@@ -22,13 +22,12 @@ public class StartPage extends JFrame {
 	private static final String DRIPPING_WATER_IMAGE = "images/drippingWater.png";
 	private JButton startButton;
 	private JLabel gameName;
-	private javax.swing.JLabel jLabel1;
+	private JLabel jLabel1;
 
 	/**
      * Initializes the page.
-     * 
+     * Initializes the JButtons and JLabels and puts them in their respective places.
      */
-    
 	public StartPage() {
 		super("Start Page");
 		initComponents();

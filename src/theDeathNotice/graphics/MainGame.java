@@ -622,6 +622,7 @@ public class MainGame extends JFrame {
 		 cost.setText(text);
 	 }
 	 
+	 // test 
 	 public static void main(String args[]) {
 		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
 		    List<String> playerNames = Arrays.asList(names);	    

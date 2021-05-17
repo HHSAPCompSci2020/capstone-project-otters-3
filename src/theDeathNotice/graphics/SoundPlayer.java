@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.net.URL;
 
 import javazoom.jl.decoder.JavaLayerException;
-
+/**
+ * This is a SoundPlayer that plays the sound.
+ * @author skyla
+ * 
+ */
 public class SoundPlayer {
 	private String filename;
 	private Thread playThread;
