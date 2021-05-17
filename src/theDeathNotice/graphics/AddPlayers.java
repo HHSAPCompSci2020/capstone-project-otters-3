@@ -94,7 +94,7 @@ public class AddPlayers extends JFrame {
         instructions.setText("<html><center>Click \"save \" after typing each player's name into the text field. "
         		+ "Click \"done\" when you have typed and saved all of the players' names."
         		+ "Note that this program only supports 2-4 players.<center></html>");
-        instructions.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        instructions.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         add(instructions);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -105,6 +105,8 @@ public class AddPlayers extends JFrame {
                 .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addPlayers)
+                    .addComponent(instructions) 
+//                    .addGap(10, 10, 10)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(enterName)
@@ -122,9 +124,9 @@ public class AddPlayers extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(58, Short.MAX_VALUE)
                 .addComponent(addPlayers)
-                .addGap(61, 61, 61)
+                .addGap(10, 10, 10)
                 .addComponent(instructions) 
-                .addGap(61, 61, 61)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(enterName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addName, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
