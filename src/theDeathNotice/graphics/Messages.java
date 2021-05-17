@@ -1,5 +1,12 @@
 package theDeathNotice.graphics;
 
+/**
+ * Contains all of the messages for MainGame.
+ * 
+ * @author skyla
+ * @version 1
+ *
+ */
 public class Messages {
 	
 	/**
