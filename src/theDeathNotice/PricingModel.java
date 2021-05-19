@@ -14,6 +14,11 @@ public class PricingModel {
 	private final static int INVOCATION_COUNT=5;
 	private final static int MIN_POINT_BOUND=10;
 	
+	/** 
+	 * Creates a new pricing model. 
+	 * Sets the current price to the initial cost and the invoked count 0.
+	 * @param game
+	 */
 	public PricingModel(Game game) {
          this.game = game;
          this.currentPrice = SavingCard.INITIAL_COST;
