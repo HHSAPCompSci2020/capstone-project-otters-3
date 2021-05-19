@@ -12,7 +12,7 @@ import theDeathNotice.graphics.StartPage;
 
 /**
  * 
- * This class is the main class.
+ * This class is the main class. It creates a new StartPage and makes it visible.
  * @author Andria
  * @version 1
  *

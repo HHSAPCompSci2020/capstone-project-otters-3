@@ -10,12 +10,11 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- * 
+ *  * 
+ * This class represents the window or page of the starting screen, the first page of the game.
+ * If you want to play the game, click the "Begin" button to lead to the AddPlayers page.
  * @author Andria
  * @version 1
- * 
- * This class represents the window or page of the starting screen.
- * If you want to play the game, click the "Begin" button. 
  *
  */
 public class StartPage extends JFrame {
@@ -25,8 +24,8 @@ public class StartPage extends JFrame {
 	private JLabel jLabel1;
 
 	/**
-     * Initializes the page.
-     * Initializes the JButtons and JLabels and puts them in their respective places.
+     * Initializes the page by initializing JLabels and putting them in their respective places in the JFrame,  
+     * as well as initializes startButton so that it leads to AddPlayers when clicked on.
      */
 	public StartPage() {
 		super("Start Page");

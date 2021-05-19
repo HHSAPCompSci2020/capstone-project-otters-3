@@ -43,7 +43,10 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 //	private JComboBox<String> effects;
 
 	/**
-	 * initializes the game
+	 * Sets the "game" field to the parameter passed in. Initializes the JLabel and JButton fields and places them
+	 * at their respective places in the JFrame. 
+	 * Sets up the JButtons so that playAgain leads to a new AddPlayers page when clicked and endGame closes the window
+	 * when clicked.
 	 * @param game the completed game with the player standings
 	 */
 	public EndingPage(Game game) {

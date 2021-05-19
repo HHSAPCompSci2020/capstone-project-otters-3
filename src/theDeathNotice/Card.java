@@ -26,7 +26,6 @@ public abstract class Card {
 	
 	/**
 	 * Gets the ID of the card.
-	 * 
 	 * @return the ID of the card
 	 */
 	public String getCardID() {

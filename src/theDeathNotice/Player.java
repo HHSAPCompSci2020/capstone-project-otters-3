@@ -91,12 +91,15 @@ public class Player {
 		return count;
 	}
 
+	/**
+	 * @return
+	 */
 	public LocalTime getTime() {
 		return time;
 	}
 
 	/**
-	 * adds points Added to the points
+	 * Adds a number of points to the player. Sets the time to the current time.
 	 * @param number of points added to the field points (can be a negative number to subtract points)
 	 */
 	public void addPoints(int pointsAdded) {
@@ -121,7 +124,7 @@ public class Player {
 	
 	/**
 	 * Adds a save card to the player hand.
-	 * @param card
+	 * @param card the SaveCard
 	 */
 	public void addSaveCard(Card card) {
        	currentHand.add(card);
@@ -162,22 +165,21 @@ public class Player {
 	}
 
 	/**
-	 * Resets the draw count.
+	 * Resets the draw count to 0.
 	 */
 	public void resetDrawCount() {
 		drawCount = 0;
 	}
 	
 	/**
-	 * 
-	 * @return the drawCount
+	 * @return the number of times the player has drawn a card during their current turn
 	 */
 	public int getDrawCount() {
 		return drawCount;
 	}
 	
 	/**
-	 * Incraments the number of times a player has drawn for their turn.
+	 * Increments the number of times a player has drawn for their turn
 	 * @return true if the current player's draw count can be increased
 	 * false if the current player's draw count is already 3
 	 */
@@ -191,7 +193,7 @@ public class Player {
 	/**
 	 * Draws the top card from the deck of cards by adding it to the hand of the player and removing it from the card deck.
 	 * @param cards the deck of cards in the game to draw from
-	 * @post removes the top (index 0) card in the CardDeck passed in
+	 * @post removes the top (index 0) card in the CardDeck of the parameter
 	 */ 
 	public void drawCard(CardDeck cards) {
 		Card card = cards.drawTopCard();

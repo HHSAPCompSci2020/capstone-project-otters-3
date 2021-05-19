@@ -54,7 +54,7 @@ public class MainGame extends JFrame {
 	 //private JComboBox<String> effects;
 	
 	 /**
-	  * Initializes the page.
+	  * Initializes the page by initalizing the JLabels and JButtons and putting them in their respective places.
 	  */
 	 public MainGame(List<String> playerNames) {
 		 initGame(playerNames);		 

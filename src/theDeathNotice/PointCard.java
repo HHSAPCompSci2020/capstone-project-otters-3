@@ -2,6 +2,7 @@ package theDeathNotice;
 
 /**
  * This class represents a standard card that gives you points.
+ * Each card has one of the 4 suits and a value from ace to king.
  * 
  * @author Skyla
  * @version 1
@@ -13,8 +14,7 @@ public class PointCard extends Card {
 	
 	/**
 	 * Creates a PointCard.
-	 * @param cardID The ID of the card.
-	 * @param imageFile The directory of the image of the card.
+	 * @param cardID The ID of the card, related to the directory image of the card
 	 */
 	public PointCard(String cardID) {
 		super(cardID);
@@ -34,8 +34,9 @@ public class PointCard extends Card {
 	}
 
 	/**
-	 * Adds the card value to the current player
-	 * Card that is j q and k have 10 points
+	 * Adds the card value to the current player.
+	 * Cards that are either Jack, Queen, or King have a value of 10 points.
+	 * All other cards have a value of their card number.
 	 * @param player Player that draws the card.
 	 */
 	public void act(Player player) {
