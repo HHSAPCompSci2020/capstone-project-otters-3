@@ -6,7 +6,7 @@ import java.util.Collections;
 
 /**
  * 
- * This class represents a card deck.
+ * This class represents a card deck of a game.
  * @author Skyla
  * @version 1
  *
@@ -82,7 +82,7 @@ public class CardDeck {
 	}
 	
 	/**
-	 * The number of cards left in the deck (not drawn yet).
+	 * The number of cards left in the deck that have not been drawn yet.
 	 * 
 	 * @return The number of cards left in the deck.
 	 */
@@ -91,7 +91,7 @@ public class CardDeck {
 	}
 	
 	/**
-	 * How many steps or cards there are until the next DeathCard.
+	 * Counts the number of steps or cards there are until the next DeathCard.
 	 * 
 	 * @return the number of cards until the next DeathCard
 	 */
@@ -107,7 +107,7 @@ public class CardDeck {
 	}
 	
 	/** 
-	 * Shuffles the deck.
+	 * Shuffles the deck by putting the cards in the deck in a random order.
 	 */
 	public void shuffleDeck() {
 		Collections.shuffle(cards);

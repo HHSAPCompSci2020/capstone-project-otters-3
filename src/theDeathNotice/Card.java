@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 
 /**
  * This class represents a card.
+ * 
  * @author Skyla
  * @version 1
  *
@@ -17,7 +18,7 @@ public abstract class Card {
 
 	/** 
 	 * 
-	 * @param cardID the unique ID of the card
+	 * @param cardID the unique ID of the card 
 	 */
 	public Card(String cardID) {
 		this.cardID = cardID;

@@ -92,7 +92,7 @@ public class Player {
 	}
 
 	/**
-	 * @return
+	 * @return time the time that the player last received points.
 	 */
 	public LocalTime getTime() {
 		return time;
