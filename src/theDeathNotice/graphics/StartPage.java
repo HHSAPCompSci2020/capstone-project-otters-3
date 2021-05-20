@@ -15,7 +15,6 @@ import javax.swing.*;
  * If you want to play the game, click the "Begin" button to lead to the AddPlayers page.
  * @author Andria
  * @version 1
- *
  */
 public class StartPage extends JFrame {
 	private static final String DRIPPING_WATER_IMAGE = "images/drippingWater.png";
