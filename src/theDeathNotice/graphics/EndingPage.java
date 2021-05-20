@@ -51,6 +51,7 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 	 */
 	public EndingPage(Game game) {
 		this.game=game;	
+		setResizable(false);
 //		String[] soundEffects = new String[]{"applause.mp3", "applause.mp3"};
 //		effects = new JComboBox<String>(soundEffects);
 //		add(effects);

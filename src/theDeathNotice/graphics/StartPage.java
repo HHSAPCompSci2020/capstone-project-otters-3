@@ -29,6 +29,7 @@ public class StartPage extends JFrame {
      */
 	public StartPage() {
 		super("Start Page");
+		setResizable(false);
 		initComponents();
 	}
 	

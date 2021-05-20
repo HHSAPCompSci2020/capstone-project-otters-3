@@ -42,6 +42,7 @@ public class AddPlayers extends JFrame {
 		initComponents();
 		players = new ArrayList<String>();
 		setVisible(true);
+		setResizable(false);
 		
 //		String[] soundEffects = new String[]{"errorSound.mp3"};
 //		effects = new JComboBox<String>(soundEffects);

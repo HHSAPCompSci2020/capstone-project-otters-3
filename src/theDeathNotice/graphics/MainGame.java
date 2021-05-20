@@ -58,6 +58,7 @@ public class MainGame extends JFrame {
 	  */
 	 public MainGame(List<String> playerNames) {
 		 initGame(playerNames);		 
+		 setResizable(false);
 		 initComponents();
 		 player1Points.setOpaque(true);
 		 player1Points.setBackground(new java.awt.Color(255, 255, 255));
