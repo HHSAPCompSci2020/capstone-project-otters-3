@@ -90,42 +90,40 @@ public class AddPlayers extends JFrame {
             }
         });
         
-        instructions.setText("<html><left>Click \"save \" after typing each player's name into the text field. "
+        instructions.setText("<html><left>Click \"save\" after typing each player's name into the text field. "
         		+ "Click \"done\" when you have typed and saved all of the players' names. "
         		+ "Note that this program only supports 2-4 players.<left></html>");
-        instructions.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
-        add(instructions);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addPlayers)
-                    .addComponent(instructions) 
-//                    .addGap(10, 10, 10)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(enterName)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(saveButton)))
+                            .addComponent(enterName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(saveButton, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(addName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(doneButton, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(instructions, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(instructions, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addPlayers)
-                .addGap(10, 10, 10)
-                .addComponent(instructions) 
-                .addGap(10, 10, 10)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(enterName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addName, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
@@ -133,8 +131,9 @@ public class AddPlayers extends JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(doneButton)
                     .addComponent(saveButton))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
+
         pack();
 	}
 	
