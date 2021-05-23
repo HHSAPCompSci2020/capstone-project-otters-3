@@ -1,5 +1,8 @@
 package theDeathNotice.graphics;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 
 import java.awt.image.BufferedImage;
@@ -61,6 +64,7 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 //		sound.addSongs(0, soundEffects);
 //		sound.changePlayList(0);
 //		sound.addJayLayerListener(this);
+		//loadFancyFont();
 		initComponents();
 		playSound();
 //		sound.nextSong();
@@ -77,13 +81,16 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 	        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 	        getContentPane().setBackground(new java.awt.Color(255,255,255));
 
-	        winnerName.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+	        //winnerName.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+	        setFancyFont(winnerName);
 	        winnerName.setText("Name: " + game.getWinner().getName());
 
-	        winnerPoints.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+	        //winnerPoints.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+	        setFancyFont(winnerPoints);
 	        winnerPoints.setText("Points: " + game.getWinner().getPoints());
 
-	        winnerTime.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+	        //winnerTime.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+	        setFancyFont(winnerTime);
 	        winnerTime.setText("Timestamp: " + game.getWinner().getTime());
 
 	        playAgain.setBackground(new java.awt.Color(255, 145, 255));
@@ -166,6 +173,32 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
          jLabel1.setIcon(icon);
 	 }	
 	 
+//	private static void loadFancyFont() {
+//		  GraphicsEnvironment ge = null;
+//		  try{
+//		   ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+//		   ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemClassLoader().getResourceAsStream("font/Mindset DEMO.ttf")));	   
+//		  } catch(FontFormatException e){
+//			  e.printStackTrace();
+//		  } catch (IOException e){
+//			  e.printStackTrace();
+//		  }
+//	}
+	
+	 private void setFancyFont(JLabel label) {
+	      String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+	      boolean fancyFontExists = false;
+	      for(int i=0; i<fonts.length; i++) {
+	    	   if(fonts[i].equals("Mindset")) {
+	    		  label.setFont(new java.awt.Font("Mindset", 0, 36));
+	    		  fancyFontExists = true;
+	    	   }
+	      }
+	      if (!fancyFontExists) {
+	         label.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+	      }
+	 }
+	
 	 private void playSound() {
 		    SoundPlayer soundPlayer = new SoundPlayer("audio/applause.mp3");
 		    soundPlayer.start();

@@ -1,11 +1,12 @@
 package theDeathNotice.graphics;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import javazoom.jl.decoder.JavaLayerException;
@@ -22,6 +23,7 @@ import javazoom.jl.decoder.JavaLayerException;
  * @version 1
  */
 public class AddPlayers extends JFrame {
+	private static final String ABOUT_IMAGE = "images/about.png";
 	//private JayLayer sound;
 	//private JComboBox<String> effects;
 	
@@ -91,9 +93,12 @@ public class AddPlayers extends JFrame {
             }
         });
         
-        instructions.setText("<html><left>Click \"save\" after typing each player's name into the text field. "
-        		+ "Click \"done\" when you have typed and saved all of the players' names. "
-        		+ "Note that this program only supports 2-4 players.<left></html>");
+//        instructions.setText("<html><left>Click \"save\" after typing each player's name into the text field. "
+//        		+ "Click \"done\" when you have typed and saved all of the players' names. "
+//        		+ "Note that this program only supports 2-4 players.<left></html>");
+        
+        instructions.setText("<html><left><b>Please click \"Help\" for instructions!</b><left></html>");
+        setImage();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -231,29 +236,19 @@ public class AddPlayers extends JFrame {
 			window.setVisible(true);
 		}
 	}
+	
+	private void setImage() {
+        URL file = ClassLoader.getSystemClassLoader().getResource(ABOUT_IMAGE);
+        BufferedImage image=null;
+        try {
+			  image = ImageIO.read(file);
+		   } catch (IOException e) {
+			  // TODO Auto-generated catch block
+			   e.printStackTrace();
+		}
+        ImageIcon icon = new ImageIcon(image);
+        instructions.setIcon(icon);
+	 }	
 
-//	@Override
-//	public void musicStarted() {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//	
-//	@Override
-//	public void musicStopped() {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//	
-//	@Override
-//	public void playlistEnded() {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//	
-//	@Override
-//	public void songEnded() {
-//		// TODO Auto-generated method stub
-//		
-//	}
 	
 }
