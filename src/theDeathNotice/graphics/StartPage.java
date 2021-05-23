@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.awt.Font;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -38,7 +40,8 @@ public class StartPage extends JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
- 
+        getContentPane().setBackground(new java.awt.Color(255,255,255));
+        
         startButton.setText("Begin!");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,7 +50,15 @@ public class StartPage extends JFrame {
         });
         
         gameName.setBackground(new java.awt.Color(255, 102, 102));
-        gameName.setFont(new java.awt.Font("Libian SC", 0, 36)); // NOI18N
+        String[] fonts = java.awt.GraphicsEnvironment.getAvailableFontFamilyNames();
+        boolean fontExist = false;
+        for(int i=0; i<fonts.length; i++) {
+        	if(fonts[i]=="Libian SC") {
+        		fontExist = true;
+        		gameName.setFont(new java.awt.Font("Libian SC", 0, 36));
+        	}
+        }
+        gameName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         gameName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gameName.setText("The Death Notice");
         gameName.setOpaque(true);

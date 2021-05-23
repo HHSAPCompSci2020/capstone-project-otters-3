@@ -75,6 +75,7 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 	        jLabel1 = new javax.swing.JLabel();
 
 	        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+	        getContentPane().setBackground(new java.awt.Color(255,255,255));
 
 	        winnerName.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 	        winnerName.setText("Name: " + game.getWinner().getName());

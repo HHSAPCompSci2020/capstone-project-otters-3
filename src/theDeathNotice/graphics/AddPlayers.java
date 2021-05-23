@@ -182,6 +182,11 @@ public class AddPlayers extends JFrame {
 			JOptionPane.showMessageDialog(this, "Please type the player's name into the textbox.");
 			return;
 		} 
+		if(Character.isWhitespace(typeName.getText().charAt(0))){
+			playSound();
+			JOptionPane.showMessageDialog(this, "Player name's first character may not be a space.");
+			return;
+		}
 		int len = typeName.getText().length();
 		if (len > 15) {
             playSound();
@@ -189,9 +194,9 @@ public class AddPlayers extends JFrame {
 			return;		
 		}
 		for (int i=0; i<len; i++) {
-			if (Character.isLetterOrDigit(typeName.getText().charAt(i)) == false) {
+			if (Character.isLetterOrDigit(typeName.getText().charAt(i)) == false && Character.isWhitespace(typeName.getText().charAt(i)) == false) {
                 playSound();
-				JOptionPane.showMessageDialog(this, "Player name can only contain alphabetic or digit character.");
+				JOptionPane.showMessageDialog(this, "Player name can only contain alphabetic, digit, or whitespace character.");
 				return;
 			}
 		}
