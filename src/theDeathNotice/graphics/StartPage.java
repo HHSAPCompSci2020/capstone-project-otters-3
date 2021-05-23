@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -31,7 +33,35 @@ public class StartPage extends JFrame {
 	public StartPage() {
 		super("Start Page");
 		setResizable(false);
+		loadFancyFont();
 		initComponents();
+	}
+	
+	private static void loadFancyFont() {
+		  GraphicsEnvironment ge = null;
+		  try{
+		   ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		   ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemClassLoader().getResourceAsStream("font/DK Face Your Fears.ttf")));
+		  } catch(FontFormatException e){
+		  	System.out.println("I am here 1");
+		  } catch (IOException e){
+		  	e.printStackTrace();
+		    System.out.println("I am here 2");
+		  }
+	}
+	
+	private void setFancyFont() {
+	      String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+	      boolean fancyFontExists = false;
+	      for(int i=0; i<fonts.length; i++) {
+	    	   if(fonts[i].equals("DK Face Your Fears")) {
+	    		  gameName.setFont(new java.awt.Font("DK Face Your Fears", 0, 36));
+	    		  fancyFontExists = true;
+	    	   }
+	      }
+	      if (!fancyFontExists) {
+	         gameName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+	      }
 	}
 	
 	private void initComponents() {
@@ -50,15 +80,7 @@ public class StartPage extends JFrame {
         });
         
         gameName.setBackground(new java.awt.Color(255, 102, 102));
-        String[] fonts = java.awt.GraphicsEnvironment.getAvailableFontFamilyNames();
-        boolean fontExist = false;
-        for(int i=0; i<fonts.length; i++) {
-        	if(fonts[i]=="Libian SC") {
-        		fontExist = true;
-        		gameName.setFont(new java.awt.Font("Libian SC", 0, 36));
-        	}
-        }
-        gameName.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        setFancyFont();
         gameName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gameName.setText("The Death Notice");
         gameName.setOpaque(true);

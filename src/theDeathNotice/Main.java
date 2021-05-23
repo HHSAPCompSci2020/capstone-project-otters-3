@@ -18,6 +18,7 @@ import theDeathNotice.graphics.StartPage;
  *
  */
 public class Main{
+	
 	public static void main(String args[]) {
 		JFrame window = new StartPage();
 
@@ -41,5 +42,6 @@ public class Main{
         //</editor-fold>
         //</editor-fold>
 
+		
 	}
 }
