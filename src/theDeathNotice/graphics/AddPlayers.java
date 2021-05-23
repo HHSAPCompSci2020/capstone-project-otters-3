@@ -10,8 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import javazoom.jl.decoder.JavaLayerException;
-//import jay.jaysound.JayLayer;
-//import jay.jaysound.JayLayerListener;
+
 
 /**
  * 
@@ -24,8 +23,6 @@ import javazoom.jl.decoder.JavaLayerException;
  */
 public class AddPlayers extends JFrame {
 	private static final String ABOUT_IMAGE = "images/about.png";
-	//private JayLayer sound;
-	//private JComboBox<String> effects;
 	
 	private JButton doneButton;
 	private JButton saveButton;
@@ -35,6 +32,7 @@ public class AddPlayers extends JFrame {
     private JScrollPane addName;
     private ArrayList<String> players;
     private JLabel instructions;
+    private JButton help;
 	
     /**
      * Initializes the page, the buttons, the scrollpanes, and the labels and puts them at their respective places.
@@ -45,17 +43,7 @@ public class AddPlayers extends JFrame {
 		players = new ArrayList<String>();
 		setVisible(true);
 		setResizable(false);
-		
-//		String[] soundEffects = new String[]{"errorSound.mp3"};
-//		effects = new JComboBox<String>(soundEffects);
-//		add(effects);
-//		
-//		sound=new JayLayer("audio/","audio/",false);
-//		sound.addPlayList();
-//		sound.addSoundEffects(soundEffects);
-//		sound.changePlayList(0);
-//		sound.addJayLayerListener(this);
-		
+			
 	}
 
 	private void initComponents() {
@@ -66,6 +54,7 @@ public class AddPlayers extends JFrame {
         enterName = new JLabel();
         saveButton = new JButton();
         instructions = new JLabel();
+        help = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +82,13 @@ public class AddPlayers extends JFrame {
             }
         });
         
+        help.setText("Help");
+        help.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HelpActionPerformed(evt);
+            }
+        });
+        
 //        instructions.setText("<html><left>Click \"save\" after typing each player's name into the text field. "
 //        		+ "Click \"done\" when you have typed and saved all of the players' names. "
 //        		+ "Note that this program only supports 2-4 players.<left></html>");
@@ -115,7 +111,8 @@ public class AddPlayers extends JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(addName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(doneButton, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(doneButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(help, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -128,6 +125,8 @@ public class AddPlayers extends JFrame {
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(instructions, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(help)
+                .addGap(7, 7, 7)
                 .addComponent(addPlayers)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -143,38 +142,13 @@ public class AddPlayers extends JFrame {
         pack();
 	}
 	
-//	 private void playSound() {
-//			sound.playSoundEffect(0);
-//			sound=new JayLayer("audio/","audio/",false);
-//			String[] soundEffects = new String[]{"errorSound.mp3"};
-//			effects = new JComboBox<String>(soundEffects);
-//			add(effects);
-//			
-//			sound=new JayLayer("audio/","audio/",false);
-//			sound.addPlayList();
-//			sound.addSoundEffects(soundEffects);
-//			sound.changePlayList(0);
-//			sound.addJayLayerListener(this);
-//	 }
 	 
 	 private void playSound() {
-//            URL file = ClassLoader.getSystemClassLoader().getResource("audio/errorSound.mp3");
-//			try {
-//				BufferedInputStream bs = new BufferedInputStream(file.openStream());
-//				javazoom.jl.player.Player player = new javazoom.jl.player.Player(bs);
-//				player.play();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (JavaLayerException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
 		    SoundPlayer soundPlayer = new SoundPlayer("audio/errorSound.mp3");
 		    soundPlayer.start();
     }
 	 
-//	
+
 	private void saveButtonActionPerformed(ActionEvent e) {
 		if (players.size() >= 4) {
 			playSound();
@@ -235,6 +209,21 @@ public class AddPlayers extends JFrame {
 			JFrame window = new MainGame(players);
 			window.setVisible(true);
 		}
+	}
+	
+	
+	private void HelpActionPerformed(ActionEvent e) {
+		String text = "<html><left>Click \"save\" after typing each player's name into the text field. <br>"
+        		+ "Click \"done\" when you have typed and saved all of the players' names.<br> "
+				+ "Player names must be at least 1 character, no longer than 15 characters<br> "
+				+ "and can only consist of alphabetical characters, numerical characters, or spaces. <br>"
+				+ "The first character, however, can't be a space. No duplicate names are allowed.<br>"
+        		+ "Note that this program only supports 2-4 players.<left></html>";
+		   JOptionPane.showMessageDialog(this,
+				    text,
+				    "Please Read Game Instructions Carefully",
+				    JOptionPane.INFORMATION_MESSAGE);
+		
 	}
 	
 	private void setImage() {

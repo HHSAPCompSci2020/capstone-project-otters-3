@@ -59,7 +59,7 @@ public class Instructions {//extends JDialog implements ActionListener {
 	   public Instructions(JFrame frame) {
 		   JOptionPane.showMessageDialog(frame,
 				    text,
-				    "Please Read Game Instruction Carefully",
+				    "Please Read Game Instructions Carefully",
 				    JOptionPane.INFORMATION_MESSAGE);
 	   }
 }
