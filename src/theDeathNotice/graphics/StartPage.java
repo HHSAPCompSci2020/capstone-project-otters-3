@@ -43,10 +43,7 @@ public class StartPage extends JFrame {
 		   ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		   ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemClassLoader().getResourceAsStream("font/DK Face Your Fears.ttf")));
 		  } catch(FontFormatException e){
-		  	System.out.println("I am here 1");
 		  } catch (IOException e){
-		  	e.printStackTrace();
-		    System.out.println("I am here 2");
 		  }
 	}
 	
