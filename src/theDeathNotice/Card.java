@@ -46,7 +46,7 @@ public abstract class Card {
 	/** 
 	 * Draws the card using the imageFile.
 	 */
-	public void drawImage()  throws IOException {
+	public void drawImage() throws IOException {
 		URL u = ClassLoader.getSystemClassLoader().getResource(imageFile);
 		loadResourceByUrl(u, imageFile);
 	}
