@@ -19,7 +19,7 @@ public class CardDeck {
 	private Game game;
 	
 	/**
-	 * Creates a CardDeck with a standard deck of cards.
+	 * Creates a CardDeck (a standard card deck, except with 4-8 As and 1 Joker).
 	 */
 	public CardDeck(Game game) {
 		this.game=game;
@@ -42,7 +42,7 @@ public class CardDeck {
 	}
 	
 	/**
-	 * Removes the card at index 0 of cards.
+	 * Removes the card at the top of the deck.
 	 * @return the card removed or null if there are no more cards to draw
 	 */
 	public Card drawTopCard() {
@@ -55,7 +55,7 @@ public class CardDeck {
 	}
 	
 	/**
-	 * Removes the card at index 0 of cards.
+	 * Looks at the card at the top of the deck.
 	 * @return the top card in the deck or null if there are no more cards in deck
 	 */
 	public Card peekTopCard() {
@@ -155,23 +155,5 @@ public class CardDeck {
 			return "dead";
 			
 	}
-//	public static void main(String args[]) {
-//		CardDeck c = new CardDeck();
-//		c.shuffleDeck();
-//		c.shuffleDeck();
-//		c.shuffleDeck();
-//		System.out.println(c.toString());
-//		System.out.println("remaining card=" + c.getNumOfCards());
-//		
-//		while (c.getNumOfCards() > 0) {
-//			Card card = c.drawTopCard();
-//			try {
-//				card.drawImage();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-//		// Game over, Declare winner
-//	}
+
 }

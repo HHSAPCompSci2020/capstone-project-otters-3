@@ -32,7 +32,7 @@ import theDeathNotice.SavingCard;
  * @version 1.0
  */
 
-public class EndingPage extends JFrame /* implements JayLayerListener*/ {
+public class EndingPage extends JFrame {
 	private static final String BALLOON_IMAGE = "images/congratulations.png";
 	private Game game;
 	private JLabel jLabel1;
@@ -42,8 +42,7 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 	private JButton playAgain;
 	private JButton endGame;
 	
-//	private JayLayer sound;
-//	private JComboBox<String> effects;
+
 
 	/**
 	 * Sets the "game" field to the parameter passed in. Initializes the JLabel and JButton fields and places them
@@ -55,19 +54,10 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 	public EndingPage(Game game) {
 		this.game=game;	
 		setResizable(false);
-//		String[] soundEffects = new String[]{"applause.mp3", "applause.mp3"};
-//		effects = new JComboBox<String>(soundEffects);
-//		add(effects);
-//		
-//		sound=new JayLayer("audio/","audio/",false);
-//		sound.addPlayList();
-//		sound.addSongs(0, soundEffects);
-//		sound.changePlayList(0);
-//		sound.addJayLayerListener(this);
-		//loadFancyFont();
+
 		initComponents();
 		playSound();
-//		sound.nextSong();
+
 	}
 	
 	private void initComponents() {		
@@ -173,17 +163,7 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
          jLabel1.setIcon(icon);
 	 }	
 	 
-//	private static void loadFancyFont() {
-//		  GraphicsEnvironment ge = null;
-//		  try{
-//		   ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-//		   ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemClassLoader().getResourceAsStream("font/Mindset DEMO.ttf")));	   
-//		  } catch(FontFormatException e){
-//			  e.printStackTrace();
-//		  } catch (IOException e){
-//			  e.printStackTrace();
-//		  }
-//	}
+
 	
 	 private void setFancyFont(JLabel label) {
 	      String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
@@ -204,44 +184,44 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 		    soundPlayer.start();
 	 }
 	 
-	 //test
-	 public static void main(String args[]) {
-	        /* Set the Nimbus look and feel */
-	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-	         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-	         */
-		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
-		    List<String> playerNames = Arrays.asList(names);	
-			 Game game = new Game(playerNames);
-			 CardDeck deck = game.getCardDeck();
-			 deck.shuffleDeck();
-			 deck.shuffleDeck();
-			 deck.shuffleDeck();
-			 SavingCard.init();
-	        try {
-	            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-	                if ("Nimbus".equals(info.getName())) {
-	                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-	                    break;
-	                }
-	            }
-	        } catch (ClassNotFoundException ex) {
-	            java.util.logging.Logger.getLogger(EndingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        } catch (InstantiationException ex) {
-	            java.util.logging.Logger.getLogger(EndingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        } catch (IllegalAccessException ex) {
-	            java.util.logging.Logger.getLogger(EndingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-	            java.util.logging.Logger.getLogger(EndingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        }
-	        //</editor-fold>
-
-	        /* Create and display the form */
-	        java.awt.EventQueue.invokeLater(new Runnable() {
-	            public void run() {
-	                new EndingPage(game).setVisible(true);
-	            }
-	        });
-	    }
+//	 //test
+//	 public static void main(String args[]) {
+//	        /* Set the Nimbus look and feel */
+//	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//	         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//	         */
+//		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
+//		    List<String> playerNames = Arrays.asList(names);	
+//			 Game game = new Game(playerNames);
+//			 CardDeck deck = game.getCardDeck();
+//			 deck.shuffleDeck();
+//			 deck.shuffleDeck();
+//			 deck.shuffleDeck();
+//			 SavingCard.init();
+//	        try {
+//	            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//	                if ("Nimbus".equals(info.getName())) {
+//	                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//	                    break;
+//	                }
+//	            }
+//	        } catch (ClassNotFoundException ex) {
+//	            java.util.logging.Logger.getLogger(EndingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        } catch (InstantiationException ex) {
+//	            java.util.logging.Logger.getLogger(EndingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        } catch (IllegalAccessException ex) {
+//	            java.util.logging.Logger.getLogger(EndingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//	            java.util.logging.Logger.getLogger(EndingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        }
+//	        //</editor-fold>
+//
+//	        /* Create and display the form */
+//	        java.awt.EventQueue.invokeLater(new Runnable() {
+//	            public void run() {
+//	                new EndingPage(game).setVisible(true);
+//	            }
+//	        });
+//	    }
 }

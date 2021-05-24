@@ -19,6 +19,10 @@ import theDeathNotice.graphics.StartPage;
  */
 public class Main{
 	
+	/**
+	 * The method used to launch the program. It uses Nimbus and launches the StartPage first.
+	 * @param args The argument for the program launch, which is null in this case.
+	 */
 	public static void main(String args[]) {
 		JFrame window = new StartPage();
 

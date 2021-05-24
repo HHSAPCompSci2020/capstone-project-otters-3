@@ -17,6 +17,7 @@ public abstract class Card {
 	private String imageFile;
 
 	/** 
+	 * Makes the card by calling its corresponding image file.
 	 * 
 	 * @param cardID the unique ID of the card 
 	 */

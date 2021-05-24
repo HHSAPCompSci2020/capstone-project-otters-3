@@ -91,34 +91,6 @@ public class MainGame extends JFrame {
 	     
 	 }
 	 
-//	 private void makeSound(String file) {
-//			String[] soundEffects = new String[]{file};
-//		  	effects = new JComboBox<String>(soundEffects);
-//			add(effects);
-//			
-//			sound=new JayLayer("audio/","audio/",false);
-//			sound.addPlayList();
-//			sound.addSoundEffects(soundEffects);
-//			sound.changePlayList(0);
-//			sound.addJayLayerListener(this);		 
-//			sound.playSoundEffect(0);
-//			
-//	 }
-	 
-//	 private void makeSound(String audiofile) {
-//            URL file = ClassLoader.getSystemClassLoader().getResource(audiofile);
-//			try {
-//				BufferedInputStream bs = new BufferedInputStream(file.openStream());
-//				javazoom.jl.player.Player player = new javazoom.jl.player.Player(bs);
-//				player.play();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (JavaLayerException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//	 }
 	 
 	 private void msgbox(String s) {
 		    SoundPlayer soundPlayer = new SoundPlayer("audio/errorSound.mp3");
@@ -559,38 +531,38 @@ public class MainGame extends JFrame {
 	 }
 	 
 	 // test 
-	 public static void main(String args[]) {
-		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
-		    List<String> playerNames = Arrays.asList(names);	    
-		    
-	        /* Set the Nimbus look and feel */
-	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-	         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-	         */
-	        try {
-	            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-	                if ("Nimbus".equals(info.getName())) {
-	                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-	                    break;
-	                }
-	            }
-	        } catch (ClassNotFoundException ex) {
-	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        } catch (InstantiationException ex) {
-	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        } catch (IllegalAccessException ex) {
-	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	        }
-	        //</editor-fold>
-	        //</editor-fold>
-	        java.awt.EventQueue.invokeLater(new Runnable() {
-	            public void run() {
-	                new MainGame(playerNames).setVisible(true);
-	            }
-	        });
-	 }
+//	 public static void main(String args[]) {
+//		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
+//		    List<String> playerNames = Arrays.asList(names);	    
+//		    
+//	        /* Set the Nimbus look and feel */
+//	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//	         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//	         */
+//	        try {
+//	            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//	                if ("Nimbus".equals(info.getName())) {
+//	                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//	                    break;
+//	                }
+//	            }
+//	        } catch (ClassNotFoundException ex) {
+//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        } catch (InstantiationException ex) {
+//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        } catch (IllegalAccessException ex) {
+//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//	            java.util.logging.Logger.getLogger(MainGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//	        }
+//	        //</editor-fold>
+//	        //</editor-fold>
+//	        java.awt.EventQueue.invokeLater(new Runnable() {
+//	            public void run() {
+//	                new MainGame(playerNames).setVisible(true);
+//	            }
+//	        });
+//	 }
 	
 }

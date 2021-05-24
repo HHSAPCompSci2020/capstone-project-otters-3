@@ -6,6 +6,9 @@ import java.util.ArrayList;
 /**
  * 
  * This class represents a player in the game.
+ * This class is responsible for keeping track of the player's
+ * hand as well as the functions of each player, such as the number of times 
+ * they have drawn or how many points they have.
  * 
  * @author Skyla
  * @version 1
@@ -45,6 +48,7 @@ public class Player {
 
 
 	/**
+	 * Gets the player's name.
 	 * 
 	 * @return the name of the player
 	 */
@@ -53,6 +57,7 @@ public class Player {
 	}
 
 	/**
+	 * Gets the player's assigned number.
 	 * 
 	 * @return the inital player number of the player
 	 */
@@ -61,7 +66,7 @@ public class Player {
 	}
 
 	/**
-	 * 
+	 * Sets the number of points the player has.
 	 * @param points the number of points to set the points to
 	 */
 	public void setPoints(int points) {
@@ -70,7 +75,7 @@ public class Player {
 
 
 	/**
-	 * 
+	 * Gets the number of points the player has.
 	 * @return the number of points the player has
 	 */
 	public int getPoints() {
@@ -78,7 +83,7 @@ public class Player {
 	}
 
 	/**
-	 * 
+	 * Gets the number of saving cards the player has.
 	 * @return the number of saving cards the player has
 	 */
 	public int getSaveCardCount() {
@@ -92,6 +97,7 @@ public class Player {
 	}
 
 	/**
+	 * Gets the current time. 
 	 * @return time the time that the player last received points.
 	 */
 	public LocalTime getTime() {
@@ -150,6 +156,7 @@ public class Player {
 	}
 
 	/**
+	 * Returns whether or not the player is alive.
 	 * 
 	 * @return whether the player is alive or not
 	 */
@@ -158,6 +165,7 @@ public class Player {
 	}
 
 	/**
+	 * Sets the player to alive or dead.
 	 * 
 	 * @param alive what to set the player's alive status to
 	 */
@@ -173,6 +181,7 @@ public class Player {
 	}
 	
 	/**
+	 * Gets the number of times a player has drawn in the current turn.
 	 * @return the number of times the player has drawn a card during their current turn
 	 */
 	public int getDrawCount() {

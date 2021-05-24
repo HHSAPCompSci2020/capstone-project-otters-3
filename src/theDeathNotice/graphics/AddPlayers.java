@@ -90,9 +90,6 @@ public class AddPlayers extends JFrame {
             }
         });
         
-//        instructions.setText("<html><left>Click \"save\" after typing each player's name into the text field. "
-//        		+ "Click \"done\" when you have typed and saved all of the players' names. "
-//        		+ "Note that this program only supports 2-4 players.<left></html>");
         
         instructions.setText("<html><left><b>Please click \"Help\" for instructions!</b><left></html>");
         setImage();

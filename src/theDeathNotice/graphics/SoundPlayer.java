@@ -14,11 +14,19 @@ public class SoundPlayer {
 	private String filename;
 	private Thread playThread;
 	
+	/**
+	 * Takes the filename and creates a thread to play it.
+	 * @param filename the mp3 file to play
+	 */
 	SoundPlayer(String filename) {
 		this.filename = filename;
 		playThread = new Thread(runnablePlay);
 		
 	}
+	
+	/**
+	 * Starts to play the sound.
+	 */
 	void start() {
 		playThread.start();
 	}

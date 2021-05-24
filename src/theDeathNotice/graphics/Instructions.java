@@ -39,7 +39,7 @@ public class Instructions {
         	+ "</body></html>";
        
        /**
-        * Initializes the page.
+        * Initializes the page with the instructions by opening up a message dialog.
         * @param frame The MainGame JFrame that we use to open up this class.
         */
 	   public Instructions(JFrame frame) {
