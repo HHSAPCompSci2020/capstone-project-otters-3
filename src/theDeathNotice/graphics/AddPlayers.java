@@ -82,6 +82,7 @@ public class AddPlayers extends JFrame {
             }
         });
         
+        help.setBackground(new java.awt.Color(204, 204, 255));
         help.setText("Help");
         help.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
