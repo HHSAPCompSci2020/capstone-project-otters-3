@@ -12,7 +12,7 @@ public class DeathCard extends Card {
 	
 	/** 
 	 * Creates a deadly card.
-	 * @param cardID
+	 * @param cardID the ID of the card
 	 */
 	public DeathCard(String cardID) {
 		super(cardID);

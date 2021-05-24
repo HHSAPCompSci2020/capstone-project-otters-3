@@ -106,7 +106,7 @@ public class Player {
 
 	/**
 	 * Adds a number of points to the player. Sets the time to the current time.
-	 * @param number of points added to the field points (can be a negative number to subtract points)
+	 * @param pointsAdded number of points added to the field points (can be a negative number to subtract points)
 	 */
 	public void addPoints(int pointsAdded) {
 		points += pointsAdded;

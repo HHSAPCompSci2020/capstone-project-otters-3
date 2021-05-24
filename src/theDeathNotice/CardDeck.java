@@ -20,6 +20,7 @@ public class CardDeck {
 	
 	/**
 	 * Creates a CardDeck (a standard card deck, except with 4-8 As and 1 Joker).
+	 * @param game the game the card deck is used for
 	 */
 	public CardDeck(Game game) {
 		this.game=game;
@@ -77,7 +78,7 @@ public class CardDeck {
 	/**
 	 * Sets the card at the top of the deck visible to all players (flips the card).
 	 * 
-	 * @param topCardVisible
+	 * @param topCardVisible whether or not the top card is visible
 	 */
 	public void setTopCardVisible(boolean topCardVisible) {
 		this.topCardVisible = topCardVisible;

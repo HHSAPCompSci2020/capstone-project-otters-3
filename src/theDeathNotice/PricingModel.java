@@ -17,7 +17,7 @@ public class PricingModel {
 	/** 
 	 * Creates a new pricing model. 
 	 * Sets the current price to the initial cost and the invoked count 0.
-	 * @param game
+	 * @param game the game the pricing model is used for
 	 */
 	public PricingModel(Game game) {
          this.game = game;

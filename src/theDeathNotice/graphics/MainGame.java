@@ -55,6 +55,7 @@ public class MainGame extends JFrame {
 	
 	 /**
 	  * Initializes the page by initalizing the JLabels and JButtons and putting them in their respective places.
+	  * @param playerNames the list of player names
 	  */
 	 public MainGame(List<String> playerNames) {
 		 initGame(playerNames);		 
