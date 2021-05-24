@@ -189,7 +189,7 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 	      String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 	      boolean fancyFontExists = false;
 	      for(int i=0; i<fonts.length; i++) {
-	    	   if(fonts[i].equals("Mindset")) {
+	    	   if(fonts[i]!=null && fonts[i].equals("Mindset")) {
 	    		  label.setFont(new java.awt.Font("Mindset", 0, 36));
 	    		  fancyFontExists = true;
 	    	   }

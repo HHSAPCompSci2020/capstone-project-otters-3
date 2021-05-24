@@ -52,7 +52,7 @@ public class StartPage extends JFrame {
 	      String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 	      boolean fancyFontExists = false;
 	      for(int i=0; i<fonts.length; i++) {
-	    	   if(fonts[i].equals("DK Face Your Fears")) {
+	    	   if(fonts[i]!=null && fonts[i].equals("DK Face Your Fears")) {
 	    		  gameName.setFont(new java.awt.Font("DK Face Your Fears", 0, 36));
 	    		  fancyFontExists = true;
 	    	   }
