@@ -50,7 +50,7 @@ public class EndingPage extends JFrame /* implements JayLayerListener*/ {
 	 * at their respective places in the JFrame. 
 	 * Sets up the JButtons so that playAgain leads to a new AddPlayers page when clicked and endGame closes the window
 	 * when clicked.
-	 * @param game the completed game with the player standings
+	 * @param game the completed game with the winning player, including their point value and winning time
 	 */
 	public EndingPage(Game game) {
 		this.game=game;	

@@ -26,11 +26,11 @@ import javazoom.jl.decoder.JavaLayerException;
 /**
  * This class represents the window or page where the main game is taking place.
  * There is a scoreboard that refreshes each turn on the left side, the draw deck
- * in the middle, and buttons to draw, end your turn, see the instructions, visit 
- * the store, and see players' cards on the right side.  
+ * in the middle, and buttons to take your card, end your turn, buy a saving card, 
+ * and see the instructions on the right side.  
  * 
  * @author Skyla
- * @version 1
+ * @version 2
  *
  */
 public class MainGame extends JFrame {
@@ -591,31 +591,6 @@ public class MainGame extends JFrame {
 	                new MainGame(playerNames).setVisible(true);
 	            }
 	        });
-	}
-
-//	@Override
-//	public void musicStarted() {
-//		// TODO Auto-generated method stub
-//
-//	}
-//
-//	@Override
-//	public void musicStopped() {
-//		// TODO Auto-generated method stub
-//
-//	}
-//
-//	@Override
-//	public void playlistEnded() {
-//		// TODO Auto-generated method stub
-//
-//	}
-//
-//	@Override
-//	public void songEnded() {
-//		// TODO Auto-generated method stub
-//
-//	}
-
+	 }
 	
 }

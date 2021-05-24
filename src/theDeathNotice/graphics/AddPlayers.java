@@ -19,7 +19,7 @@ import javazoom.jl.decoder.JavaLayerException;
  * saving names, click "Done". 
  * 
  * @author Andria
- * @version 1
+ * @version 2
  */
 public class AddPlayers extends JFrame {
 	private static final String ABOUT_IMAGE = "images/about.png";
@@ -197,7 +197,7 @@ public class AddPlayers extends JFrame {
 		players.add(typeName.getText());
 		typeName.setText("");
 	}
-//	
+	
 	private void doneButtonActionPerformed(ActionEvent e) {
 		if (players.size() > 4) {
 			playSound();

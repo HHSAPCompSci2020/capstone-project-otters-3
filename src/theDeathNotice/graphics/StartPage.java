@@ -16,7 +16,7 @@ import javax.swing.*;
 /**
  *  * 
  * This class represents the window or page of the starting screen, the first page of the game.
- * If you want to play the game, click the "Begin" button to lead to the AddPlayers page.
+ * If you want to play the game, click the "Begin" button to go to the AddPlayers page.
  * @author Andria
  * @version 1
  */
