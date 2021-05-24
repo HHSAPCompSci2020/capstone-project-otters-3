@@ -12,7 +12,7 @@ import javax.swing.*;
  *
  */
 
-public class Instructions {//extends JDialog implements ActionListener {
+public class Instructions {
        String text="<html><body>" 
        		+ "<h3>Instructions:</h3>"
     		+ "<h4>The goal of this game is to get as many points as possible without dying.</h4>" 
@@ -35,21 +35,7 @@ public class Instructions {//extends JDialog implements ActionListener {
        		+ "Continue this process until all the cards in the deck are gone.   <br>" 
        		+ "<h4> Rule 7:</h4>"
        		+ "Whoever of the remaining players has the most points wins, and the player who reaches the point value first wins in the case of a tie. <br>" 
-       		//+ "</p>"
        		
- //      		+ "<h4>Rule 2:</h4>"
- //   		+ "<p>sample text sample text sample test<br>" 
- //    		+ "sample text sample text sample test        <br>" 
- //     	+ "sample text sample text sample test =========<br>" 
- //      	+ "sample text sample text sample test   <br>" 
- //      	+ "sample text sample text sample test ===<br>" 
- //      	+ "sample text sample text sample test<br>" 
- //      	+ "sample text sample text sample test<br>" 
- //      	+ "sample text sample text sample test    <br>" 
- //      	+ "sample text sample text sample test   <br>" 
- //      	+ "sample text sample text sample test<br>" 
- //      	+ "sample text sample text sample test   <br>" 
- //      	+ "sample text sample text sample test</p>"
         	+ "</body></html>";
        
        /**
