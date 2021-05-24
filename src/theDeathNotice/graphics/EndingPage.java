@@ -35,7 +35,7 @@ import theDeathNotice.SavingCard;
 public class EndingPage extends JFrame {
 	private static final String BALLOON_IMAGE = "images/congratulations.png";
 	private Game game;
-	private JLabel jLabel1;
+	private JLabel congratsImage;
 	private JLabel winnerName;
 	private JLabel winnerPoints;
 	private JLabel winnerTime;
@@ -66,7 +66,7 @@ public class EndingPage extends JFrame {
 	        winnerTime = new javax.swing.JLabel();
 	        playAgain = new javax.swing.JButton();
 	        endGame = new javax.swing.JButton();
-	        jLabel1 = new javax.swing.JLabel();
+	        congratsImage = new javax.swing.JLabel();
 
 	        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 	        getContentPane().setBackground(new java.awt.Color(255,255,255));
@@ -115,14 +115,14 @@ public class EndingPage extends JFrame {
 	                        .addComponent(playAgain)
 	                        .addGap(87, 87, 87)
 	                        .addComponent(endGame))
-	                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                    .addComponent(congratsImage, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
 	                .addContainerGap(69, Short.MAX_VALUE))
 	        );
 	        layout.setVerticalGroup(
 	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 	            .addGroup(layout.createSequentialGroup()
 	                .addContainerGap(28, Short.MAX_VALUE)
-	                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                .addComponent(congratsImage, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                .addGap(30, 30, 30)
 	                .addComponent(winnerName)
 	                .addGap(24, 24, 24)
@@ -160,7 +160,7 @@ public class EndingPage extends JFrame {
 			   e.printStackTrace();
 		}
          ImageIcon icon = new ImageIcon(image);
-         jLabel1.setIcon(icon);
+         congratsImage.setIcon(icon);
 	 }	
 	 
 
