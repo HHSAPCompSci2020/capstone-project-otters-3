@@ -221,7 +221,7 @@ public class AddPlayers extends JFrame {
         		+ "Note that this program only supports 2-4 players.<left></html>";
 		   JOptionPane.showMessageDialog(this,
 				    text,
-				    "Please Read Game Instructions Carefully",
+				    "Please Read Player Name Instructions Carefully",
 				    JOptionPane.INFORMATION_MESSAGE);
 		
 	}
