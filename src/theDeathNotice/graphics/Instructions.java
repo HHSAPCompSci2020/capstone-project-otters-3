@@ -13,6 +13,10 @@ import javax.swing.*;
  */
 
 public class Instructions {
+	
+		/**
+		 * the instructions text
+		 */
        String text="<html><body>" 
        		+ "<h3>Instructions:</h3>"
     		+ "<h4>The goal of this game is to get as many points as possible without dying.</h4>" 
