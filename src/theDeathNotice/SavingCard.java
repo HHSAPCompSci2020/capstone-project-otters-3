@@ -1,7 +1,7 @@
 package theDeathNotice;
 
 /**
- * This class represents a "Save Yourself" card.
+ * This class represents a saving card.
  * 
  * @author Skyla
  * @version 1
@@ -11,7 +11,7 @@ public class SavingCard extends Card {
 	final static int INITIAL_COST=30;
 	/**
 	 * The current Saving Card Price.
-	 * The price is the same for all saving card objects
+	 * The price may change based on the situation of the game.
 	 */
 	public static int CURRENT_COST = INITIAL_COST;
    
@@ -24,7 +24,8 @@ public class SavingCard extends Card {
 	}
 
 	/**
-	 * A saving card drawn from card deck is rewarded as two cards
+	 * A Joker drawn from card deck is rewarded as two saving cards.
+	 * Adds the saving cards to the respective player.
 	 * @param player Player that draws the card.
 	 */
 	public void act(Player player) {

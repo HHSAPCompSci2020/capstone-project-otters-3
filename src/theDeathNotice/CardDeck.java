@@ -6,7 +6,9 @@ import java.util.Collections;
 
 /**
  * 
- * This class represents a card deck of a game.
+ * This class represents the card deck in the game. The card deck
+ * has 4-8 death cards and one Joker on top of a standard deck 
+ * of cards (with the exception of As as death cards are As).
  * @author Skyla
  * @version 1
  *

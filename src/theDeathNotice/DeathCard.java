@@ -2,7 +2,8 @@ package theDeathNotice;
 
 
 /**
- * This class represents a deadly card.
+ * This class represents a death card.
+ * The player dies once this card is drawn.
  * @author Skyla
  * @version 1
  *

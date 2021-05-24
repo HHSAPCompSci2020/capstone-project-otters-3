@@ -2,7 +2,9 @@ package theDeathNotice;
 
 /**
  * This class represents a standard card that gives you points.
- * Each card has one of the 4 suits and a value from ace to king.
+ * Each card has one of the 4 suits and a value from 2 to king.
+ * All royals are worth 10 points. Otherwise, the points a player 
+ * gets is equal to the value on the card.
  * 
  * @author Skyla
  * @version 1
@@ -13,7 +15,7 @@ public class PointCard extends Card {
 	private int pointValue;
 	
 	/**
-	 * Creates a PointCard.
+	 * Creates a PointCard and determines its point value.
 	 * @param cardID The ID of the card, related to the directory image of the card
 	 */
 	public PointCard(String cardID) {
