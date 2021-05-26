@@ -13,11 +13,14 @@ Who would want to use your program?
 What are the primary features of your program?
 
 
+“The Death Notice” is a multiplayer card game. The goal of the game is to maximize the number of points you have while also making sure you don’t get a “Death Notice” (drawing a death card). Every turn, the player draws one to three cards from the card deck and has the option to buy a “saving” card if they have enough money on hand before they end their turn (for more details, refer to the features list).  During each turn, a player can draw 1, 2, or 3 cards, and the cards they draw correspond to how many points the player gets (J, Q, K are all 10). If you draw a “death” card, you “die” and automatically lose unless you have a “saving” card, in which case it would be automatically played.  The goal of the game is to become the last surviving player or the player with the most points at the end of the game. In the case of a tie, whichever player reached that particular point value first wins.
+This game is for anyone who wants to enjoy a fun and challenging game with a group of people who are together, such as friends or family. We wrote this game so people could play an interactive game together during events such as parties. People can interact with each other and get closer by playing this game. Anyone who seeks entertainment or wants to relieve themselves of boredom would find pleasure in playing this game as well. 
+
+
+Some primary features in the game include a window with interactive graphics (buttons and labels), the “death” card, the “saving” card, and more. For more information, go to the features list.
+
+
 Note: This game GUI uses Nimbus Look and Feel and may not look the same in the case it isn’t present on your java version. 
-
-
-“The Death Notice” is a multiplayer card game. Every turn, the player draws a card from the card deck and has the option to buy a “saving” card before they end their turn (for more details, refer to the features list). During each turn, a player can draw 1, 2, or 3 cards, and the cards they draw correspond to how many points the player gets (J, Q, K are all 10). If you draw a “death” card, you “die” and automatically lose unless you have a “saving” card, in which case it would be automatically played.The goal of the game is to become the last surviving player or the player with the most points. In the case of a tie, whichever player reached that particular point value first wins.
-This game is for anyone who wants to enjoy a fun game with a group of people who are together, such as friends or family, even if they do not have a physical deck of cards with them. Anyone who seeks entertainment or wants to relieve themselves of boredom would find pleasure in playing this game as well. 
 
 
 
@@ -30,18 +33,20 @@ Will you have menus that need to be navigated? What will they look like?
 Do actions need to be taken in a certain order?]
 
 
-The goal of this game is to get as many points as possible without dying. Run the game and click “begin”. Then add 2-4 player names by typing each name and clicking “save” after typing each name. Click “done” once you have finished entering and saving all the names. This will bring you to the screen with the main game. The goal of the game is to be the player with the greatest number of points without dying. The first player starts with 30 points, and each succeeding player starts with one more point than their preceding player in order to compensate for playing after their preceding players. During a player’s turn, they can choose to draw anywhere from 1-3 cards by first clicking on the deck to reveal the card, then clicking on “Take Card” to take the card. The cards they draw correspond to how many points the player gets (J, Q, K are all 10). The player is then given the number of points that is denoted by their card. If a “death” card (the As) is ever drawn, the player who draws it automatically dies unless they have a “saving” card (represented by a star next to the player on the scoreboard), in which case the “saving” card is automatically used. There will also be a special “saving” card (or Joker) in the deck that is worth 2 of them. At any point during their turn before they end their turn, draw a “death” card, or flip a card and didn’t take it yet, a player can choose to convert a certain number of points, as denoted by the text above, to a “saving” card, which can be used to cancel a “death” card drawn later. The price of the “saving” card changes based on the points the players have and how far away the next death card is. Allow the next player to go through their turn (as soon as a player presses the “end turn” button, their turn is over). Continue this process until all the cards in the deck are gone or when only one player is remaining. The player who is both alive and has the most points when the game ends.
+The goal of this game is to get as many points as possible without dying. Run the game and click “begin”. Then add 2-4 player names by typing each name and clicking “save” after typing each name. 
+The rules are no duplicate names, 1-15 characters, only alphabetical, numerical, and whitespace characters, and the first character can’t be a whitespace. Click “done” once you have finished entering and saving all the names. This will bring you to the screen with the main game. The goal of the game is to be the player with the greatest number of points without dying. The first player starts with 30 points, and each succeeding player starts with one more point than their preceding player in order to compensate for playing after their preceding players. During a player’s turn, they can choose to draw anywhere from 1-3 cards by first clicking on the deck to reveal the card, then clicking on “Take Card” to take the card. The cards they draw correspond to how many points the player gets (J, Q, K are all 10). The player is then given the number of points that is denoted by their card. If a “death” card (the As) is ever drawn, the player who draws it automatically dies unless they have a “saving” card (represented by a star next to the player on the scoreboard), in which case the “saving” card is automatically used. There will also be a special “saving” card (or Joker) in the deck that is worth 2 of them. At any point during their turn before they end their turn, draw a “death” card, or flip a card and didn’t take it yet, a player can choose to convert a certain number of points (if they have enough) by clicking “Buy Card”, as denoted by the text above, to a “saving” card, which can be used to cancel a “death” card drawn later. The price of the “saving” card changes based on the points the players have and how far away the next death card is. Allow the next player to go through their turn (as soon as a player presses the “end turn” button, their turn is over). There will also be an instructions button if you need to review the instructions. Continue this process until all the cards in the deck are gone or when only one player is remaining. The player who is both alive and has the most points when the game ends, in which the game automatically goes to the Ending Page, where there is a certificate with the winner’s name, number of points, and time they won. Click “Play Again” to play another round (brings you back to Add Players page) and “End Game” to close the window.
+There are no keyboard key functions in this game.
 
 
 Features List (THE ONLY SECTION THAT CANNOT CHANGE LATER):
 Must-have Features:
 [These are features that we agree you will definitely have by the project due date. A good final project would have all of these completed. At least 5 are required. Each feature should be fully described (at least a few full sentences for each)]
 * An instructions page detailing the instructions of the game. This should pop up as a separate window and allow the player to continue playing the game after viewing.
-* The user can play the game on a window with interactive graphics, such as buttons or labels.
+* The user can play the game on a window with interactive graphics, such as buttons or labels. The window should be colorful and have an image or icon to increase aesthetic.
 * There is a shared card deck, which each user can draw from on their turn. When a user draws from the card deck, the next card on the top of the deck is added to the player’s hand and that card is removed from the deck.
 *  A death card (the “A”s in a deck, 4-8 of them) causes the player who drew the card to die. When this card is drawn and a “saving” card (a Joker) is not present in the player’s hand, a message saying that the player is dead should automatically appear on the player’s screen. 
 * If the player plays a certain card (“saving” card that can be bought with a certain number of points), they can use the card to save themselves in the case of drawing a “death” card.
-* The “multiplayer” feature, with the ability to play with up to 4 players on a shared computer. The computer would be passed around from player to player. 
+* The “multiplayer” feature, with the ability to play with up to 4 players on a shared computer. They can pass their turn to the next player by clicking “End Turn”. 
 
 
 Want-to-have Features:
@@ -71,6 +76,8 @@ Stretch Features:
 
 Class List:
 [This section lists the Java classes that make up the program and very briefly describes what each represents. It’s totally fine to put this section in list format and not to use full sentences.]
+
+
 Game (represents the “The Death Notice” game)
 CardDeck (represents the card deck which we use to play, includes Card array)
 Card (represents each card, abstract class to be extended from)
@@ -121,7 +128,9 @@ External Credits:
 * “Dripping Water” Image: https://www.clipartkey.com/view/iRJxTmR_rozpywanie-slime-water-szablon-black-picsart-dripping-effect/ 
 * “Congratulations” Image: https://www.freepik.com/premium-vector/congratulations-typography-handwritten-lettering-greeting-card-banner_3844375.htm 
 * StackTrace (for helping with code for sound and thread, SoundPlayer class)
-* StackOverflow (for helping with code for GUI, info on how to add images or background color)
+* StackOverflow (for helping with code for GUI, info on how to add images or background color, as well as more information for SoundPlayer class)
+   * Ex: stackoverflow.com/questions/10185314/java-thread-ending-with-a-delay 
+   * For fixing the audio delay we had problems with
 * Oh no! sound: youtube video 25 copyright free funny sounds (2nd sound): https://www.youtube.com/watch?v=sOZf7b7w9xc 
 * Apache NetBeans (for initComponents() and formatting of JFrames)
 * Audio:
