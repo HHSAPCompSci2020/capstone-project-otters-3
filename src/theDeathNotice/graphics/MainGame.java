@@ -2,26 +2,20 @@ package theDeathNotice.graphics;
 
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-//import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.text.MessageFormat;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
-//import jay.jaysound.JayLayer;
-//import jay.jaysound.JayLayerListener;
 import theDeathNotice.Card;
 import theDeathNotice.CardDeck;
 import theDeathNotice.Game;
 import theDeathNotice.Player;
 import theDeathNotice.SavingCard;
-import javazoom.jl.player.*;
-import javazoom.jl.decoder.JavaLayerException;
+
 
 /**
  * This class represents the window or page where the main game is taking place.
@@ -89,7 +83,6 @@ public class MainGame extends JFrame {
 		 }
 	     refreshScoreBoard();
 	     refreshSavingCardCost();  
-	     
 	 }
 	 
 	 
@@ -116,7 +109,9 @@ public class MainGame extends JFrame {
 			 deck.shuffleDeck();
 			 deck.shuffleDeck();
 			 SavingCard.init();
+			 			 
 	 }
+	 
 	 
 	 private void initComponents() {
 		    takeCardButton = new javax.swing.JButton();
@@ -272,7 +267,7 @@ public class MainGame extends JFrame {
 			  image = ImageIO.read(file);
 		   } catch (IOException e) {
 			  // TODO Auto-generated catch block
-			   e.printStackTrace();
+			   //e.printStackTrace();
 		}
          ImageIcon icon = new ImageIcon(image);
          deckButton.setIcon(icon);
@@ -285,7 +280,7 @@ public class MainGame extends JFrame {
 			  image = ImageIO.read(file);
 		   } catch (IOException e) {
 			  // TODO Auto-generated catch block
-			   e.printStackTrace();
+			   //e.printStackTrace();
 		}
          ImageIcon icon = new ImageIcon(image);
          cost.setIcon(icon);
@@ -421,9 +416,9 @@ public class MainGame extends JFrame {
 				if (result) {
 				    Card card = deck.peekTopCard();
 				    if (card == null) {
-				    	if (game.hasMultiplePlayerWithSamePoints()) {
-				    		refreshScoreBoardWithTimeInfo();
-				    	}
+				    	//if (game.hasMultiplePlayerWithSamePoints()) {
+				    	//	refreshScoreBoardWithTimeInfo();
+				    	//}
 				    	game.setOver(true);
 				    	resetDeckButtonIcon(EMPTY_DECK_IMAGE);
 				    	declareWinner(MessageFormat.format(Messages.CARD_DECK_EMPTY, game.getWinner().getName()));
@@ -498,7 +493,7 @@ public class MainGame extends JFrame {
 	 }
 	 
 	 private String displayPlayerInfoWithTime(Player player) {
-		return displayPlayerInfo(player) + "[+"+ player.getTime()+"]";
+		return displayPlayerInfo(player) + "["+ player.getTime()+"]";
 	 }
 	 
 	 private void markCurrent(boolean displayTimeInfo) {
@@ -514,6 +509,19 @@ public class MainGame extends JFrame {
 		}
 	 }
 	 
+	 private void markTied() {
+		 ArrayList<Player> players = game.getPlayers();
+		 int playerId=0;
+		 for (Player player : players) {
+			 if (player.isAlive()) {
+				 JLabel label= getlabel(playerId);
+				 label.setBackground(new java.awt.Color(255, 255, 255));
+				 label.setText(displayPlayerInfoWithTime(player));
+			 }
+		     playerId++;
+		 }
+	 }
+	 
 	 private void refreshScoreBoard() {
 		markDead();
 		resetOriginal();
@@ -523,6 +531,7 @@ public class MainGame extends JFrame {
 	 private void refreshScoreBoardWithTimeInfo() {
 		markDead();
 		resetOriginal();
+        markTied();
         markCurrent(true);
 	 }
 	 
@@ -533,7 +542,8 @@ public class MainGame extends JFrame {
 	 
 	 // test 
 //	 public static void main(String args[]) {
-//		    String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
+//		    //String[] names = {"Skyla", "Andria", "Lindsay", "Dave"};
+//		    String[] names = {"Skyla", "Andria"};
 //		    List<String> playerNames = Arrays.asList(names);	    
 //		    
 //	        /* Set the Nimbus look and feel */

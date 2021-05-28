@@ -54,29 +54,12 @@ public class Game {
 	}
 	
 	/**
-	 * Gets the players in the order of their standings.
+	 * Gets the players.
 	 * 
-	 * @return the players in an ArrayList in the order of their standings
+	 * @return the players in an ArrayList 
 	 */
-	public ArrayList<Player> getStandings() {
-		ArrayList<Player> standings = new ArrayList<Player>();
-		for (int i = 0; i < players.size(); i++) {
-			standings.add(players.get(i));
-		}
-		boolean sorted = false;
-		Player temp;
-		while(!sorted) {
-			sorted = true;
-			for (int i = 1; i < standings.size(); i++) {
-				if (standings.get(i).getPoints() < standings.get(i-1).getPoints()) {
-					temp = standings.get(i);
-					standings.set(i, standings.get(i-1));
-					standings.set(i-1, temp);
-					sorted = false;
-				}
-			}
-		}
-		return standings;
+	public ArrayList<Player> getPlayers() {
+		return players;
 	}
 	
 	/**
