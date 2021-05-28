@@ -53,14 +53,12 @@ Must-have Features:
 
 Want-to-have Features:
 [These are features that you would like to have by the project due date, but you’re unsure whether you’ll hit all of them. A good final project would have perhaps half of these completed. At least 5 are required. Again, fully describe each.]
-*Implemented Want-to-Have Features are highlighted in yellow
-
 
 * The cards in the deck will be customized such that it fits the “Suffocating Otter” prompt, instead of just using a standard deck of cards. In other words, the cards will be designed such that the “death” card will be a “plastic” card, the “saving” card will be a “doctor” card, etc. 
-*  A “Play Again” button after the game ends. This will reset all the data and bring you back to the AddPlayers page.
+* [implemented]  A “Play Again” button after the game ends. This will reset all the data and bring you back to the AddPlayers page.
 * Instead of doing a multiplayer feature where players play on a shared computer, we could implement it so that players are able to play against each other on different computers (firebase).
-* Sound/Music for messages, such as when a player loses or wins or for error messages.
-* The cost of a “Saving” card adapts with the situation (ex: inflation or deflation). This is to keep the game unpredictable and entertaining, as well as giving players with a lower amount of points a chance to still stay in the game. It will take into account the points the players have and the distance to the next death card when calculating the amount.
+* [implemented] Sound/Music for messages, such as when a player loses or wins or for error messages.
+* [implemented] The cost of a “Saving” card adapts with the situation (ex: inflation or deflation). This is to keep the game unpredictable and entertaining, as well as giving players with a lower amount of points a chance to still stay in the game. It will take into account the points the players have and the distance to the next death card when calculating the amount.
 * Implement the cards from advanced version, which you can buy in the store (each counts as a feature):
    * If the player plays a certain card (“See the Future”), they have the ability to see the next three cards in the deck, allowing them to change their plan for the game accordingly.
    * Whoever gets a flush (5 in a row of numbers) can trash the top card of the draw deck.
